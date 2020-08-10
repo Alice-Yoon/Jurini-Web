@@ -8,20 +8,16 @@ import google from '../../../assets/img/google.png';
 
 function NavBarHorizontal(props) {
 
-    const [showSearchBar, setShowSearchBar] = useState(false);
-
-    const onClickSearchIcon = () => {
-        console.log("search icon clicked!");
-        setShowSearchBar(!showSearchBar);
-    }
+    const {toggleShowSearchResult, showSearchBar, toggleSearchBar} = props;
+    
 
     return (
         <div className={props.className}>
             <div className="container">
                 <p className="title">주린이 달력</p>
-                {showSearchBar? <SearchBar className="searchBar" /> : null}
+                {showSearchBar? <SearchBar className="searchBar" toggleShowSearchResult={toggleShowSearchResult} toggleSearchBar={toggleSearchBar} /> : null}
                 <div className="icons-area">   
-                    <img src={search} alt="search-icon" className="iconStyle" onClick={onClickSearchIcon} />
+                    <img src={search} alt="search-icon" className="iconStyle" onClick={toggleSearchBar} />
                     <img src={google} alt="google-icon" className="googleStyle" />
                 </div>
             </div>

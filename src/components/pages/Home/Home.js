@@ -7,14 +7,17 @@ import CardList from '../../commons/CardList';
 import { cardDummyData } from '../../../assets/dummy/cardDummyData';
 
 function Home(props) {
+
+    const {toggleCompanyDetails} = props;
+
     return (
         <div className={props.className}>
            <div className="section_left">
                 <Calendar />
            </div>
            <div className="section_right">
-               {cardDummyData && cardDummyData.map(data => (
-                   <CardList data={data} />
+               {cardDummyData && cardDummyData.map((data, index) => (
+                   <CardList key={index} data={data} toggleCompanyDetails={toggleCompanyDetails} />
                ))}
            </div>
         </div>
@@ -29,11 +32,11 @@ export default styled(Home)`
 
     & {
         .section_left {
-            border: 1px solid blue;
+            /* border: 1px solid blue; */
             flex: 1;
         }
         .section_right {
-            border: 1px solid green;
+            /* border: 1px solid green; */
             flex: 1;
             overflow: auto;
         }

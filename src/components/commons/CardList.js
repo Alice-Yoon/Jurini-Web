@@ -3,15 +3,22 @@ import styled from 'styled-components';
 
 function CardList(props) {
 
+    const { toggleCompanyDetails } = props;
+
     // isDividendDate ? '배당지급일' : '배당락일 D-3'
     const [isDividendDate, setIsDividendDate] = useState(true);
 
     useEffect(() => {
         setIsDividendDate(props.data.isDividendDate);
-    }, [])
+    }, []);
+
+    const onClickCard = () => {
+        console.log("Card List clicked!");
+        toggleCompanyDetails();
+    }
 
     return (
-        <div className={props.className} style={{ borderLeft: `2.5px solid ${isDividendDate ? 'green' : 'orange'}`}}>
+        <div onClick={onClickCard} className={props.className} style={{ borderLeft: `2.5px solid ${isDividendDate ? 'green' : 'orange'}`}}>
             <div className="leftSectionStyle">
                     <span className="smallBoxStyle">
                         {isDividendDate ? '배당지급일' : '배당락일 D-3'}
