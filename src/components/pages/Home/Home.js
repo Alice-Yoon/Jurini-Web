@@ -5,6 +5,7 @@ import Calendar from './Section/Calendar';
 import CardList from '../../commons/CardList';
 
 import { cardDummyData } from '../../../assets/dummy/cardDummyData';
+import DropDown from './Section/DropDown';
 
 function Home(props) {
 
@@ -16,9 +17,12 @@ function Home(props) {
                 <Calendar />
            </div>
            <div className="section_right">
-               {cardDummyData && cardDummyData.map((data, index) => (
-                   <CardList key={index} data={data} toggleCompanyDetails={toggleCompanyDetails} />
-               ))}
+               <DropDown />
+               <div className="card-list">
+                {cardDummyData && cardDummyData.map((data, index) => (
+                    <CardList key={index} data={data} toggleCompanyDetails={toggleCompanyDetails} />
+                ))}
+               </div>
            </div>
         </div>
     )
@@ -38,7 +42,13 @@ export default styled(Home)`
         .section_right {
             /* border: 1px solid green; */
             flex: 1;
-            overflow: auto;
+            .card-list {
+                /* border: 1px solid yellow; */
+                margin-top: 10px;
+                width: 100%;
+                height: 92%;
+                overflow: auto;
+            }
         }
     }
 `;

@@ -38,15 +38,16 @@ function SearchResult(props) {
 
 export default styled(SearchResult)`
     /* border: 1px solid blue; */
-    
+  
     z-index: 100;
+    border-radius: 5px;
     position: fixed;
     top: 0;
     left: 0;
     width: 60%;
     height: 60%;
     margin-top: 100px;
-    margin-left: 200px;
+    margin-left: 220px;
     margin-right: 10px;
     background-color: rgba(0,0,0,0.7);
     display: flex;

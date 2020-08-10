@@ -89,7 +89,7 @@ export default styled(App)`
     .main-area {
       /* border: 2px solid red; */
 
-      height: 100vh;
+      height: 70vh;
       margin-top: 200px;
       margin-left: 110px;
       margin-right: 10px;
