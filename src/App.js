@@ -28,6 +28,7 @@ function App(props) {
           <Route exact path="/search" component={SearchResult} />
           <Route exact path="/introduction" component={Introduction} />
         </Switch>
+        <SearchResult />
       </main>
 
      </Router>
