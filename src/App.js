@@ -1,26 +1,73 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-function App() {
+
+import NavBarHorizontal from './components/pages/NavBar/NavBarHorizontal';
+import NavBarVertical from './components/pages/NavBar/NavBarVertical';
+import Home from './components/pages/Home/Home';
+import SearchResult from './components/pages/SearchResult/SearchResult';
+import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
+import Introduction from './components/pages/Introduction/Introduction';
+import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={props.className}>
+     <Router>
+
+      {/* NavBar 영역 */}
+      <NavBarHorizontal className="navbar_horizontal" />
+      <NavBarVertical className="navbar_vertical" />
+      <SpeechBubble className="speech-bubble" />
+
+      {/* Main Area 영역 */}
+      <main className="main-area">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/search" component={SearchResult} />
+          <Route exact path="/introduction" component={Introduction} />
+        </Switch>
+      </main>
+
+     </Router>
+     <CompanyDetails />
     </div>
   );
 }
 
-export default App;
+export default styled(App)`
+  & {
+    .navbar_horizontal {
+      border: 1px solid blue;
+
+      position: fixed;
+      top:0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    .navbar_vertical {
+      border: 1px solid green;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100px;
+    }
+    .speech-bubble {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      z-index: 200;
+    }
+    .main-area {
+      border: 2px solid red;
+
+      height: 100vh;
+      margin-top: 200px;
+      margin-left: 110px;
+    }
+  }
+`;
