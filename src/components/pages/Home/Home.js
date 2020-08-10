@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { useObserver } from 'mobx-react';
 
 import Calendar from './Section/Calendar';
 import CardList from '../../commons/CardList';
 
-import { cardDummyData } from '../../../assets/dummy/cardDummyData';
+import { GlobalContext } from '../../context/GlobalState';
 
 function Home(props) {
-    return (
+
+    const { data } = useContext(GlobalContext);
+
+
+    return useObserver( () => (
         <div className={props.className}>
            <div className="section_left">
                 <Calendar />
            </div>
            <div className="section_right">
-               {cardDummyData && cardDummyData.map(data => (
-                   <CardList data={data} />
+               {data && data.map((data, index) => (
+                   <CardList key={index} data={data} />
                ))}
            </div>
         </div>
-    )
-}
+
+    ))
+};
 
 export default styled(Home)`
     width: 100%;

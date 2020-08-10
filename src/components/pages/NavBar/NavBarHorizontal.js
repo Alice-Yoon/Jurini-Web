@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+import {GlobalContext} from '../../context/GlobalState';
 
 import SearchBar from './Section/SearchBar';
 
@@ -8,11 +9,14 @@ import google from '../../../assets/img/google.png';
 
 function NavBarHorizontal(props) {
 
+    const { toggleShowSearchResults } = useContext(GlobalContext);
+
     const [showSearchBar, setShowSearchBar] = useState(false);
 
+
     const onClickSearchIcon = () => {
-        console.log("search icon clicked!");
         setShowSearchBar(!showSearchBar);
+        toggleShowSearchResults();
     }
 
     return (

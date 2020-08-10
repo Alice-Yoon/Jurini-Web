@@ -8,10 +8,14 @@ function CardList(props) {
 
     useEffect(() => {
         setIsDividendDate(props.data.isDividendDate);
-    }, [])
+    }, []);
+
+    const onClickOpenDetails = () => {
+        console.log("on click open details")
+    }
 
     return (
-        <div className={props.className} style={{ borderLeft: `2.5px solid ${isDividendDate ? 'green' : 'orange'}`}}>
+        <div className={props.className} style={{ borderLeft: `2.5px solid ${isDividendDate ? 'green' : 'orange'}`}} onClick={onClickOpenDetails}>
             <div className="leftSectionStyle">
                     <span className="smallBoxStyle">
                         {isDividendDate ? '배당지급일' : '배당락일 D-3'}
