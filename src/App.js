@@ -61,7 +61,7 @@ export default styled(App)`
       position: fixed;
       top: 100px;
       right: 30px;
-      z-index: 200;
+      z-index: 50;
     }
     .main-area {
       border: 2px solid red;
