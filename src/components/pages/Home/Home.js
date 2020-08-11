@@ -29,6 +29,7 @@ function Home(props) {
 }
 
 export default styled(Home)`
+    /* border: 2px solid aqua; */
     width: 100%;
     height: 100%;
 
@@ -48,7 +49,15 @@ export default styled(Home)`
                 width: 100%;
                 height: 92%;
                 overflow: auto;
+                flex: 1;
             }
+        }
+    }
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        .section_right {
+            overflow: auto;
         }
     }
 `;

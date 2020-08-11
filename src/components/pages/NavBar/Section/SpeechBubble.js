@@ -12,6 +12,7 @@ function SpeechBubble(props) {
 
 export default styled(SpeechBubble)`
     background-color: #B9B8FF;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.5);
     color: #000;
     padding: 5px;
     border-radius: 5px;

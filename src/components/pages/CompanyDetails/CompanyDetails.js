@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import DetailsCard from './Section/DetailsCard';
+import DetailsTable from './Section/DetailsTable';
+import DetailsChart from './Section/DetailsChart';
+import DetailsCalculator from './Section/DetailsCalculator';
+import DetailsNews from './Section/DetailsNews';
 
 function CompanyDetails(props) {
     const { showCompanyDetails, toggleCompanyDetails } = props;
@@ -18,11 +23,18 @@ function CompanyDetails(props) {
     return (
         <div className={props.className} id="container" style={{display: `${showCompanyDetails ? 'flex' : 'none' }`}} onClick={onClickToClose}>
             <div className="modalStyle">                    
-                {/* <div className="closeBtnAreaStyle"> */}
-                    <span id="closeBtn" onClick={onClickToClose} className="closeBtnStyle">X</span>
-                {/* </div> */}
+                <span id="closeBtn" onClick={onClickToClose} className="closeBtnStyle">X</span>
                 <div className="contentStyle">
-                    Comapany Details 
+                    <h1>Nike Inc (NKE)</h1>
+                    <div className="content_top">
+                        <DetailsCard />
+                        <DetailsTable />
+                    </div>
+                    <div className="content_bottom">
+                        <DetailsCalculator />
+                        <DetailsChart />
+                        <DetailsNews />
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,7 +54,7 @@ export default styled(CompanyDetails)`
 
     & {
         .modalStyle {
-            border: 1px solid green;
+            /* border: 1px solid green; */
             border-radius: 10px;
             width: 65%;
             height: 65%;
@@ -51,7 +63,7 @@ export default styled(CompanyDetails)`
         }
         .closeBtnStyle {
             cursor: pointer;
-            border: 1px solid red;
+            /* border: 1px solid red; */
             text-align: end;
             padding-right: 10px;
             position: absolute;
@@ -59,24 +71,31 @@ export default styled(CompanyDetails)`
             right: 5px;
         }
         .contentStyle {
-            border: 1px solid blue;
+            /* border: 1px solid blue; */
+
             margin: 30px 15px 0 15px;
             height: 90%;
             overflow: auto;
-        }
-        /* .closeBtnAreaStyle {
-            border: 1px solid blue;
-            height: 20px;
-            position: relative;
-            > .closeBtnStyle {
-                cursor: pointer;
-                border: 1px solid red;
-                text-align: end;
-                padding-right: 10px;
-                position: absolute;
-                top: 8px;
-                right: 5px;
+
+            > h1 {
+                position: sticky;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                text-align: center;
+                margin-bottom: 50px;
             }
-        } */
+            .content_top {
+                display: flex;
+                align-items: center;
+                margin-bottom: 35px;
+            }
+            .content_bottom {
+                /* border: 1px solid red; */
+                /* display: flex; */
+            }
+        }
+        
     }
 `;

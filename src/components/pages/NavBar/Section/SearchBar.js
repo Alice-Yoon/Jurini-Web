@@ -29,6 +29,8 @@ function SearchBar(props) {
 }
 
 export default styled(SearchBar)`
+    /* border: 1px solid green; */
+
     & {
         .search-bar {
             width: 100%;

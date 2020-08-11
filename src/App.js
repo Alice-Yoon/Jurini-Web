@@ -29,7 +29,7 @@ function App(props) {
   }
 
   const toggleCompanyDetails = () => {
-    console.log("toggleCompanyDetails");
+    // console.log("toggleCompanyDetails");
     setShowCompanyDetails(!showCompanyDetails);
   }
 
@@ -93,6 +93,12 @@ export default styled(App)`
       margin-top: 200px;
       margin-left: 110px;
       margin-right: 10px;
+    }
+    @media (max-width: 500px) {
+      .main-area {
+        height: 100vh;
+        margin-right: 0;
+      }
     }
   }
 `;
