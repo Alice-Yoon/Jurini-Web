@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -10,12 +10,24 @@ import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 import Introduction from './components/pages/Introduction/Introduction';
 import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
+import Axios from 'axios';
 
 function App(props) {
 
   const [showSearchResult, setShowSearchResult] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showCompanyDetails, setShowCompanyDetails] = useState(false);
+
+  useEffect(() => {
+    
+    const test = async() => {
+      const data = await Axios.get('http://15.164.248.209:20000/rest/getCompanySummaryInfo?symbol=KO');
+      console.log("data", data);
+    }
+
+    test();
+
+  }, [])
 
 
   const toggleShowSearchResult = (value) => {
