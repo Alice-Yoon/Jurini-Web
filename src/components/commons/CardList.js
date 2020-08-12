@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Axios from 'axios';
 
 function CardList(props) {
 
@@ -10,6 +11,13 @@ function CardList(props) {
 
     useEffect(() => {
         setIsDividendDate(props.data.isDividendDate);
+
+        // const test = async() => {
+        //     const data = await Axios.get('http://15.164.248.209:20000/rest/getCompanySummaryInfo?symbol=KO');
+        //     console.log("data", data);
+        // }
+
+        // test();
     }, []);
 
     const onClickCard = () => {
