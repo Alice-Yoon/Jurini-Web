@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-
 import NavBarHorizontal from './components/pages/NavBar/NavBarHorizontal';
 import NavBarVertical from './components/pages/NavBar/NavBarVertical';
 import Home from './components/pages/Home/Home';
@@ -13,33 +12,12 @@ import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
 
 function App(props) {
 
-  const [showSearchResult, setShowSearchResult] = useState(false);
-  const [showSearchBar, setShowSearchBar] = useState(false);
-  const [showCompanyDetails, setShowCompanyDetails] = useState(false);
-
-
-  const toggleShowSearchResult = (value) => {
-    console.log("setShowSearchResult-keyword", value);
-    setShowSearchResult(true);
-  }
-
-  const toggleSearchBar = () => {
-    // console.log("search icon clicked!");
-    setShowSearchBar(!showSearchBar);
-  }
-
-  const toggleCompanyDetails = () => {
-    // console.log("toggleCompanyDetails");
-    setShowCompanyDetails(!showCompanyDetails);
-  }
-
-
   return (
     <div className={props.className}>
      <Router>
 
       {/* NavBar 영역 */}
-      <NavBarHorizontal className="navbar_horizontal" toggleShowSearchResult={toggleShowSearchResult} showSearchBar={showSearchBar} toggleSearchBar={toggleSearchBar} />
+      <NavBarHorizontal className="navbar_horizontal" />
       <NavBarVertical className="navbar_vertical" />
       <SpeechBubble className="speech-bubble" />
 
@@ -47,15 +25,15 @@ function App(props) {
       <main className="main-area">
         <Switch>
           <Route exact path="/">
-            <Home toggleCompanyDetails={toggleCompanyDetails} />
+            <Home />
           </Route>
           <Route exact path="/introduction" component={Introduction} />
         </Switch>
-        <SearchResult showSearchResult={showSearchResult} setShowSearchResult={setShowSearchResult} toggleSearchBar={toggleSearchBar} toggleCompanyDetails={toggleCompanyDetails}  />
+        <SearchResult  />
       </main>
 
      </Router>
-     <CompanyDetails showCompanyDetails={showCompanyDetails} toggleCompanyDetails={toggleCompanyDetails} />
+     <CompanyDetails />
     </div>
   );
 }

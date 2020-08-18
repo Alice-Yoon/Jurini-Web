@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { toggleSearchResult, updateInputValue } from '../../../../modules/search';
 
 function SearchBar(props) {
-    const { toggleShowSearchResult } = props;
+    const dispatch = useDispatch();
+    const openSearchResult = (payload) => dispatch(toggleSearchResult(payload));
+    const onUpdateInputValue = (value) => dispatch(updateInputValue(value));
 
     const [value, setValue] = useState('');
 
@@ -12,7 +16,8 @@ function SearchBar(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        toggleShowSearchResult(value);
+        openSearchResult(true);
+        onUpdateInputValue(value);
     }
 
     const onClickEmpty = () => {

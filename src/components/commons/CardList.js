@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { toggleDetails } from '../../modules/details';
+// import Axios from 'axios';
 
 function CardList(props) {
-
-    const { toggleCompanyDetails } = props;
 
     // isDividendDate ? '배당지급일' : '배당락일 D-3'
     const [isDividendDate, setIsDividendDate] = useState(true);
@@ -20,9 +20,11 @@ function CardList(props) {
         // test();
     }, []);
 
+    const dispatch = useDispatch();
+    const openDetails = (payload) => dispatch(toggleDetails(payload));
+
     const onClickCard = () => {
-        console.log("Card List clicked!");
-        toggleCompanyDetails();
+        openDetails(true);
     }
 
     return (

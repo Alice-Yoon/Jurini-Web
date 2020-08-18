@@ -1,18 +1,25 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toggleSearchResult, closeSearchBar, updateInputValue} from '../../../modules/search';
 
 import CardList from '../../commons/CardList';
 
 import {cardDummyData} from '../../../assets/dummy/cardDummyData';
 
 function SearchResult(props) {
-    const { showSearchResult, setShowSearchResult, toggleSearchBar, toggleCompanyDetails } = props;
+    const showSearchResult = useSelector(state => state.search.isResultShow);
+    const dispatch = useDispatch();
+    const onCloseSearchResult = (payload) => dispatch(toggleSearchResult(payload));
+    const onCloseSearchBar = (payload) => dispatch(closeSearchBar(payload));
+    const emptyInputvalue = (value) => dispatch(updateInputValue(value));
 
 
     const onClickCloseBtn = () => {
-        console.log("onClickCloseBtn");
-        setShowSearchResult(false);
-        toggleSearchBar();
+        onCloseSearchResult(false);
+        onCloseSearchBar(false);
+        emptyInputvalue('');
     }
  
     if(showSearchResult) {
@@ -25,7 +32,7 @@ function SearchResult(props) {
                 </div>
                 <div className="card-list">
                     {cardDummyData && cardDummyData.map((data, index) => (
-                            <CardList key={index} data={data} toggleCompanyDetails={toggleCompanyDetails} />
+                            <CardList key={index} data={data} />
                         ))}
                 </div>
             </div>

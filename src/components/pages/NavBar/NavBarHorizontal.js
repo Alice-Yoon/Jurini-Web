@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toggleSearchBar } from '../../../modules/search';
 
 import SearchBar from './Section/SearchBar';
 
@@ -8,16 +11,18 @@ import google from '../../../assets/img/google.png';
 
 function NavBarHorizontal(props) {
 
-    const {toggleShowSearchResult, showSearchBar, toggleSearchBar} = props;
-    
+    const isBarShow = useSelector(state => state.search.isBarShow);
+    const dispatch = useDispatch();
+    const onClickToggleBar = () => dispatch(toggleSearchBar());
+
 
     return (
         <div className={props.className}>
             <div className="container">
                 <p className="title">주린이 달력</p>
-                {showSearchBar? <SearchBar className="searchBar" toggleShowSearchResult={toggleShowSearchResult} toggleSearchBar={toggleSearchBar} /> : null}
+                {isBarShow? <SearchBar className="searchBar" /> : null}
                 <div className="icons-area">   
-                    <img src={search} alt="search-icon" className="iconStyle" onClick={toggleSearchBar} />
+                    <img src={search} alt="search-icon" className="iconStyle" onClick={onClickToggleBar} />
                     <img src={google} alt="google-icon" className="googleStyle" />
                 </div>
             </div>

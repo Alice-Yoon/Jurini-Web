@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toggleDetails } from '../../../modules/details';
+
 import DetailsCard from './Section/DetailsCard';
 import DetailsTable from './Section/DetailsTable';
 import DetailsChart from './Section/DetailsChart';
@@ -7,15 +11,15 @@ import DetailsCalculator from './Section/DetailsCalculator';
 import DetailsNews from './Section/DetailsNews';
 
 function CompanyDetails(props) {
-    const { showCompanyDetails, toggleCompanyDetails } = props;
+    const showCompanyDetails = useSelector(state => state.details.isDetailShow);
+    const dispatch = useDispatch();
+    const closeDetails = (payload) => dispatch(toggleDetails(payload));
 
 
     const onClickToClose = (e) => {
         const id = e.target.id;
-
         if(id === "closeBtn" || id === "container") {
-            // console.log("click to close!", e.target.id);
-            toggleCompanyDetails();
+            closeDetails(false);
         }
     }
 

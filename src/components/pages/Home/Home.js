@@ -9,8 +9,6 @@ import DropDown from './Section/DropDown';
 
 function Home(props) {
 
-    const {toggleCompanyDetails} = props;
-
     return (
         <div className={props.className}>
            <div className="section_left">
@@ -20,7 +18,7 @@ function Home(props) {
                <DropDown />
                <div className="card-list">
                 {cardDummyData && cardDummyData.map((data, index) => (
-                    <CardList key={index} data={data} toggleCompanyDetails={toggleCompanyDetails} />
+                    <CardList key={index} data={data} />
                 ))}
                </div>
            </div>
