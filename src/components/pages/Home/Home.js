@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Axios from 'axios';
 
 import Calendar from './Section/Calendar';
 import CardList from '../../commons/CardList';
@@ -10,6 +11,24 @@ import DropDown from './Section/DropDown';
 function Home(props) {
 
     const {toggleCompanyDetails} = props;
+
+    // const [dummyData, setDummyData] = useState(null);
+
+    // useEffect(() => {
+    //     const test = async() => {
+    //       const date = new Date();
+    //       const year = date.getFullYear();
+    //       const month = date.getMonth() + 1;
+    //       const res = await Axios.get(`http://15.164.248.209:20000/rest/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}`);
+    //       const data = res.data.data;
+
+    //       setDummyData(data.ACNB);
+    //       console.log(data.ACNB);
+    //       console.log("year :", year, "month :", month);
+    
+    //     }
+    //     test();
+    //   }, []);
 
     return (
         <div className={props.className}>
@@ -22,6 +41,8 @@ function Home(props) {
                 {cardDummyData && cardDummyData.map((data, index) => (
                     <CardList key={index} data={data} toggleCompanyDetails={toggleCompanyDetails} />
                 ))}
+                {/* {dummyData && <CardList data={dummyData} toggleCompanyDetails={toggleCompanyDetails} />} */}
+                
                </div>
            </div>
         </div>

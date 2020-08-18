@@ -4,13 +4,17 @@ import Axios from 'axios';
 
 function CardList(props) {
 
+    // console.log("card list side : ", props.data);
+    // const { name, dividends_rate, dividends_date, payment_date} = props.data;
+
     const { toggleCompanyDetails } = props;
 
     // isDividendDate ? '배당지급일' : '배당락일 D-3'
     const [isDividendDate, setIsDividendDate] = useState(true);
 
     useEffect(() => {
-        setIsDividendDate(props.data.isDividendDate);
+        
+        // setIsDividendDate(props.data.isDividendDate);
 
         // const test = async() => {
         //     const data = await Axios.get('http://15.164.248.209:20000/rest/getCompanySummaryInfo?symbol=KO');

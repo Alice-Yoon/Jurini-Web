@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -10,12 +10,29 @@ import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 import Introduction from './components/pages/Introduction/Introduction';
 import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
+import Axios from 'axios';
 
 function App(props) {
 
   const [showSearchResult, setShowSearchResult] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showCompanyDetails, setShowCompanyDetails] = useState(false);
+
+
+
+  // useEffect(() => {
+  //   const test = async() => {
+  //     const date = new Date();
+  //     const year = date.getFullYear();
+  //     const month = date.getMonth() + 1;
+  //     const res = await Axios.get(`http://15.164.248.209:20000/rest/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}`);
+  //     const data = res.data.data
+  //     console.log(data);
+  //     console.log("year :", year, "month :", month);
+
+  //   }
+  //   test();
+  // }, []);
 
 
   const toggleShowSearchResult = (value) => {
