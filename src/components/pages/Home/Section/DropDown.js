@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 function DropDown(props) {
 
+    const { date } = props;
+
     const onChangeSelect = (e) => {
         console.log("select changed!", e.target.value);
     }
@@ -10,7 +12,7 @@ function DropDown(props) {
     return (
         <div className={props.className}>
            <div>
-               <span>21 Thu</span>
+               <span>{date}</span>
            </div>
            <div>
                <select onChange={onChangeSelect} className="selectStyle">

@@ -8,16 +8,14 @@ function CardList(props) {
 
     // isDividendDate ? '배당지급일' : '배당락일 D-3'
     const [isDividendDate, setIsDividendDate] = useState(true);
+    const [data, setData] = useState([]);
+
+    // console.log("cardlist - data:", data)
+    // console.log("cardlist - 배당지급일?:", isDividendDate)
 
     useEffect(() => {
         setIsDividendDate(props.data.isDividendDate);
-
-        // const test = async() => {
-        //     const data = await Axios.get('http://15.164.248.209:20000/rest/getCompanySummaryInfo?symbol=KO');
-        //     console.log("data", data);
-        // }
-
-        // test();
+        setData(props.data)
     }, []);
 
     const dispatch = useDispatch();
@@ -33,15 +31,15 @@ function CardList(props) {
                     <span className="smallBoxStyle">
                         {isDividendDate ? '배당지급일' : '배당락일 D-3'}
                     </span>
-                    <p className="companyNameStyle">Nike Inc</p>
+                    <p className="companyNameStyle">{data.name}</p>
                 </div>
                 <div className="rightSectionStyle">
                     <div className="rightSection_Top">
-                        <span>배당률 5.2%</span>
+                        <span>배당률 {data.dividends_rate}%</span>
                         <span>예상 배당금</span>
                     </div>
                     <div className="rightSection_Bottom">
-                        <p className="expected_dividend">$ 2.7</p>
+                        <p className="expected_dividend">$ {data.dividends}</p>
                     </div>
                 </div>
         </div>
