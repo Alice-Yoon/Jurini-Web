@@ -1,22 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
+
+import { dateToMilli } from '../../utils/dateMilliConverter';
 import { useDispatch } from 'react-redux';
 import { toggleDetails } from '../../modules/details';
-// import Axios from 'axios';
 
 function CardList(props) {
 
-    // isDividendDate ? '배당지급일' : '배당락일 D-3'
-    const [isDividendDate, setIsDividendDate] = useState(true);
+    const { selectedDateMilli, todayMilli} = props;
+    
     const [data, setData] = useState([]);
-
-    // console.log("cardlist - data:", data)
-    // console.log("cardlist - 배당지급일?:", isDividendDate)
+    const [tag, setTag] = useState('');
+    const [color, setColor] = useState('');
 
     useEffect(() => {
-        setIsDividendDate(props.data.isDividendDate);
-        setData(props.data)
+        setData(props.data);
+        const paymentDateMilli = dateToMilli(data.payment_date); // 배당지급일
+        const Dday = selectedDateMilli - todayMilli;
+        const Dday_n = moment.duration(Dday).asDays();
+
+        if(selectedDateMilli === paymentDateMilli) {
+            console.log("배당지급일, green")
+        } else {
+            if(Dday === 0) {
+                setTag('배당락일');
+                setColor('#FFF3E1');
+            } else if (Dday < 0) {
+                setTag('배당락일 지남?');
+                setColor('#FFF3E1');
+            } else {
+                setTag(`배당락일 D-${Dday_n}`);
+                setColor('#FFF3E1');
+            }
+        }
+
     }, []);
+
 
     const dispatch = useDispatch();
     const openDetails = (payload) => dispatch(toggleDetails(payload));
@@ -26,14 +46,11 @@ function CardList(props) {
     }
 
     return (
-        <div onClick={onClickCard} className={props.className} style={{ borderLeft: `2.5px solid ${isDividendDate ? 'green' : 'orange'}`}}>
+        <div onClick={onClickCard} className={props.className} style={{ borderLeft: `20px solid ${color}`}}>
             <div className="leftSectionStyle">
                     <span className="smallBoxStyle">
-                        {isDividendDate ? '배당지급일' : '배당락일 D-3'}
+                        {tag}
                     </span>
-                    {/* <div className="companyNameStyle">
-                        <p>{data.name}</p>                      
-                    </div> */}
                     <p className="companyNameStyle">{data.name}</p>
                 </div>
                 <div className="rightSectionStyle">
@@ -45,6 +62,11 @@ function CardList(props) {
                         <p className="expected_dividend">$ {data.dividends?.toFixed(2)}</p>
                     </div>
                 </div>
+                {/* <div>
+                    <p>배당지급일 Milli: {dateToMilli(data.payment_date)}</p>
+                    <p>배당락일 Milli: {dateToMilli(data.dividends_date)}</p>
+                    <p>배당락일 = 배당지급일? {dateToMilli(data.payment_date) === dateToMilli(data.dividends_date) ? "true" : "false"}</p>
+                </div> */}
         </div>
     )
 }
@@ -64,10 +86,12 @@ export default styled(CardList)`
             /* border: 1px solid red; */
             flex: 1;
             .smallBoxStyle {
-                border: 1px solid gray;
-                padding: 3px 5px;
+                /* border: 1px solid gray; */
+                border-radius: 8px;
+                background-color: #EAFFE3;
+                padding: 2px 8px;
                 font-size: 0.8rem;
-                color: gray;
+                color: #218439;
             }
             .companyNameStyle {
                 /* border: 1px solid red; */

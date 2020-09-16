@@ -1,30 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-
-import Calendar from './Section/Calendar';
-import CardList from '../../commons/CardList';
-
-// import { cardDummyData } from '../../../assets/dummy/cardDummyData';
-import DropDown from './Section/DropDown';
 import Axios from 'axios';
 import moment from 'moment';
 
+import Calendar from './Section/Calendar';
+import CardList from '../../commons/CardList';
+import DropDown from './Section/DropDown';
+
+import { dateToMilli } from '../../../utils/dateMilliConverter';
+
+// import { cardDummyData } from '../../../assets/dummy/cardDummyData';
+
 function Home(props) {
 
-    const [date, setDate] = useState('');
     const [data, setData] = useState([]);
+    console.log("총 data:", data)
+    // const [selected_date, setSelected_date] = useState('');
+    // const [selected_date_milli, setSelected_date_milli] = useState('');
 
-    console.log("해당 날짜 data:", data);
-    console.log("date", date)
+    const today = moment().format("MM/DD/YYYY");
+    const todayMilli = dateToMilli(today);
+
+    const selectedDate = moment("09/16/2020").format("MM/DD/YYYY");
+    const selectedDateMilli = dateToMilli(selectedDate); // 이날짜 기준 '배당락일'
 
     useEffect(() => {
 
         // 메인 화면 card list에 들어갈 정보 구하기!
             // 해당 날짜에 "배당락일"이 부합하는 data 구하기
         const getDailyDividendsData = async() => {
-            // (1) 선택된 날짜 -> milliSec으로 변환
-            const selectedDate = moment("09/29/2020").format("MM/DD/YYYY");
-            const selectedDateMilli = moment("09/29/2020", "MM/DD/YYYY").valueOf();
+            // // (1) 선택된 날짜 -> milliSec으로 변환
+            // const selectedDate = moment("09/16/2020").format("MM/DD/YYYY");
+            // const selectedDateMilli = moment(selectedDate).valueOf(); // 이날짜 기준 '배당락일'
 
             // (2) api로 MonthlyDividendsData 불러오기
                 // 현재는 2020년 9월 정보 불러오는 중!
@@ -36,7 +43,8 @@ function Home(props) {
             // (3) Monthly Data에서 "selectedDateMilli"이 "배당락일"인 정보만 filter
             const dailyDividendsData = monthlyDataArr.filter(data => {
                 const dividendsDate = moment(data.dividends_date).format("MM/DD/YYYY");
-                const milliSec = moment(dividendsDate).valueOf();
+                // const milliSec = moment(dividendsDate).valueOf();                
+                const milliSec = dateToMilli(dividendsDate);                
                 return milliSec === selectedDateMilli
             });
 
@@ -44,12 +52,13 @@ function Home(props) {
             setData(dailyDividendsData);  
             
             // (5) 오늘 date set하기
-            setDate(selectedDate);
+            // setSelected_date(selectedDate);
+            // setSelected_date_milli(selectedDateMilli);
             
         }
         getDailyDividendsData();
 
-    }, [])
+    }, []);
 
     return (
         <div className={props.className}>
@@ -57,10 +66,15 @@ function Home(props) {
                 <Calendar />
            </div>
            <div className="section_right">
-               <DropDown date={date} />
+               <DropDown date={selectedDate} />
                <div className="card-list">
                 {data && data.map((data, index) => (
-                    <CardList key={index} data={data} />
+                    <CardList 
+                        key={index} 
+                        data={data} 
+                        selectedDateMilli={selectedDateMilli}
+                        todayMilli={todayMilli}
+                    />
                 ))}
                </div>
            </div>
