@@ -31,6 +31,9 @@ function CardList(props) {
                     <span className="smallBoxStyle">
                         {isDividendDate ? '배당지급일' : '배당락일 D-3'}
                     </span>
+                    {/* <div className="companyNameStyle">
+                        <p>{data.name}</p>                      
+                    </div> */}
                     <p className="companyNameStyle">{data.name}</p>
                 </div>
                 <div className="rightSectionStyle">
@@ -39,7 +42,7 @@ function CardList(props) {
                         <span>예상 배당금</span>
                     </div>
                     <div className="rightSection_Bottom">
-                        <p className="expected_dividend">$ {data.dividends}</p>
+                        <p className="expected_dividend">$ {data.dividends?.toFixed(2)}</p>
                     </div>
                 </div>
         </div>
@@ -67,6 +70,15 @@ export default styled(CardList)`
                 color: gray;
             }
             .companyNameStyle {
+                /* border: 1px solid red; */
+
+                /* padding: 2px 5px; */
+                white-space: nowrap;
+                overflow: hidden;
+                /* height: 30px; */
+                width: 160px;
+                text-overflow: ellipsis;
+
                 font-size: 1.6rem;
                 font-weight: bold;
                 margin: 0;
