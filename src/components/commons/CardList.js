@@ -48,18 +48,18 @@ function CardList(props) {
     return (
         <div onClick={onClickCard} className={props.className} style={{ borderLeft: `20px solid ${color}`}}>
             <div className="leftSectionStyle">
-                    <span className="smallBoxStyle">
-                        {tag}
-                    </span>
+                    <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data.dividends_rate}%</span>
+                    <span className="smallBoxStyle">{tag}</span>
                     <p className="companyNameStyle">{data.name}</p>
                 </div>
                 <div className="rightSectionStyle">
                     <div className="rightSection_Top">
-                        <span>배당률 {data.dividends_rate}%</span>
-                        <span>예상 배당금</span>
+                        {/* <span>배당률 {data.dividends_rate}%</span> */}
+                        {/* <span>예상 배당금</span> */}
                     </div>
                     <div className="rightSection_Bottom">
                         <p className="expected_dividend">$ {data.dividends?.toFixed(2)}</p>
+                        {/* <span>주당</span> */}
                     </div>
                 </div>
                 {/* <div>
@@ -73,24 +73,25 @@ function CardList(props) {
 
 export default styled(CardList)`
 
-    border: 1.3px solid lightgray;
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
+    border-radius: 16px;
+    /* border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px; */
     background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     padding: 10px 25px;
-    display: flex;
+    /* display: flex; */
     margin: 20px;
 
     & {
         .leftSectionStyle {
             /* border: 1px solid red; */
-            flex: 1;
+            /* flex: 1; */
             .smallBoxStyle {
                 /* border: 1px solid gray; */
                 border-radius: 8px;
                 background-color: #EAFFE3;
                 padding: 2px 8px;
-                font-size: 0.8rem;
+                font-size: 12px;
                 color: #218439;
             }
             .companyNameStyle {
@@ -111,7 +112,7 @@ export default styled(CardList)`
         }
         .rightSectionStyle {
             /* border: 1px solid blue; */
-            flex: 1;
+            /* flex: 1; */
             .rightSection_Top {
                 padding-right: 20px;
                 font-size: 0.8rem;
