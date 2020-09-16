@@ -53,20 +53,11 @@ function CardList(props) {
                     <p className="companyNameStyle">{data.name}</p>
                 </div>
                 <div className="rightSectionStyle">
-                    <div className="rightSection_Top">
-                        {/* <span>배당률 {data.dividends_rate}%</span> */}
-                        {/* <span>예상 배당금</span> */}
-                    </div>
                     <div className="rightSection_Bottom">
                         <p className="expected_dividend">$ {data.dividends?.toFixed(2)}</p>
                         {/* <span>주당</span> */}
                     </div>
                 </div>
-                {/* <div>
-                    <p>배당지급일 Milli: {dateToMilli(data.payment_date)}</p>
-                    <p>배당락일 Milli: {dateToMilli(data.dividends_date)}</p>
-                    <p>배당락일 = 배당지급일? {dateToMilli(data.payment_date) === dateToMilli(data.dividends_date) ? "true" : "false"}</p>
-                </div> */}
         </div>
     )
 }
