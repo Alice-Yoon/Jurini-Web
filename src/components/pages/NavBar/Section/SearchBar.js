@@ -28,26 +28,36 @@ function SearchBar(props) {
 
     return (
         <div className={props.className}>
-            <form onSubmit={onSubmit}>
-                <input value={value} onChange={onChange} onClick={onClickEmpty} placeholder="검색어를 입력하세요." className="search-bar" autoFocus={true} />
-                {/* <img src={search} alt="search_icon" className="icon" /> */}
+            <form className="form" onSubmit={onSubmit}>
+                <input 
+                    value={value} 
+                    onChange={onChange} 
+                    onClick={onClickEmpty} 
+                    placeholder="검색어를 입력하세요." 
+                    className="search-bar" 
+                    // autoFocus={true} 
+                />
             </form>
         </div>
     )
 }
 
 export default styled(SearchBar)`
-    /* border: 1px solid green; */
-    /* position: relative; */
+    /* border: 1px solid blue; */
 
     & {
+
         .search-bar {
             background-color: #F6F6F6;
-            color: #A7A7A7;
+            border: 1px solid #fff;
+            border-radius: 24px;
             width: 100%;
             padding: 10px;
-            border-radius: 24px;
-            border: 1px solid #fff;
+            color: #A7A7A7;
+
+            /* position: absolute; */
+            /* left: 50%; */
+
             &:focus {
                 border: 1px solid #FF7373;
                 outline: none;
@@ -55,11 +65,5 @@ export default styled(SearchBar)`
                 color: #000;
             }
         }
-        /* .icon {
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            top: 0;
-        } */
     }
 `;

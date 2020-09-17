@@ -24,7 +24,6 @@ function NavBarHorizontal(props) {
         <div className={props.className}>
             <div className="container">
                 <p className="title">주린이 달력</p>
-                {/* {isBarShow? <SearchBar className="searchBar" /> : null} */}
                 <SearchBar className="searchBar" />
                 <div className="icons-area">   
                     <img src={question} alt="question-icon" className="iconStyle" onClick={onClickMoveToNotion} />
@@ -60,7 +59,7 @@ export default styled(NavBarHorizontal)`
             .searchBar {
                 /* border: 1px solid green; */
                 flex: 1;
-                padding: 0 100px;
+                padding: 0 50px;
             }
 
             .icons-area {

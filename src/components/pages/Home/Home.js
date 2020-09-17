@@ -113,11 +113,12 @@ export default styled(Home)`
 
     & {
         .section_left {
-            border: 1px solid red;
+            border: 1px solid lightgray;
+            margin-right: 20px;
             flex: 3.5;
         }
         .section_right {
-            border: 1px solid blue;
+            /* border: 1px solid blue; */
             flex: 1.5;
             .card-list {
                 /* border: 1px solid yellow; */

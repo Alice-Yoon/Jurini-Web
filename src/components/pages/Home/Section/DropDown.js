@@ -29,7 +29,7 @@ function DropDown(props) {
 }
 
 export default styled(DropDown)`
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
     justify-content: space-between;
     align-items: center;

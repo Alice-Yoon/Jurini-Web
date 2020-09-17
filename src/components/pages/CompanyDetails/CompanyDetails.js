@@ -44,7 +44,7 @@ function CompanyDetails(props) {
 
 export default styled(CompanyDetails)`
     z-index: 100;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     background-color: rgba(0,0,0,0.7);
     width: 100%;
     height: 100%;

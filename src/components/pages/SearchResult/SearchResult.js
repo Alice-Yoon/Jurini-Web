@@ -16,20 +16,23 @@ function SearchResult(props) {
     const emptyInputvalue = (value) => dispatch(updateInputValue(value));
 
 
-    const onClickCloseBtn = () => {
-        onCloseSearchResult(false);
-        onCloseSearchBar(false);
-        emptyInputvalue('');
+    const onClickCloseBtn = (e) => {
+        const target = e.target.id;
+        if(target === 'container' || target === 'close-btn') {
+            onCloseSearchResult(false);
+            onCloseSearchBar(false);
+            emptyInputvalue('');
+        }
     }
  
     if(showSearchResult) {
         
         return(
             <>
-            <div className={props.className}>
+            <div className={props.className} id="container" onClick={onClickCloseBtn}>
                 <div className="container_result">
-                    <div className="close-btn" onClick={onClickCloseBtn}>
-                        <span>X</span>
+                    <div className="close-btn">
+                        <span id="close-btn">X</span>
                     </div>
                     <div className="card-list">
                         {cardDummyData && cardDummyData.map((data, index) => (

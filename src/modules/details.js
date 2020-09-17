@@ -6,7 +6,7 @@ export const toggleDetails = (payload) => ({
 });
 
 const initialState = {
-    isDetailShow: true,
+    isDetailShow: false,
 }
 
 function details(state = initialState, action) {
