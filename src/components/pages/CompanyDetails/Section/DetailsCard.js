@@ -8,6 +8,7 @@ function DetailsCard(props) {
 
     return (
         <div className={props.className}>
+            <h1>American Airline</h1>
             <div className="top">
                 <span>배당귀족</span>
                 <span style={{background: '#E1F85D'}}>고배당주</span>
@@ -15,7 +16,7 @@ function DetailsCard(props) {
             <div className="bottom">
                 <div>
                     <span>전일종가</span>
-                    <span className="number">$ 87.4</span>
+                    <span className="number pink">$ 87.4</span>
                 </div>
                 <div>
                     <span>배당률</span>
@@ -28,24 +29,32 @@ function DetailsCard(props) {
 
 export default styled(DetailsCard)`
     /* border: 2px solid black; */
-    background-color: #EEEEEE;
-    border-radius: 10px;
-    padding: 5px 10px 20px 10px;
-    /* margin-right: 10px; */
+    background: linear-gradient(137.04deg, #F7F4FF -1.55%, #FFFEF5 102.16%);
+    box-shadow: 0px 4px 4px rgba(255, 230, 0, 0.14), 0px 2px 20px rgba(230, 210, 255, 0.65);
+    border-radius: 30px;
+    padding: 15px 20px;
     flex: 1;
+    font-family: Noto Sans KR;
 
     & {
+        h1 {
+            /* border: 1px solid green; */
+            font-weight: 400;
+            font-size: 32px;
+            margin: 0;
+            padding: 0;
+        }
         .top {
             /* border: 1px solid red; */
 
-            padding: 10px;
             text-align: start;
+            padding: 10px 0;
             padding-right: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             > span {
                 background-color: pink;
                 border-radius: 13px;
-                margin-left: 5px;
+                margin-right: 5px;
                 padding: 5px 10px;
                 font-size: 12px;
             }
@@ -62,12 +71,14 @@ export default styled(DetailsCard)`
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: center;
-                font-size: 13px;
+                font-size: 12px;
                 > .number {
-                    font-size: 23px;
+                    font-size: 28px;
                     font-weight: bold;
-                    margin-top: 10px;
+                    &.pink {
+                        color: #FF607C;
+                        /* color: linear-gradient(135deg, #FF9A7A 4.17%, #FF607C 125%); */
+                    }
                 }
             }
         }

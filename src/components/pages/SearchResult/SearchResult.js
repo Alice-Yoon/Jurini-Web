@@ -27,13 +27,15 @@ function SearchResult(props) {
         return(
             <>
             <div className={props.className}>
-                <div className="close-btn" onClick={onClickCloseBtn}>
-                    <span>X</span>
-                </div>
-                <div className="card-list">
-                    {cardDummyData && cardDummyData.map((data, index) => (
-                            <CardList key={index} data={data} />
-                        ))}
+                <div className="container_result">
+                    <div className="close-btn" onClick={onClickCloseBtn}>
+                        <span>X</span>
+                    </div>
+                    <div className="card-list">
+                        {cardDummyData && cardDummyData.map((data, index) => (
+                                <CardList key={index} data={data} />
+                            ))}
+                    </div>
                 </div>
             </div>
             </>
@@ -47,29 +49,38 @@ export default styled(SearchResult)`
     /* border: 1px solid blue; */
   
     z-index: 100;
-    border-radius: 5px;
     position: fixed;
     top: 0;
     left: 0;
-    width: 60%;
-    height: 60%;
-    margin-top: 100px;
-    margin-left: 220px;
+    width: 100%;
+    height: 100%;
+    margin-top: 80px;
+    /* margin-left: 220px; */
     margin-right: 10px;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.3);
     display: flex;
-    align-items: center;
     justify-content: center;
 
     & {
+        .container_result {
+            /* border: 1px solid green; */
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 3px rgba(0,0,0,0.7);
+            width: 40%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
         .close-btn {
             /* border: 1px solid red; */
             position: absolute;
             top: 10px;
             right: 10px;
             z-index: 500;
-            color: white;
-            font-weight: bold;
+            color: gray;
             cursor: pointer;
         }
         .card-list {

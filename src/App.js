@@ -18,7 +18,6 @@ function App(props) {
 
       {/* NavBar 영역 */}
       <NavBarHorizontal className="navbar_horizontal" />
-      <NavBarVertical className="navbar_vertical" />
       <SpeechBubble className="speech-bubble" />
 
       {/* Main Area 영역 */}
@@ -27,7 +26,7 @@ function App(props) {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/introduction" component={Introduction} />
+          {/* <Route exact path="/introduction" component={Introduction} /> */}
         </Switch>
         <SearchResult  />
       </main>
@@ -49,15 +48,6 @@ export default styled(App)`
       width: 100%;
       z-index: 1;
     }
-    .navbar_vertical {
-      /* border: 1px solid green; */
-
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100px;
-    }
     .speech-bubble {
       position: fixed;
       top: 100px;
@@ -65,18 +55,19 @@ export default styled(App)`
       z-index: 50;
     }
     .main-area {
-      /* border: 2px solid red; */
+      /* border: 2px solid black; */
 
       height: 70vh;
       margin-top: 200px;
-      margin-left: 110px;
-      margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    @media (max-width: 500px) {
+    /* @media (max-width: 500px) {
       .main-area {
         height: 100vh;
         margin-right: 0;
       }
-    }
+    } */
   }
 `;

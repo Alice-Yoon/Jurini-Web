@@ -18,6 +18,9 @@ function Home(props) {
     // const [selected_date, setSelected_date] = useState('');
     // const [selected_date_milli, setSelected_date_milli] = useState('');
 
+    const [keys, setKeys] = useState([]);
+    console.log("keys:", keys);
+
     const today = moment().format("MM/DD/YYYY");
     const todayMilli = dateToMilli(today);
 
@@ -39,6 +42,22 @@ function Home(props) {
             const monthlyData = getMonthlyDividendsData.data.data;
                 // 해당 데이터를 array형식으로 변환
             const monthlyDataArr = Object.values(monthlyData);
+
+                    // test - key만 모아서 array로
+                    const test = () => {
+                        const keys = Object.keys(monthlyData);
+                        console.log("keys:", keys)
+
+                        // const keyArr = monthlyData.AAGIY
+                        const keyArr = keys.filter(key => {
+                            const formatted = moment(monthlyData[key].dividends_date).format("MM/DD/YYYY");
+                            const dividendsMilli = dateToMilli(formatted)
+                            return dividendsMilli === selectedDateMilli
+                        });
+                        setKeys(keyArr)
+                    }
+                    test();
+                    // console.log("monthlyData", monthlyData)
 
             // (3) Monthly Data에서 "selectedDateMilli"이 "배당락일"인 정보만 filter
             const dailyDividendsData = monthlyDataArr.filter(data => {
@@ -68,13 +87,16 @@ function Home(props) {
            <div className="section_right">
                <DropDown date={selectedDate} />
                <div className="card-list">
-                {data && data.map((data, index) => (
-                    <CardList 
-                        key={index} 
-                        data={data} 
-                        selectedDateMilli={selectedDateMilli}
-                        todayMilli={todayMilli}
-                    />
+                {data && data.map(data => (
+                    // keys.map((symbol, index) => (
+                        <CardList 
+                            // key={index} 
+                            data={data} 
+                            // symbol={symbol}
+                            selectedDateMilli={selectedDateMilli}
+                            todayMilli={todayMilli}
+                        />
+                    // ))
                 ))}
                </div>
            </div>
@@ -84,19 +106,19 @@ function Home(props) {
 
 export default styled(Home)`
     /* border: 2px solid aqua; */
-    width: 100%;
+    width: 85%;
     height: 100%;
 
     display: flex;
 
     & {
         .section_left {
-            /* border: 1px solid blue; */
-            flex: 1;
+            border: 1px solid red;
+            flex: 3.5;
         }
         .section_right {
-            /* border: 1px solid green; */
-            flex: 1;
+            border: 1px solid blue;
+            flex: 1.5;
             .card-list {
                 /* border: 1px solid yellow; */
                 margin-top: 10px;
@@ -108,10 +130,10 @@ export default styled(Home)`
         }
     }
 
-    @media (max-width: 500px) {
+    /* @media (max-width: 500px) {
         flex-direction: column;
         .section_right {
             overflow: auto;
         }
-    }
+    } */
 `;

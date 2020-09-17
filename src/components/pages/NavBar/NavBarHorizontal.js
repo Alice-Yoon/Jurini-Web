@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { toggleSearchBar } from '../../../modules/search';
+// import { useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+// import { toggleSearchBar } from '../../../modules/search';
 
 import SearchBar from './Section/SearchBar';
 
-import search from '../../../assets/img/search.png';
+// import search from '../../../assets/img/search.png';
+import question from '../../../assets/img/question.png';
 import google from '../../../assets/img/google.png';
 
 function NavBarHorizontal(props) {
 
-    const isBarShow = useSelector(state => state.search.isBarShow);
-    const dispatch = useDispatch();
-    const onClickToggleBar = () => dispatch(toggleSearchBar());
+    // const isBarShow = useSelector(state => state.search.isBarShow);
+    // const dispatch = useDispatch();
+    // const onClickToggleBar = () => dispatch(toggleSearchBar());
+    const onClickMoveToNotion = () => {
+        console.log("주린이 노션으로 이동!")
+    }
 
 
     return (
         <div className={props.className}>
             <div className="container">
                 <p className="title">주린이 달력</p>
-                {isBarShow? <SearchBar className="searchBar" /> : null}
+                {/* {isBarShow? <SearchBar className="searchBar" /> : null} */}
+                <SearchBar className="searchBar" />
                 <div className="icons-area">   
-                    <img src={search} alt="search-icon" className="iconStyle" onClick={onClickToggleBar} />
+                    <img src={question} alt="question-icon" className="iconStyle" onClick={onClickMoveToNotion} />
                     <img src={google} alt="google-icon" className="googleStyle" />
                 </div>
             </div>
@@ -31,12 +36,17 @@ function NavBarHorizontal(props) {
 }
 
 export default styled(NavBarHorizontal)`
+    /* border: 1px solid red; */
+    border-bottom: 1px solid #F6F6F6;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     & {
         .container {
-            /* border: 2px solid black; */
-            background-color: #C4C4C4;
-            padding: 10px;
+            /* border: 1px solid blue; */
+            width: 80%;
             display: flex;
             justify-content: space-between;
             align-items: center;

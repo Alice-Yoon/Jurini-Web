@@ -8,7 +8,8 @@ import { toggleDetails } from '../../modules/details';
 
 function CardList(props) {
 
-    const { selectedDateMilli, todayMilli} = props;
+    const { symbol, selectedDateMilli, todayMilli} = props;
+    // console.log("card-symbol:", symbol);
     
     const [data, setData] = useState([]);
     const [tag, setTag] = useState('');
@@ -21,17 +22,17 @@ function CardList(props) {
         const Dday_n = moment.duration(Dday).asDays();
 
         if(selectedDateMilli === paymentDateMilli) {
-            console.log("배당지급일, green")
+            console.log("배당지급일, #FFF3E1 (green)")
         } else {
             if(Dday === 0) {
                 setTag('배당락일');
-                setColor('#FFF3E1');
+                setColor('#EAFFE3');
             } else if (Dday < 0) {
                 setTag('배당락일 지남?');
-                setColor('#FFF3E1');
+                setColor('#EAFFE3');
             } else {
                 setTag(`배당락일 D-${Dday_n}`);
-                setColor('#FFF3E1');
+                setColor('#EAFFE3');
             }
         }
 
@@ -47,78 +48,74 @@ function CardList(props) {
 
     return (
         <div onClick={onClickCard} className={props.className} style={{ borderLeft: `20px solid ${color}`}}>
-            <div className="leftSectionStyle">
-                    <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data.dividends_rate}%</span>
-                    <span className="smallBoxStyle">{tag}</span>
-                    <p className="companyNameStyle">{data.name}</p>
-                </div>
-                <div className="rightSectionStyle">
-                    <div className="rightSection_Bottom">
-                        <p className="expected_dividend">$ {data.dividends?.toFixed(2)}</p>
-                        {/* <span>주당</span> */}
+                <div className="container">
+                    <div>
+                        <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data.dividends_rate}%</span>
+                        <span className="smallBoxStyle">{tag}</span>
                     </div>
-                </div>
+                    <div>
+                        <span className="companyNameStyle">{data.name}</span>
+                        <span style={{borderLeft: '1.5px solid gray', marginLeft: '5px'}}>{symbol}</span>
+                    </div>
+                    <p className="expected_dividend">$ {data.dividends?.toFixed(2)}</p>
+                </div>  
         </div>
     )
 }
 
 export default styled(CardList)`
 
+    /* border: 1px solid red; */
     border-radius: 16px;
-    /* border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px; */
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    padding: 10px 25px;
-    /* display: flex; */
+    padding: 10px;
     margin: 20px;
 
+    /* width: 100%; */
+    width: 80%;
+    height: 111px;
+    /* font-family: Nato Sans KR; */
+    /* font-style: normal; */
+
     & {
-        .leftSectionStyle {
-            /* border: 1px solid red; */
-            /* flex: 1; */
-            .smallBoxStyle {
-                /* border: 1px solid gray; */
-                border-radius: 8px;
-                background-color: #EAFFE3;
-                padding: 2px 8px;
-                font-size: 12px;
-                color: #218439;
-            }
-            .companyNameStyle {
-                /* border: 1px solid red; */
+            .container {
+                /* border: 1px solid green; */
+                /* margin: 10px; */
 
-                /* padding: 2px 5px; */
-                white-space: nowrap;
-                overflow: hidden;
-                /* height: 30px; */
-                width: 160px;
-                text-overflow: ellipsis;
-
-                font-size: 1.6rem;
-                font-weight: bold;
-                margin: 0;
-                margin-top: 3px;
-            }
-        }
-        .rightSectionStyle {
-            /* border: 1px solid blue; */
-            /* flex: 1; */
-            .rightSection_Top {
-                padding-right: 20px;
-                font-size: 0.8rem;
-                > span {
-                    margin-right: 10px;
+                .smallBoxStyle {
+                    /* border: 1px solid gray; */
+                    border-radius: 8px;
+                    background-color: #EAFFE3;
+                    padding: 2px 8px;
+                    font-size: 12px;
+                    color: #218439;
+                    margin-right: 3px;
                 }
-            }
-            .rightSection_Bottom {
-                > p {
-                    font-size: 2.5rem;
-                    font-weight: bold;
+                .companyNameStyle {
+                    /* border: 1px solid red; */
+
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 100%;
+                    text-overflow: ellipsis;
+
+                    font-family: Nato Sans KR;
+                    font-size: 18px;
+                    font-weight: 500;
                     margin: 0;
+                    padding: 0;
+
+                }
+                .expected_dividend {
+                    /* border: 1px solid blue; */
+                    font-size: 30px;
+                    font-weight: 500;
+                    margin: 0;
+                    padding: 0;
                 }
             }
-        }
+
     }
 
 `;
