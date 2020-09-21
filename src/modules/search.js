@@ -2,6 +2,7 @@ const TOGGLE_SEARCH_BAR = 'search/TOGGLE_SEARCHBAR';
 const CLOSE_SEARCH_BAR = 'search/CLOSE_SEARCH_BAR';
 const TOGGLE_SEARCH_RESULT = 'search/TOGGLE_SEARCH_RESULT';
 const UPDATE_INPUT_VALUE = 'search/UPDATE_INPUT_VALUE';
+const UPDATE_SEARCH_DATA = 'search/UPDATE_SEARCH_DATA';
 
 export const toggleSearchBar = () => ({
     type: TOGGLE_SEARCH_BAR,
@@ -24,10 +25,18 @@ export const updateInputValue = (value) => ({
     }
 })
 
+// export const updateSearchData = async(data) => ({
+//         type: UPDATE_SEARCH_DATA,
+//         payload: {
+//             newData: data
+//         }
+// })
+
 const initialState = {
     isBarShow: false,
     isResultShow: false,
-    inputValue: ''
+    inputValue: '',
+    // searchData: []
 }
 
 function search(state = initialState, action) {
@@ -52,6 +61,11 @@ function search(state = initialState, action) {
                 ...state,
                 inputValue: action.payload.newValue
             }
+        // case UPDATE_SEARCH_DATA:
+        //     return {
+        //         ...state,
+        //         searchData: action.payload.newData
+        //     }
         default:
             return state;
     }

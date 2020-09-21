@@ -1,19 +1,57 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Axios from 'axios';
+
+
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleSearchResult, closeSearchBar, updateInputValue} from '../../../modules/search';
 
-import CardList from '../../commons/CardList';
-
-import {cardDummyData} from '../../../assets/dummy/cardDummyData';
+// import {cardDummyData} from '../../../assets/dummy/cardDummyData';
+import CardListSearch from '../../commons/CardListSearch';
 
 function SearchResult(props) {
-    const showSearchResult = useSelector(state => state.search.isResultShow);
+    
+    const searchTerm = useSelector(state => state.search.inputValue);
+    // const searchData = useSelector(state => state.search.searchData);
+
     const dispatch = useDispatch();
     const onCloseSearchResult = (payload) => dispatch(toggleSearchResult(payload));
     const onCloseSearchBar = (payload) => dispatch(closeSearchBar(payload));
     const emptyInputvalue = (value) => dispatch(updateInputValue(value));
+
+    
+    const [data, setData] = useState([]);
+    const [symbols, setSymbols] = useState([]);
+
+    useEffect(() => {
+        // data setting 하기!
+        // console.log("검색어:", searchTerm);
+
+        const fetchSearchData = async() => {
+            // 검색어 불러와서!
+            await Axios.get(`http://15.164.248.209:20000/rest/getRecommendKeyword?keyword=${searchTerm}`)
+                .then((res) => {
+                    const firstRes = res.data.data
+
+                    const keys = firstRes.map(data => data["1. symbol"]);
+                    const keysArr = keys.toString();
+
+                    Axios.get(`http://15.164.248.209:20000/rest/getMultipleDividendsInfo?symbol_list=${keysArr}`)
+                    .then(res => {
+                        const final_keys = Object.keys(res.data.data);
+                        setData(res.data.data);
+                        // console.log("setData", res.data.data);
+                        setSymbols(final_keys);
+                        // console.log("setSymbols", final_keys)
+                    });
+                });
+        }
+        fetchSearchData();
+
+    }, [searchTerm]);
+
+    
 
 
     const onClickCloseBtn = (e) => {
@@ -24,28 +62,26 @@ function SearchResult(props) {
             emptyInputvalue('');
         }
     }
- 
-    if(showSearchResult) {
-        
-        return(
-            <>
-            <div className={props.className} id="container" onClick={onClickCloseBtn}>
-                <div className="container_result">
-                    <div className="close-btn">
-                        <span id="close-btn">X</span>
-                    </div>
-                    <div className="card-list">
-                        {cardDummyData && cardDummyData.map((data, index) => (
-                                <CardList key={index} data={data} />
-                            ))}
-                    </div>
+         
+    return(
+        <>
+        <div className={props.className} id="container" onClick={onClickCloseBtn}>
+            <div className="container_result">
+                <div className="close-btn">
+                    <span id="close-btn">X</span>
+                </div>
+                <div className="card-list">
+                    {/* {data && data.map((data, index) => (
+                            <CardListSearch key={index} data={data} />
+                    ))} */}
+                    {symbols && symbols.map((symbol, index) => (
+                            <CardListSearch key={index} symbol={symbol} data={data} />
+                    ))}
                 </div>
             </div>
-            </>
-        )
-    } else {
-        return null;
-    }
+        </div>
+        </>
+    )
 }
 
 export default styled(SearchResult)`

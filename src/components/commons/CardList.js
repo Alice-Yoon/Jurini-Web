@@ -9,14 +9,13 @@ import { toggleDetails } from '../../modules/details';
 function CardList(props) {
 
     const { symbol, selectedDateMilli, todayMilli} = props;
-    // console.log("card-symbol:", symbol);
     
     const [data, setData] = useState([]);
     const [tag, setTag] = useState('');
     const [color, setColor] = useState('');
 
     useEffect(() => {
-        setData(props.data);
+        setData(props.data[symbol]);
         const paymentDateMilli = dateToMilli(data.payment_date); // 배당지급일
         const Dday = selectedDateMilli - todayMilli;
         const Dday_n = moment.duration(Dday).asDays();

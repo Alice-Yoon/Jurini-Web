@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import NavBarHorizontal from './components/pages/NavBar/NavBarHorizontal';
-import NavBarVertical from './components/pages/NavBar/NavBarVertical';
 import Home from './components/pages/Home/Home';
 import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
-import Introduction from './components/pages/Introduction/Introduction';
 import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
 
 function App(props) {
+  const showSearchResult = useSelector(state => state.search.isResultShow);
 
   return (
     <div className={props.className}>
@@ -26,9 +26,8 @@ function App(props) {
           <Route exact path="/">
             <Home />
           </Route>
-          {/* <Route exact path="/introduction" component={Introduction} /> */}
         </Switch>
-        <SearchResult  />
+        {showSearchResult && <SearchResult  />}
       </main>
 
      </Router>
