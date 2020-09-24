@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
 
@@ -13,7 +13,6 @@ import CardListSearch from '../../commons/CardListSearch';
 function SearchResult(props) {
     
     const searchTerm = useSelector(state => state.search.inputValue);
-    // const searchData = useSelector(state => state.search.searchData);
 
     const dispatch = useDispatch();
     const onCloseSearchResult = (payload) => dispatch(toggleSearchResult(payload));
@@ -25,25 +24,21 @@ function SearchResult(props) {
     const [symbols, setSymbols] = useState([]);
 
     useEffect(() => {
-        // data setting 하기!
-        // console.log("검색어:", searchTerm);
 
         const fetchSearchData = async() => {
             // 검색어 불러와서!
-            await Axios.get(`http://15.164.248.209:20000/rest/getRecommendKeyword?keyword=${searchTerm}`)
+            await Axios.get(`http://20.194.41.177:21000/rest/getRecommendKeyword?keyword=${searchTerm}`)
                 .then((res) => {
                     const firstRes = res.data.data
 
                     const keys = firstRes.map(data => data["1. symbol"]);
                     const keysArr = keys.toString();
 
-                    Axios.get(`http://15.164.248.209:20000/rest/getMultipleDividendsInfo?symbol_list=${keysArr}`)
+                    Axios.get(`http://20.194.41.177:21000/rest/getMultipleDividendsInfo?symbol_list=${keysArr}`)
                     .then(res => {
                         const final_keys = Object.keys(res.data.data);
                         setData(res.data.data);
-                        // console.log("setData", res.data.data);
                         setSymbols(final_keys);
-                        // console.log("setSymbols", final_keys)
                     });
                 });
         }
@@ -62,26 +57,22 @@ function SearchResult(props) {
             emptyInputvalue('');
         }
     }
-         
+
     return(
-        <>
         <div className={props.className} id="container" onClick={onClickCloseBtn}>
             <div className="container_result">
                 <div className="close-btn">
                     <span id="close-btn">X</span>
                 </div>
                 <div className="card-list">
-                    {/* {data && data.map((data, index) => (
-                            <CardListSearch key={index} data={data} />
-                    ))} */}
                     {symbols && symbols.map((symbol, index) => (
                             <CardListSearch key={index} symbol={symbol} data={data} />
                     ))}
                 </div>
             </div>
         </div>
-        </>
     )
+
 }
 
 export default styled(SearchResult)`

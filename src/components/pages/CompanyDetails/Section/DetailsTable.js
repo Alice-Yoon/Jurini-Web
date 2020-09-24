@@ -7,20 +7,32 @@ function DetailsTable(props) {
             <table>
                 <tbody>
                     <tr>
-                        <td>시가총액</td>
-                        <td>$ 123,37 million</td>
+                        <td>
+                            <p>시가총액</p>
+                            <p>$ 123,37 million</p>
+                        </td>
+                        {/* <td>$ 123,37 million</td> */}
                     </tr>
                     <tr>
-                        <td>배당락일</td>
-                        <td>20.05.29</td>
+                        <td>
+                            <p>배당락일</p>
+                            <p>20.05.29</p>
+                        </td>
+                        {/* <td>20.05.29</td> */}
                     </tr>
                     <tr>
-                        <td>평균 배당률</td>
-                        <td>4 %</td>
+                        <td>
+                            <p>평균 배당률</p>
+                            <p className="color">4 %</p>
+                        </td>
+                        {/* <td>4 %</td> */}
                     </tr>
                     <tr>
-                        <td>배당 지속 기간</td>
-                        <td>13년</td>
+                        <td>
+                            <p>배당 지속 기간</p>
+                            <p>13년</p>
+                        </td>
+                        {/* <td>13년</td> */}
                     </tr>
                 </tbody>
             </table>
@@ -39,8 +51,20 @@ export default styled(DetailsTable)`
             width: 100%;
         }
         td {
-            border-bottom: 1px solid gray;
+            border-bottom: 0.5px solid lightgray;
             padding: 5px 10px;
+            >p {
+                margin: 0;
+                margin: 7px 0;
+                
+                &:first-of-type {
+                    font-weight: bold;
+                }
+                &.color {
+                    color: #035BAC;
+                    font-weight: 500;
+                }
+            }
         }
     }
 `;

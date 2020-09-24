@@ -39,8 +39,9 @@ export default styled(DropDown)`
         .selectStyle {
             border: 1px solid #C4C4C4;
             border-radius: 15px;
-            background-color: #C4C4C4;
+            background-color: #fff;
             padding: 5px 15px;
+            cursor: pointer;
             &:focus {
                 outline: none;
             }

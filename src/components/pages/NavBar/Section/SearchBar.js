@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import Axios from 'axios';
 
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleSearchResult, updateInputValue } from '../../../../modules/search';
 // import search from '../../../../assets/img/search.png';

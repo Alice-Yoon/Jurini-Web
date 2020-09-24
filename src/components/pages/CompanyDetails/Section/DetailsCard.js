@@ -11,7 +11,7 @@ function DetailsCard(props) {
             <h1>American Airline</h1>
             <div className="top">
                 <span>배당귀족</span>
-                <span style={{background: '#E1F85D'}}>고배당주</span>
+                <span style={{background: '#FFE6E6', color: '#CC3E01'}}>고배당주</span>
             </div>
             <div className="bottom">
                 <div>
@@ -52,11 +52,12 @@ export default styled(DetailsCard)`
             padding-right: 15px;
             margin-bottom: 10px;
             > span {
-                background-color: pink;
+                background-color: #F2E1FF;
                 border-radius: 13px;
                 margin-right: 5px;
                 padding: 5px 10px;
                 font-size: 12px;
+                color: #AA41FC;
             }
         }
         .bottom {

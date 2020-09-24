@@ -2,7 +2,7 @@ const TOGGLE_SEARCH_BAR = 'search/TOGGLE_SEARCHBAR';
 const CLOSE_SEARCH_BAR = 'search/CLOSE_SEARCH_BAR';
 const TOGGLE_SEARCH_RESULT = 'search/TOGGLE_SEARCH_RESULT';
 const UPDATE_INPUT_VALUE = 'search/UPDATE_INPUT_VALUE';
-const UPDATE_SEARCH_DATA = 'search/UPDATE_SEARCH_DATA';
+// const UPDATE_SEARCH_DATA = 'search/UPDATE_SEARCH_DATA';
 
 export const toggleSearchBar = () => ({
     type: TOGGLE_SEARCH_BAR,

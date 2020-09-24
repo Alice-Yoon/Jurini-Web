@@ -28,9 +28,9 @@ function CardListSearch(props) {
                         <div>
                             <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {cardData.dividends_rate}%</span>
                         </div>
-                        <div>
+                        <div className="title">
                             <span className="companyNameStyle">{cardData.name}</span>
-                            <span style={{borderLeft: '1.5px solid gray', marginLeft: '5px'}}>{symbol}</span>
+                            <span className="symbolStyle">{symbol}</span>
                         </div>
                         <p className="expected_dividend">$ {cardData.dividends?.toFixed(2)}</p>
                     </div>  
@@ -63,29 +63,43 @@ export default styled(CardListSearch)`
                     /* border: 1px solid gray; */
                     border-radius: 8px;
                     background-color: #EAFFE3;
-                    padding: 2px 8px;
+                    padding: 5px 10px;
                     font-size: 12px;
                     color: #218439;
                     margin-right: 3px;
                 }
-                .companyNameStyle {
-                    /* border: 1px solid red; */
+                .title {
+                    /* border: 1px solid blue; */
+                    margin: 15px 0 0 0;
+                    display: flex;
+                    align-items: center;
+                    .companyNameStyle {
+                        /* border: 1px solid red; */
 
-                    white-space: nowrap;
-                    overflow: hidden;
-                    width: 100%;
-                    text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        max-width: 65%;
+                        text-overflow: ellipsis;
 
-                    font-family: Nato Sans KR;
-                    font-size: 18px;
-                    font-weight: 500;
-                    margin: 0;
-                    padding: 0;
+                        font-family: Nato Sans KR;
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin: 0;
+                        padding: 0;
 
+                    }
+                    .symbolStyle {
+                            /* border: 1px solid green; */
+                            border-left: 2px solid #D6D6D6;
+                            padding-left: 5px;
+                            margin-left: 5px;
+                            color: #767676;
+                            font-weight: 500;
+                    }
                 }
                 .expected_dividend {
                     /* border: 1px solid blue; */
-                    font-size: 30px;
+                    font-size: 35px;
                     font-weight: 500;
                     margin: 0;
                     padding: 0;

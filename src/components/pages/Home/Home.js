@@ -21,7 +21,7 @@ function Home(props) {
     const today = moment().format("MM/DD/YYYY");
     const todayMilli = dateToMilli(today);
 
-    const selectedDate = moment("09/29/2020").format("MM/DD/YYYY");
+    const selectedDate = moment("09/03/2020").format("MM/DD/YYYY");
     const selectedDateMilli = dateToMilli(selectedDate); // 이날짜 기준 '배당락일'
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function Home(props) {
 
             // (1) api로 MonthlyDividendsData 불러오기
                 // 현재는 2020년 9월 정보 불러오는 중!
-            const getMonthlyDividendsData = await Axios.get('http://15.164.248.209:20000/rest/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9');
+            const getMonthlyDividendsData = await Axios.get('http://20.194.41.177:21000/rest/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9');
             const monthlyData = getMonthlyDividendsData.data.data;
 
             // (2) data에 총 data 넣기

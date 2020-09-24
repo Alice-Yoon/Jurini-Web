@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 // import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
@@ -8,7 +8,9 @@ import SearchBar from './Section/SearchBar';
 
 // import search from '../../../assets/img/search.png';
 import question from '../../../assets/img/question.png';
-import google from '../../../assets/img/google.png';
+// import google from '../../../assets/img/google.png';
+import google from '../../../assets/img/design/google.png';
+import logo from '../../../assets/img/design/logo.png';
 
 function NavBarHorizontal(props) {
 
@@ -19,15 +21,26 @@ function NavBarHorizontal(props) {
         console.log("주린이 노션으로 이동!")
     }
 
+    const onClickMoveToGoogle = () => {
+        console.log("google play로 이동!")
+    }
+
 
     return (
         <div className={props.className}>
             <div className="container">
-                <p className="title">주린이 달력</p>
+                <p className="title">
+                    <img src={logo} alt="logo" className="logo" />
+                    주린이 달력
+                </p>
                 <SearchBar className="searchBar" />
                 <div className="icons-area">   
                     <img src={question} alt="question-icon" className="iconStyle" onClick={onClickMoveToNotion} />
-                    <img src={google} alt="google-icon" className="googleStyle" />
+                    {/* <img src={google} alt="google-icon" className="googleStyle" /> */}
+                    <div className="googleStyle" onClick={onClickMoveToGoogle}>
+                        <img src={google} alt="google" />
+                        <span>Google Play</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,7 +58,7 @@ export default styled(NavBarHorizontal)`
     & {
         .container {
             /* border: 1px solid blue; */
-            width: 80%;
+            width: 90%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,8 +66,19 @@ export default styled(NavBarHorizontal)`
 
             .title {
             /* border: 1px solid red; */
+            font-family: NanumSquareRound;
+            font-style: normal;
             font-size: 25px;
             font-weight: bold;
+            color: #FF7373;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            .logo {
+                width: 45px;
+                height: 45px;
+                margin-right: 5px;
             }
             .searchBar {
                 /* border: 1px solid green; */
@@ -78,10 +102,22 @@ export default styled(NavBarHorizontal)`
                     }
                 }
                 .googleStyle {
-                    /* border: 1px solid yellow; */
-                    height: 50px;
-                    width: 100px;
+                    border: 1px solid lightgray;
+                    border-radius: 15px;
+                    padding: 12px;
                     margin-left: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    > img {
+                        margin-right: 10px; 
+                    }
+                    > span {
+                        font-family: Noto Sans KR;
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
                 }
             }
         }

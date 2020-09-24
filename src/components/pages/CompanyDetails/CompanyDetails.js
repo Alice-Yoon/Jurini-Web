@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -33,9 +33,9 @@ function CompanyDetails(props) {
                 </div>
                 <div className="contentStyle">
                         <DetailsTable />
-                        <DetailsCalculator />
-                        <DetailsChart />
-                        <DetailsNews />
+                        {/* <DetailsCalculator /> */}
+                        {/* <DetailsChart /> */}
+                        {/* <DetailsNews /> */}
                 </div>
             </div>
         </div>
@@ -57,11 +57,11 @@ export default styled(CompanyDetails)`
 
     & {
         .modalStyle {
-            border: 1px solid green;
+            /* border: 1px solid red; */
             border-radius: 42px;
             width: 55%;
             max-width: 400px;
-            height: 85%;
+            height: 65%;
             background-color: #fff;
             position: relative;
         
