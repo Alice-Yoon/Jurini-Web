@@ -11,7 +11,10 @@ import { dateToMilli } from '../../../utils/dateMilliConverter';
 
 function Home(props) {
 
+    const { exchangeRate } = props;
+
     const [data, setData] = useState([]);
+
     // console.log("총 data:", data)
     // const [selected_date, setSelected_date] = useState('');
     // const [selected_date_milli, setSelected_date_milli] = useState('');
@@ -59,6 +62,18 @@ function Home(props) {
         }
         getDailyDividendsData();
 
+        // 환율
+        // const exchangeRate = async() => {
+        //     // (1) 달러 환율 가져오기
+        //     await Axios.get('http://20.194.41.177:21000/rest/getKRWExchangeRate')
+        //             .then(res => {
+        //                 console.log("환율은?", parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
+        //                 setExchangeRage(parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
+        //             })
+    
+        // }
+        // exchangeRate();
+
     }, []);
 
     return (
@@ -77,6 +92,7 @@ function Home(props) {
                             symbol={symbol}
                             selectedDateMilli={selectedDateMilli}
                             todayMilli={todayMilli}
+                            exchangeRate={exchangeRate}
                         />
                     ))
                 }

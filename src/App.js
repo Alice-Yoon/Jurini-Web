@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,9 +8,26 @@ import Home from './components/pages/Home/Home';
 import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
+import Axios from 'axios';
 
 function App(props) {
   const showSearchResult = useSelector(state => state.search.isResultShow);
+
+  const [exchangeRate, setExchangeRage] = useState(1);
+
+
+  useEffect(() => {
+    const exchangeRate = async() => {
+      // (1) 달러 환율 가져오기
+      await Axios.get('http://20.194.41.177:21000/rest/getKRWExchangeRate')
+              .then(res => {
+                  console.log("환율은?", parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
+                  setExchangeRage(parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
+              })
+
+  }
+  exchangeRate();
+  }, [])
 
   return (
     <div className={props.className}>
@@ -24,10 +41,10 @@ function App(props) {
       <main className="main-area">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home exchangeRate={exchangeRate} />
           </Route>
         </Switch>
-        {showSearchResult && <SearchResult  />}
+        {showSearchResult && <SearchResult exchangeRate={exchangeRate}  />}
       </main>
 
      </Router>

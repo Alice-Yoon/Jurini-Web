@@ -11,6 +11,8 @@ import { toggleSearchResult, closeSearchBar, updateInputValue} from '../../../mo
 import CardListSearch from '../../commons/CardListSearch';
 
 function SearchResult(props) {
+
+    const {exchangeRate} = props;
     
     const searchTerm = useSelector(state => state.search.inputValue);
 
@@ -66,7 +68,7 @@ function SearchResult(props) {
                 </div>
                 <div className="card-list">
                     {symbols && symbols.map((symbol, index) => (
-                            <CardListSearch key={index} symbol={symbol} data={data} />
+                            <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} />
                     ))}
                 </div>
             </div>

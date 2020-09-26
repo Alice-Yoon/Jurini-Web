@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
 import { toggleDetails, updateDetailSymbol } from '../../modules/details';
+import {exchangeToKRW} from '../../utils/exchangeToKRW';
 
 function CardListSearch(props) {
 
-    const {symbol, data} = props;
+    const {symbol, data, exchangeRate} = props;
     
     const [cardData, setCardData] = useState([]);
 
@@ -35,7 +36,10 @@ function CardListSearch(props) {
                             <span className="companyNameStyle">{cardData.name}</span>
                             <span className="symbolStyle">{symbol}</span>
                         </div>
-                        <p className="expected_dividend">$ {cardData.dividends?.toFixed(2)}</p>
+                        <div className="money">
+                            <span className="expected_dividend">$ {cardData.dividends?.toFixed(2)}</span>
+                            <span className="exchanged_won">{exchangeToKRW(cardData.dividends, exchangeRate)}원</span>
+                        </div>
                     </div>  
             </div>
         )
@@ -100,12 +104,25 @@ export default styled(CardListSearch)`
                             font-weight: 500;
                     }
                 }
-                .expected_dividend {
-                    /* border: 1px solid blue; */
-                    font-size: 35px;
-                    font-weight: 500;
-                    margin: 0;
-                    padding: 0;
+                .money {
+                    display: flex;
+                    align-items: baseline;
+
+                    .expected_dividend {
+                        /* border: 1px solid blue; */
+                        font-size: 35px;
+                        font-weight: 500;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .exchanged_won {
+                        /* border: 1px solid blue; */
+                        /* border-left: 1px solid #D6D6D6; */
+                        font-size: 13px;
+                        padding-left: 3px;
+                        margin-left: 3px;
+                        color: #767676;
+                    }
                 }
             }
 
