@@ -21,7 +21,7 @@ function DetailsTable(props) {
                     <tr>
                         <td>
                             <p>배당락일</p>
-                            <p>{companyInfo.DividendDate}</p>
+                            <p>{companyInfo.ExDividendDate}</p>
                             {/* <p>20.05.29</p> */}
                         </td>
                     </tr>
