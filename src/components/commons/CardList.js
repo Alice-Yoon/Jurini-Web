@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import { dateToMilli } from '../../utils/dateMilliConverter';
 import { useDispatch } from 'react-redux';
-import { toggleDetails } from '../../modules/details';
+import { toggleDetails, updateDetailSymbol } from '../../modules/details';
 
 function CardList(props) {
 
@@ -40,9 +40,12 @@ function CardList(props) {
 
     const dispatch = useDispatch();
     const openDetails = (payload) => dispatch(toggleDetails(payload));
+    const updateSymbol = (payload) => dispatch(updateDetailSymbol(payload));
 
     const onClickCard = () => {
         openDetails(true);
+        // console.log("card symbol:", symbol);
+        updateSymbol(symbol)
     }
 
     return (

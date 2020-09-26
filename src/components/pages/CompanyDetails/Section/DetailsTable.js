@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 function DetailsTable(props) {
+
+    const {companyInfo} = props;
+
+
     return (
         <div className={props.className}>
             <table>
@@ -9,30 +14,28 @@ function DetailsTable(props) {
                     <tr>
                         <td>
                             <p>시가총액</p>
-                            <p>$ 123,37 million</p>
+                            <p>{companyInfo.MarketCapitalization}</p>
+                            {/* <p>$ 123,37 million</p> */}
                         </td>
-                        {/* <td>$ 123,37 million</td> */}
                     </tr>
                     <tr>
                         <td>
                             <p>배당락일</p>
-                            <p>20.05.29</p>
+                            <p>{companyInfo.DividendDate}</p>
+                            {/* <p>20.05.29</p> */}
                         </td>
-                        {/* <td>20.05.29</td> */}
                     </tr>
                     <tr>
                         <td>
                             <p>평균 배당률</p>
                             <p className="color">4 %</p>
                         </td>
-                        {/* <td>4 %</td> */}
                     </tr>
                     <tr>
                         <td>
                             <p>배당 지속 기간</p>
                             <p>13년</p>
                         </td>
-                        {/* <td>13년</td> */}
                     </tr>
                 </tbody>
             </table>

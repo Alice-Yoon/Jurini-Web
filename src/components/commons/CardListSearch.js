@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
-import { toggleDetails } from '../../modules/details';
+import { toggleDetails, updateDetailSymbol } from '../../modules/details';
 
 function CardListSearch(props) {
 
@@ -17,9 +17,12 @@ function CardListSearch(props) {
 
     const dispatch = useDispatch();
     const openDetails = (payload) => dispatch(toggleDetails(payload));
+    const updateSymbol = (payload) => dispatch(updateDetailSymbol(payload));
 
     const onClickCard = () => {
         openDetails(true);
+        // console.log("검색결과에서 symbol", symbol)
+        updateSymbol(symbol);
     }
 
         return (

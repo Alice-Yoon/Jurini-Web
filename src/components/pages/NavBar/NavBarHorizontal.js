@@ -19,6 +19,7 @@ function NavBarHorizontal(props) {
     // const onClickToggleBar = () => dispatch(toggleSearchBar());
     const onClickMoveToNotion = () => {
         console.log("주린이 노션으로 이동!")
+        // https://www.notion.so/f5d8905218414bd69db83bd4795e07b9
     }
 
     const onClickMoveToGoogle = () => {
