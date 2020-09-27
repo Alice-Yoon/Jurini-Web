@@ -21,7 +21,7 @@ function App(props) {
       // (1) 달러 환율 가져오기
       await Axios.get('http://20.194.41.177:21000/rest/getKRWExchangeRate')
               .then(res => {
-                  console.log("환율은?", parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
+                  // console.log("환율은?", parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
                   setExchangeRage(parseInt(res.data.data['5. Exchange Rate']).toFixed(2));
               })
 

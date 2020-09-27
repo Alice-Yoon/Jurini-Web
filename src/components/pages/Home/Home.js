@@ -37,13 +37,14 @@ function Home(props) {
                 // 현재는 2020년 9월 정보 불러오는 중!
             const getMonthlyDividendsData = await Axios.get('http://20.194.41.177:21000/rest/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9');
             const monthlyData = getMonthlyDividendsData.data.data;
+            // console.log("monthlyData",monthlyData)
 
             // (2) data에 총 data 넣기
             setData(monthlyData);
 
 
             // (3) key만 모아서 array로
-            const test = () => {
+            const getKeyArr = () => {
                 const keys = Object.keys(monthlyData);
 
                 const keyArr = keys.filter(key => {
@@ -53,7 +54,7 @@ function Home(props) {
                 });
                 setKeys(keyArr)
             }
-            test();
+            getKeyArr();
             
             // (5) 오늘 date set하기
             // setSelected_date(selectedDate);
