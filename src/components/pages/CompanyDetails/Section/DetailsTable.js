@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { moneyFormatter } from '../../../../utils/moneyFormatter';
+
 
 function DetailsTable(props) {
 
     const {companyInfo} = props;
-
 
     return (
         <div className={props.className}>
@@ -14,7 +15,7 @@ function DetailsTable(props) {
                     <tr>
                         <td>
                             <p>시가총액</p>
-                            <p>{companyInfo.MarketCapitalization}</p>
+                            <p>$ {moneyFormatter(parseInt(companyInfo.MarketCapitalization))}</p>
                             {/* <p>$ 123,37 million</p> */}
                         </td>
                     </tr>

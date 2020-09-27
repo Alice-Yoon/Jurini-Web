@@ -28,7 +28,7 @@ function CompanyDetails(props) {
             // 회사정보 - 회사이름, 심볼, 배당률, 시가총액, 배당락일
             const getCompanyInfo = async() => {
                 // await Axios.get(`http://20.194.41.177:21000/rest/getCompanySummaryInfo?symbol=${detailSymbol}`)
-                await Axios.get(`http://20.194.41.177:21000/rest/getCompanySummaryInfo?symbol=frme`)
+                await Axios.get(`http://20.194.41.177:21000/rest/getCompanySummaryInfo?symbol=ko`)
                         .then(res => {
                             console.log("getCompanyInfo", res.data.data);
                             setCompanyInfo(res.data.data)
@@ -37,7 +37,7 @@ function CompanyDetails(props) {
 
             // 전일종가
             const getClosePrice = async() => {
-                await Axios.get(`http://20.194.41.177:21000/rest/getLatestClosePrice?symbol=frme`)
+                await Axios.get(`http://20.194.41.177:21000/rest/getLatestClosePrice?symbol=ko`)
                         .then(res => {
                             console.log("getClosePrice", res.data.data);
                             setClosePrice(res.data.data)
@@ -128,9 +128,10 @@ export default styled(CompanyDetails)`
                 }
             .contentStyle {
                 /* border: 1px solid blue; */
+                padding-top: 20px;
 
                 width: 80%;
-                height: 72%;
+                height: 62%;
                 overflow: auto;
 
                 position: absolute;
