@@ -17,14 +17,6 @@ function NavBarHorizontal(props) {
     // const isBarShow = useSelector(state => state.search.isBarShow);
     // const dispatch = useDispatch();
     // const onClickToggleBar = () => dispatch(toggleSearchBar());
-    const onClickMoveToNotion = () => {
-        console.log("주린이 노션으로 이동!")
-        // https://www.notion.so/f5d8905218414bd69db83bd4795e07b9
-    }
-
-    const onClickMoveToGoogle = () => {
-        console.log("google play로 이동!")
-    }
 
 
     return (
@@ -35,12 +27,16 @@ function NavBarHorizontal(props) {
                     주린이 달력
                 </p>
                 <SearchBar className="searchBar" />
-                <div className="icons-area">   
-                    <img src={question} alt="question-icon" className="iconStyle" onClick={onClickMoveToNotion} />
+                <div className="icons-area">
+                    <a href="https://www.notion.so/f5d8905218414bd69db83bd4795e07b9" target="_blank" rel="noopener noreferrer">
+                        <img src={question} alt="question-icon" className="iconStyle" />
+                    </a>   
                     {/* <img src={google} alt="google-icon" className="googleStyle" /> */}
-                    <div className="googleStyle" onClick={onClickMoveToGoogle}>
+                    <div className="googleStyle">
                         <img src={google} alt="google" />
-                        <span>Google Play</span>
+                        <a href="https://play.google.com/store/apps/" target="_blank" rel="noopener noreferrer">
+                            Google Play
+                        </a>
                     </div>
                 </div>
             </div>
@@ -114,10 +110,12 @@ export default styled(NavBarHorizontal)`
                     > img {
                         margin-right: 10px; 
                     }
-                    > span {
+                    > a {
+                        text-decoration: none;
                         font-family: Noto Sans KR;
                         font-weight: bold;
                         font-size: 18px;
+                        color: #000;
                     }
                 }
             }
