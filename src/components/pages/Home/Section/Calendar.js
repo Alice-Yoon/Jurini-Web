@@ -14,6 +14,8 @@ import Test from '../../../commons/Test';
 // js array vs list : https://wayhome25.github.io/cs/2017/04/17/cs-18-1/
 
 function Calendar(props) {
+
+    
     /*
     var : 재선언 가능 (하지만 값 바뀔 우려)
     let : 재선언 불가능 , 재할당 가능
@@ -147,8 +149,12 @@ function Calendar(props) {
         return <div className="dateStyle">{}</div> // 1일 전은 빈 값
       }
       else {
-        return <Test date={date} today={today}/> // -> ㄴ. 컴포넌트로 바꿀 경우
+        return <Test onClick={dateClickEvent} data={props.data} keys={props.symbols} year={curYear} month={curMonth} date={date} today={today}/> // -> ㄴ. 컴포넌트로 바꿀 경우
       }
+    }
+
+    const dateClickEvent = (year, month, date) => {
+      console.log("클릭!!!", year, month, date)
     }
 
     // map : october의 각 날짜를 변수 date로 순회하면서 함수를 실행해 새 배열을 리턴 -> x?
@@ -243,8 +249,8 @@ export default styled(Calendar)`
   }
 
   .dateTableStyle {
-    // margin-top : 10px; // 날짜 테이블
-    // padding-top : 3px; //날짜 칸
+    /* margin-top : 10px; // 날짜 테이블 */
+    /* padding-top : 3px; //날짜 칸 */
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
