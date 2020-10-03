@@ -84,7 +84,7 @@ export default styled(CardList)`
     padding: 10px;
     margin: 20px;
 
-    width: 80%;
+    width: 280px;
     height: 111px;
 
     & {

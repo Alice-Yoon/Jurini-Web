@@ -73,18 +73,18 @@ export default styled(Home)`
         .section_left {
             border: 1px solid lightgray;
             margin-right: 20px;
-            flex: 3.5;
+            flex: 4;
         }
         .section_right {
             /* border: 1px solid blue; */
-            flex: 1.5;
+            flex: 1;
+
             .card-list {
                 /* border: 1px solid yellow; */
                 margin-top: 10px;
                 width: 100%;
                 height: 92%;
                 overflow: auto;
-                flex: 1;
             }
         }
     }
