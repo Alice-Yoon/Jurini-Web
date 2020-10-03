@@ -12,7 +12,9 @@ const API = {
             const getMonthlyData = await Axios.get(
                     `${API_BASE_URL}/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9&sort_mode=dividends_date`
                 );
-            const monthlyData = getMonthlyData.data.data
+            const monthlyData = getMonthlyData.data.data;
+
+            console.log("monthlyData", monthlyData);
 
             // 해당 month 전체 key 값만 모으기
             const keys = Object.keys(monthlyData);

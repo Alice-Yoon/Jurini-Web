@@ -35,28 +35,12 @@ function Home(props) {
         }
         getDailyDividendsData();
 
-        // const test = async() => {
-        //     // 평균배당률
-        //     const res = await Axios.get(` http://kkyy3402.iptime.org:20000/rest/getDividendHistory?ticker=ko&start_year=1980&end_year=2020`)
-        //     const values = Object.values(res.data.data);
-        //     const reducer = (acc, curr) => acc + curr;
-        //     const average = (values.reduce(reducer)/values.length).toFixed(2);
-
-        //     console.log("avg:", average);
-
-        //     // 배당지속기간
-        //     const duration = moment.duration(992390400000-321580800000, 'milliseconds');
-        //     const years = Math.floor(duration.asYears());
-        //     console.log("years:", years)
-        // }
-        // test();
-
     }, []);
 
     return (
         <div className={props.className}>
            <div className="section_left">
-                <Calendar />
+                <Calendar data={data} symbols={keys} />
            </div>
            <div className="section_right">
                <DropDown date={selectedDate} />

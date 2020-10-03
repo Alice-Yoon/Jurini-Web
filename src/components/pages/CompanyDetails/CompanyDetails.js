@@ -54,7 +54,7 @@ function CompanyDetails(props) {
 
                 
                 <div className="content_top">
-                    <DetailsCard companyInfo={companyInfo} closePrice={closePrice} />
+                    <DetailsCard companyInfo={companyInfo} closePrice={closePrice} average={average} />
                 </div>
                 <div className="contentStyle">
                         <DetailsTable companyInfo={companyInfo} average={average} years={years} />
