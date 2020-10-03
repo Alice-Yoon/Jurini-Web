@@ -9,7 +9,7 @@ import {exchangeToKRW} from '../../utils/exchangeToKRW';
 
 function CardList(props) {
 
-    const { symbol, selectedDateMilli, todayMilli, exchangeRate} = props;
+    const { symbol, selectedDateMilli, todayMilli, exchangeRate } = props;
     
     const [data, setData] = useState([]);
     const [tag, setTag] = useState('');

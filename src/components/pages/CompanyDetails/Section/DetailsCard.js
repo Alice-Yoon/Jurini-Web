@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 function DetailsCard(props) {
 
-    const {companyInfo, closePrice} = props;
+    const {companyInfo, closePrice, average} = props;
 
 
     return (

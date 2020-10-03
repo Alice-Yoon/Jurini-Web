@@ -40,7 +40,7 @@ function Home(props) {
     return (
         <div className={props.className}>
            <div className="section_left">
-                <Calendar />
+                <Calendar data={data} symbols={keys} />
            </div>
            <div className="section_right">
                <DropDown date={selectedDate} />
