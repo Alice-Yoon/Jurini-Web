@@ -27,7 +27,7 @@ function Home(props) {
 
     useEffect(() => {
 
-        const getDailyDividendsData = async() => {
+        const getDailyDividendsData = async() => { //API 파일에서 api들 불러오기 
             const getMonthlyDividendsData = await API.cards(selectedDateMilli);
             // console.log("getMonthlyDividendsData", getMonthlyDividendsData);
             setData(getMonthlyDividendsData?.monthlyData);
