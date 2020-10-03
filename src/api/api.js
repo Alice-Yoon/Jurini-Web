@@ -93,7 +93,9 @@ const API = {
             const duration = moment.duration(lastYear-firstYear, 'milliseconds');
             const years = Math.floor(duration.asYears());
 
-            // 배당귀족, 고배당주 티커?
+            // 배당귀족, 배당킹 티커?
+
+            // 고배당주 티커?
 
             const res = {
                 companyInfo: getCompanyInfo.data.data,
