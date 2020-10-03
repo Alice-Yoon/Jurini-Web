@@ -16,6 +16,8 @@ function CompanyDetails(props) {
 
     const [companyInfo, setCompanyInfo] = useState({});
     const [closePrice, setClosePrice] = useState({});
+    const [average, setAverage] = useState(0);
+    const [years, setYears] = useState(0);
 
     useEffect(() => {
         if(showCompanyDetails === true) {
@@ -27,6 +29,8 @@ function CompanyDetails(props) {
                 const companyDetailInfo = await API.details(symbolTemp);
                 setCompanyInfo(companyDetailInfo?.companyInfo);
                 setClosePrice(companyDetailInfo?.closePrice);
+                setAverage(companyDetailInfo?.average);
+                setYears(companyDetailInfo?.years);
             }
             getCompanyDetailInfo();
 
@@ -53,7 +57,7 @@ function CompanyDetails(props) {
                     <DetailsCard companyInfo={companyInfo} closePrice={closePrice} />
                 </div>
                 <div className="contentStyle">
-                        <DetailsTable companyInfo={companyInfo} />
+                        <DetailsTable companyInfo={companyInfo} average={average} years={years} />
                 </div>
 
             </div>

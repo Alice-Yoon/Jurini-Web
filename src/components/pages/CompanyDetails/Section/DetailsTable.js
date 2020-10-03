@@ -6,7 +6,7 @@ import { moneyFormatter } from '../../../../utils/moneyFormatter';
 
 function DetailsTable(props) {
 
-    const {companyInfo} = props;
+    const {companyInfo, average, years} = props;
 
     return (
         <div className={props.className}>
@@ -15,27 +15,25 @@ function DetailsTable(props) {
                     <tr>
                         <td>
                             <p>시가총액</p>
-                            <p>$ {moneyFormatter(parseInt(companyInfo.MarketCapitalization))}</p>
-                            {/* <p>$ 123,37 million</p> */}
+                            <p>$ {moneyFormatter(parseInt(companyInfo?.MarketCapitalization))}</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>배당락일</p>
-                            <p>{companyInfo.ExDividendDate}</p>
-                            {/* <p>20.05.29</p> */}
+                            <p>{companyInfo?.ExDividendDate}</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>평균 배당률</p>
-                            <p className="color">4 %</p>
+                            <p className="color">{average} %</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>배당 지속 기간</p>
-                            <p>13년</p>
+                            <p>{years}년</p>
                         </td>
                     </tr>
                 </tbody>

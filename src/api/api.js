@@ -77,11 +77,29 @@ const API = {
                 `${API_BASE_URL}/getLatestClosePrice?symbol=${detailSymbol}`
             );
 
+            // 평균 배당률
+            const getAverage = await Axios.get(
+                `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
+            );
+            const values = Object.values(getAverage.data.data);
+            const reducer = (acc, curr) => acc + curr;
+            const average = (values.reduce(reducer)/values.length).toFixed(2);
+            
+            // 배당지속기간
+            const keys = Object.keys(getAverage.data.data);
+            keys.sort((a,b) => a - b);
+            const firstYear = parseInt(keys[0]);
+            const lastYear = parseInt(keys[keys.length-1]);
+            const duration = moment.duration(lastYear-firstYear, 'milliseconds');
+            const years = Math.floor(duration.asYears());
+
             // 배당귀족, 고배당주 티커?
 
             const res = {
                 companyInfo: getCompanyInfo.data.data,
-                closePrice: getClosePrice.data.data
+                closePrice: getClosePrice.data.data,
+                average: average,
+                years: years
             }
             return res;
         } catch (error) {

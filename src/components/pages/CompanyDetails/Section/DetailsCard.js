@@ -8,7 +8,7 @@ function DetailsCard(props) {
 
     return (
         <div className={props.className}>
-            <h1>{companyInfo.Name}</h1>
+            <h1>{companyInfo?.Name}</h1>
             <div className="top">
                 <span>배당귀족</span>
                 <span style={{background: '#FFE6E6', color: '#CC3E01'}}>고배당주</span>
@@ -16,13 +16,11 @@ function DetailsCard(props) {
             <div className="bottom">
                 <div>
                     <span>전일종가</span>
-                    <span className="number pink">$ {parseInt(closePrice.close_price).toFixed(2)}</span>
-                    {/* <span className="number pink">$ 87.4</span> */}
+                    <span className="number pink">$ {parseInt(closePrice?.close_price).toFixed(2)}</span>
                 </div>
                 <div>
                     <span>배당률</span>
                     <span className="number">{(companyInfo?.DividendYield * 100).toFixed(2)} %</span>
-                    {/* <span className="number">5.2%</span> */}
                 </div>
             </div>
         </div>
