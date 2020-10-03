@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Axios from 'axios';
-
+import API from '../../../api/api';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -28,21 +27,9 @@ function SearchResult(props) {
     useEffect(() => {
 
         const fetchSearchData = async() => {
-            // 검색어 불러와서!
-            await Axios.get(`http://20.194.41.177:21000/rest/getRecommendKeyword?keyword=${searchTerm}`)
-                .then((res) => {
-                    const firstRes = res.data.data
-
-                    const keys = firstRes.map(data => data["1. symbol"]);
-                    const keysArr = keys.toString();
-
-                    Axios.get(`http://20.194.41.177:21000/rest/getMultipleDividendsInfo?symbol_list=${keysArr}`)
-                    .then(res => {
-                        const final_keys = Object.keys(res.data.data);
-                        setData(res.data.data);
-                        setSymbols(final_keys);
-                    });
-                });
+            const searchData = await API.search(searchTerm);
+            setData(searchData?.data);
+            setSymbols(searchData?.final_keys);
         }
         fetchSearchData();
 

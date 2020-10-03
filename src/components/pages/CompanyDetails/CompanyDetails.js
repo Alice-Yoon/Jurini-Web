@@ -6,10 +6,7 @@ import { toggleDetails } from '../../../modules/details';
 
 import DetailsCard from './Section/DetailsCard';
 import DetailsTable from './Section/DetailsTable';
-import Axios from 'axios';
-// import DetailsChart from './Section/DetailsChart';
-// import DetailsCalculator from './Section/DetailsCalculator';
-// import DetailsNews from './Section/DetailsNews';
+import API from '../../../api/api';
 
 function CompanyDetails(props) {
     const showCompanyDetails = useSelector(state => state.details.isDetailShow);
@@ -22,34 +19,19 @@ function CompanyDetails(props) {
 
     useEffect(() => {
         if(showCompanyDetails === true) {
-            console.log("result 페이지닷!!")
             console.log("심볼?:", detailSymbol)
+            const symbolTemp = 'ko'
 
-            // 회사정보 - 회사이름, 심볼, 배당률, 시가총액, 배당락일
-            const getCompanyInfo = async() => {
-                // await Axios.get(`http://20.194.41.177:21000/rest/getCompanySummaryInfo?symbol=${detailSymbol}`)
-                await Axios.get(`http://20.194.41.177:21000/rest/getCompanySummaryInfo?symbol=ko`)
-                        .then(res => {
-                            console.log("getCompanyInfo", res.data.data);
-                            setCompanyInfo(res.data.data)
-                        })
+            const getCompanyDetailInfo = async() => {
+                // const companyDetailInfo = await API.details(detailSymbol);
+                const companyDetailInfo = await API.details(symbolTemp);
+                setCompanyInfo(companyDetailInfo?.companyInfo);
+                setClosePrice(companyDetailInfo?.closePrice);
             }
-
-            // 전일종가
-            const getClosePrice = async() => {
-                await Axios.get(`http://20.194.41.177:21000/rest/getLatestClosePrice?symbol=ko`)
-                        .then(res => {
-                            console.log("getClosePrice", res.data.data);
-                            setClosePrice(res.data.data)
-                        })
-            }
+            getCompanyDetailInfo();
 
             // 배당귀족, 고배당주 티커?
 
-
-            
-            getCompanyInfo();
-            getClosePrice();
         }
     }, [showCompanyDetails])
 
@@ -72,9 +54,6 @@ function CompanyDetails(props) {
                 </div>
                 <div className="contentStyle">
                         <DetailsTable companyInfo={companyInfo} />
-                        {/* <DetailsCalculator /> */}
-                        {/* <DetailsChart /> */}
-                        {/* <DetailsNews /> */}
                 </div>
 
             </div>
