@@ -15,20 +15,20 @@ function Home(props) {
 
     const [data, setData] = useState([]);
     const [keys, setKeys] = useState([]);
+    const [selected, setSelected] = useState('');
 
     // 오늘 날짜
     const today = moment().format("MM/DD/YYYY");
     const todayMilli = dateToMilli(today);
-
-    // 선택된 날짜
-    const selectedDate = moment("09/11/2020").format("MM/DD/YYYY");
-    const selectedDateMilli = dateToMilli(selectedDate); // 이날짜 기준 '배당락일'
+    const today_year = moment().year();
+    const today_month = moment().month() + 1;
 
     useEffect(() => {
 
-        const getDailyDividendsData = async() => { //API 파일에서 api들 불러오기 
-            const getMonthlyDividendsData = await API.cards(selectedDateMilli);
-            // console.log("getMonthlyDividendsData", getMonthlyDividendsData);
+        setSelected(today)
+
+        const getDailyDividendsData = async() => { //API 파일에서 api들 불러오기 : 오늘날짜!
+            const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
             setData(getMonthlyDividendsData?.monthlyData);
             setKeys(getMonthlyDividendsData?.keyArr)
         }
@@ -36,13 +36,29 @@ function Home(props) {
 
     }, []);
 
+    const updateDateClicked = (year, month, date) => {
+
+        // 선택된 날짜
+        setSelected(`${month}/${date}/${year}`);
+        
+        const updateDailyDividendsData = async() => {
+            const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
+            const selectedDateMilli = dateToMilli(selectedDate);
+
+            const getMonthlyDividendsData = await API.cards(selectedDateMilli, year, month);
+            setData(getMonthlyDividendsData?.monthlyData);
+            setKeys(getMonthlyDividendsData?.keyArr);
+        }
+        updateDailyDividendsData();
+    }
+
     return (
         <div className={props.className}>
            <div className="section_left">
-                <Calendar data={data} symbols={keys} />
+                <Calendar data={data} symbols={keys} updateDateClicked={updateDateClicked} />
            </div>
            <div className="section_right">
-               <DropDown date={selectedDate} />
+               <DropDown date={selected} />
                <div className="card-list">
                 {
                     keys.map((symbol, index) => (
@@ -50,7 +66,7 @@ function Home(props) {
                             key={index} 
                             data={data} 
                             symbol={symbol}
-                            selectedDateMilli={selectedDateMilli}
+                            selectedDateMilli={selected}
                             todayMilli={todayMilli}
                             exchangeRate={exchangeRate}
                         />
@@ -80,7 +96,7 @@ export default styled(Home)`
             flex: 1;
 
             .card-list {
-                /* border: 1px solid yellow; */
+                border: 1px solid yellow;
                 margin-top: 10px;
                 width: 100%;
                 height: 92%;

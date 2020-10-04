@@ -153,8 +153,11 @@ function Calendar(props) {
       }
     }
 
+    const { updateDateClicked } = props;
+
     const dateClickEvent = (year, month, date) => {
       console.log("클릭!!!", year, month, date)
+      updateDateClicked(year, month, date)
     }
 
     // map : october의 각 날짜를 변수 date로 순회하면서 함수를 실행해 새 배열을 리턴 -> x?
