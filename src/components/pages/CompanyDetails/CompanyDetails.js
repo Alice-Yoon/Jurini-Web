@@ -18,6 +18,7 @@ function CompanyDetails(props) {
     const [closePrice, setClosePrice] = useState({});
     const [average, setAverage] = useState(0);
     const [years, setYears] = useState(0);
+    const [dividendTicker, setDividendTicker] = useState();
 
     useEffect(() => {
         if(showCompanyDetails === true) {
@@ -31,6 +32,7 @@ function CompanyDetails(props) {
                 setClosePrice(companyDetailInfo?.closePrice);
                 setAverage(companyDetailInfo?.average);
                 setYears(companyDetailInfo?.years);
+                setDividendTicker(companyDetailInfo?.dividendTicker);
             }
             getCompanyDetailInfo();
 
@@ -54,10 +56,19 @@ function CompanyDetails(props) {
 
                 
                 <div className="content_top">
-                    <DetailsCard companyInfo={companyInfo} closePrice={closePrice} average={average} />
+                    <DetailsCard 
+                        companyInfo={companyInfo} 
+                        closePrice={closePrice} 
+                        average={average} 
+                        dividendTicker={dividendTicker} 
+                    />
                 </div>
                 <div className="contentStyle">
-                        <DetailsTable companyInfo={companyInfo} average={average} years={years} />
+                        <DetailsTable 
+                            companyInfo={companyInfo} 
+                            average={average} 
+                            years={years} 
+                        />
                 </div>
 
             </div>

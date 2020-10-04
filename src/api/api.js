@@ -14,8 +14,6 @@ const API = {
                 );
             const monthlyData = getMonthlyData.data.data;
 
-            console.log("monthlyData", monthlyData);
-
             // 해당 month 전체 key 값만 모으기
             const keys = Object.keys(monthlyData);
             const keyArr = keys.filter(key => {
@@ -95,7 +93,28 @@ const API = {
             const duration = moment.duration(lastYear-firstYear, 'milliseconds');
             const years = Math.floor(duration.asYears());
 
-            // 배당귀족, 배당킹 티커?
+            // 배당킹, 배당귀족 티커?
+            const getDividendKing = await Axios.get(
+                `${API_BASE_URL}/getDividendKingTickerList`
+            );
+            const getDividendAristocrats = await Axios.get(
+                `${API_BASE_URL}/getDividendAristocratsList`
+            );
+
+            const companySymbol = getCompanyInfo.data.data.Symbol;
+            const dividendKingList = getDividendKing.data.data;
+            const dividendAristovratsList = getDividendAristocrats.data.data;
+
+            let dividendTicker;
+            
+            if (dividendKingList.includes(companySymbol)) {
+                dividendTicker = "배당킹"
+            } else if (dividendAristovratsList.includes(companySymbol)) {
+                dividendTicker = "배당귀족"
+            } else {
+                dividendTicker = ''
+            }
+
 
             // 고배당주 티커?
 
@@ -103,7 +122,8 @@ const API = {
                 companyInfo: getCompanyInfo.data.data,
                 closePrice: getClosePrice.data.data,
                 average: average,
-                years: years
+                years: years,
+                dividendTicker: dividendTicker,
             }
             return res;
         } catch (error) {
