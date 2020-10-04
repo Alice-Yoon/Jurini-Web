@@ -12,7 +12,7 @@ function DetailsCard(props) {
                 <span style={{display: dividendTicker === '배당킹' || dividendTicker === '배당귀족' ? 'inline' : 'none'}}>
                     {dividendTicker}
                 </span>
-                <span style={{background: '#FFE6E6', color: '#CC3E01'}}>고배당주</span>
+                <span style={{background: '#FFE6E6', color: '#CC3E01', display: average >= 5 ? 'inline' : 'none'}}>고배당주</span>
             </div>
             <div className="bottom">
                 <div>

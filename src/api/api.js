@@ -81,12 +81,12 @@ const API = {
             const getAverage = await Axios.get(
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
-            const values = Object.values(getAverage.data.data);
+            const values = Object.values(getAverage?.data.data);
             const reducer = (acc, curr) => acc + curr;
-            const average = (values.reduce(reducer)/values.length).toFixed(2);
+            const average = (values?.reduce(reducer)/values.length).toFixed(2);
             
             // 배당지속기간
-            const keys = Object.keys(getAverage.data.data);
+            const keys = Object.keys(getAverage?.data.data);
             keys.sort((a,b) => a - b);
             const firstYear = parseInt(keys[0]);
             const lastYear = parseInt(keys[keys.length-1]);
@@ -101,9 +101,9 @@ const API = {
                 `${API_BASE_URL}/getDividendAristocratsList`
             );
 
-            const companySymbol = getCompanyInfo.data.data.Symbol;
-            const dividendKingList = getDividendKing.data.data;
-            const dividendAristovratsList = getDividendAristocrats.data.data;
+            const companySymbol = getCompanyInfo?.data.data.Symbol;
+            const dividendKingList = getDividendKing?.data.data;
+            const dividendAristovratsList = getDividendAristocrats?.data.data;
 
             let dividendTicker;
             
@@ -115,12 +115,11 @@ const API = {
                 dividendTicker = ''
             }
 
-
-            // 고배당주 티커?
+            // 고배당주 티커 -> DetailsCard에서 average로 직접 적용!
 
             const res = {
-                companyInfo: getCompanyInfo.data.data,
-                closePrice: getClosePrice.data.data,
+                companyInfo: getCompanyInfo?.data.data,
+                closePrice: getClosePrice?.data.data,
                 average: average,
                 years: years,
                 dividendTicker: dividendTicker,
