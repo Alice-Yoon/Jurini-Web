@@ -8,7 +8,6 @@ import DropDown from './Section/DropDown';
 
 import { dateToMilli } from '../../../utils/dateMilliConverter';
 import API from '../../../api/api';
-import Axios from 'axios';
 
 function Home(props) {
 
@@ -22,7 +21,7 @@ function Home(props) {
     const todayMilli = dateToMilli(today);
 
     // 선택된 날짜
-    const selectedDate = moment("09/16/2020").format("MM/DD/YYYY");
+    const selectedDate = moment("09/11/2020").format("MM/DD/YYYY");
     const selectedDateMilli = dateToMilli(selectedDate); // 이날짜 기준 '배당락일'
 
     useEffect(() => {
