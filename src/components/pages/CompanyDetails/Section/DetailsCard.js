@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 function DetailsCard(props) {
 
-    const {companyInfo, closePrice, average} = props;
-
+    const {companyInfo, closePrice, average, dividendTicker} = props;
 
     return (
         <div className={props.className}>
             <h1>{companyInfo?.Name}</h1>
             <div className="top">
-                <span>배당귀족</span>
-                <span style={{background: '#FFE6E6', color: '#CC3E01'}}>고배당주</span>
+                <span style={{display: dividendTicker === '배당킹' || dividendTicker === '배당귀족' ? 'inline' : 'none'}}>
+                    {dividendTicker}
+                </span>
+                <span style={{background: '#FFE6E6', color: '#CC3E01', display: average >= 5 ? 'inline' : 'none'}}>고배당주</span>
             </div>
             <div className="bottom">
                 <div>

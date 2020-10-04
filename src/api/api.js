@@ -14,8 +14,6 @@ const API = {
                 );
             const monthlyData = getMonthlyData.data.data;
 
-            console.log("monthlyData", monthlyData);
-
             // 해당 month 전체 key 값만 모으기
             const keys = Object.keys(monthlyData);
             const keyArr = keys.filter(key => {
@@ -83,27 +81,48 @@ const API = {
             const getAverage = await Axios.get(
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
-            const values = Object.values(getAverage.data.data);
+            const values = Object.values(getAverage?.data.data);
             const reducer = (acc, curr) => acc + curr;
-            const average = (values.reduce(reducer)/values.length).toFixed(2);
+            const average = (values?.reduce(reducer)/values.length).toFixed(2);
             
             // 배당지속기간
-            const keys = Object.keys(getAverage.data.data);
+            const keys = Object.keys(getAverage?.data.data);
             keys.sort((a,b) => a - b);
             const firstYear = parseInt(keys[0]);
             const lastYear = parseInt(keys[keys.length-1]);
             const duration = moment.duration(lastYear-firstYear, 'milliseconds');
             const years = Math.floor(duration.asYears());
 
-            // 배당귀족, 배당킹 티커?
+            // 배당킹, 배당귀족 티커?
+            const getDividendKing = await Axios.get(
+                `${API_BASE_URL}/getDividendKingTickerList`
+            );
+            const getDividendAristocrats = await Axios.get(
+                `${API_BASE_URL}/getDividendAristocratsList`
+            );
 
-            // 고배당주 티커?
+            const companySymbol = getCompanyInfo?.data.data.Symbol;
+            const dividendKingList = getDividendKing?.data.data;
+            const dividendAristovratsList = getDividendAristocrats?.data.data;
+
+            let dividendTicker;
+            
+            if (dividendKingList.includes(companySymbol)) {
+                dividendTicker = "배당킹"
+            } else if (dividendAristovratsList.includes(companySymbol)) {
+                dividendTicker = "배당귀족"
+            } else {
+                dividendTicker = ''
+            }
+
+            // 고배당주 티커 -> DetailsCard에서 average로 직접 적용!
 
             const res = {
-                companyInfo: getCompanyInfo.data.data,
-                closePrice: getClosePrice.data.data,
+                companyInfo: getCompanyInfo?.data.data,
+                closePrice: getClosePrice?.data.data,
                 average: average,
-                years: years
+                years: years,
+                dividendTicker: dividendTicker,
             }
             return res;
         } catch (error) {

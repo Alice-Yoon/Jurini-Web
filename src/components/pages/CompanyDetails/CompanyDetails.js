@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleDetails } from '../../../modules/details';
@@ -18,24 +19,29 @@ function CompanyDetails(props) {
     const [closePrice, setClosePrice] = useState({});
     const [average, setAverage] = useState(0);
     const [years, setYears] = useState(0);
+    const [dividendTicker, setDividendTicker] = useState('');
 
     useEffect(() => {
         if(showCompanyDetails === true) {
-            console.log("심볼?:", detailSymbol)
-            const symbolTemp = 'ko'
+            // console.log("심볼?:", detailSymbol)
+            // const symbolTemp = 'ko'
 
             const getCompanyDetailInfo = async() => {
-                // const companyDetailInfo = await API.details(detailSymbol);
-                const companyDetailInfo = await API.details(symbolTemp);
+                const companyDetailInfo = await API.details(detailSymbol);
+                // const companyDetailInfo = await API.details(symbolTemp);
                 setCompanyInfo(companyDetailInfo?.companyInfo);
                 setClosePrice(companyDetailInfo?.closePrice);
                 setAverage(companyDetailInfo?.average);
                 setYears(companyDetailInfo?.years);
+                setDividendTicker(companyDetailInfo?.dividendTicker);
             }
             getCompanyDetailInfo();
-
-            // 배당귀족, 고배당주 티커?
-
+        } else {
+            setCompanyInfo({});
+            setClosePrice({});
+            setAverage(0);
+            setYears(0);
+            setDividendTicker('');
         }
     }, [showCompanyDetails])
 
@@ -54,10 +60,19 @@ function CompanyDetails(props) {
 
                 
                 <div className="content_top">
-                    <DetailsCard companyInfo={companyInfo} closePrice={closePrice} average={average} />
+                    <DetailsCard 
+                        companyInfo={companyInfo} 
+                        closePrice={closePrice} 
+                        average={average} 
+                        dividendTicker={dividendTicker} 
+                    />
                 </div>
                 <div className="contentStyle">
-                        <DetailsTable companyInfo={companyInfo} average={average} years={years} />
+                        <DetailsTable 
+                            companyInfo={companyInfo} 
+                            average={average} 
+                            years={years} 
+                        />
                 </div>
 
             </div>
