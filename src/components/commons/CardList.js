@@ -14,13 +14,16 @@ function CardList(props) {
     const [data, setData] = useState([]);
     const [tag, setTag] = useState('');
     const [color, setColor] = useState('');
+    const [dDay, setDday] = useState(0)
 
     useEffect(() => {
         setData(props.data);
         
-        const paymentDateMilli = dateToMilli(data.payment_date); // 배당지급일
+        const paymentDateMilli = dateToMilli(props.data.payment_date); // 배당지급일
+
         const Dday = selectedDateMilli - todayMilli;
         const Dday_n = moment.duration(Dday).asDays();
+        setDday(Dday);
 
         if(selectedDateMilli === paymentDateMilli) {
             console.log("배당지급일, #FFF3E1 (green)")
@@ -29,7 +32,7 @@ function CardList(props) {
                 setTag('배당락일');
                 setColor('#EAFFE3');
             } else if (Dday < 0) {
-                setTag('배당락일 지남?');
+                setTag('배당락일 지남');
                 setColor('#EAFFE3');
             } else {
                 setTag(`배당락일 D-${Dday_n}`);
@@ -59,7 +62,7 @@ function CardList(props) {
                 <div className="container">
                     <div>
                         <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data?.dividends_rate}%</span>
-                        <span className="smallBoxStyle">{tag}</span>
+                        <span className="smallBoxStyle" style={{display: dDay < 0 ? 'none' : 'inline'}}>{tag}</span>
                     </div>
                     <div className="title">
                         <span className="companyNameStyle">{data?.name}</span>

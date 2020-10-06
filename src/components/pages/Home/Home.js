@@ -16,6 +16,7 @@ function Home(props) {
     const [data, setData] = useState([]);
     const [keys, setKeys] = useState([]);
     const [selected, setSelected] = useState('');
+    const [selectedMilli, setSelectedMilli] = useState(0)
 
     // 오늘 날짜
     const today = moment().format("MM/DD/YYYY");
@@ -48,6 +49,7 @@ function Home(props) {
             
             const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
             const selectedDateMilli = dateToMilli(selectedDate);
+            setSelectedMilli(selectedDateMilli)
 
             const getMonthlyDividendsData = await API.cards(selectedDateMilli, year, month);
             setData(getMonthlyDividendsData?.monthlyData);
@@ -78,7 +80,7 @@ function Home(props) {
                             key={index} 
                             data={data[symbol]} 
                             symbol={symbol}
-                            selectedDateMilli={selected}
+                            selectedDateMilli={selectedMilli}
                             todayMilli={todayMilli}
                             exchangeRate={exchangeRate}
                         />
