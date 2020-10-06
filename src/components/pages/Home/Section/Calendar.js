@@ -37,7 +37,7 @@ function Calendar(props) {
     const [calendarListSymbols, setCalendarListSymbols] = useState([]);
 
 
-    ///////////////////// 지혜 작업 //////////////////
+    ///////////////////// 지혜 작업 //////////////////////////
 
  
     let tmp;
