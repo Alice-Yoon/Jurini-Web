@@ -283,8 +283,10 @@ function Calendar(props) {
           <button onClick={rightButtonClickEvent}>RIGHT</button>
         </div>
  
-        <div className="dayTableStyle">{DayOfTheWeek}</div>
-        <div className="dateTableStyle">{DaysOfTheMonth}</div>
+        <div className="dateTableContainer">
+          <div className="dayTableStyle">{DayOfTheWeek}</div>
+          <div className="dateTableStyle">{DaysOfTheMonth}</div>
+        </div>
       </div>
       
     )
@@ -292,6 +294,10 @@ function Calendar(props) {
 
 // grid css : https://heropy.blog/2019/08/17/css-grid/
 export default styled(Calendar)` 
+
+border: 2px solid hotpink;
+/* height: 100%; */
+
 &{
   .head{
     display: flex;
@@ -300,8 +306,18 @@ export default styled(Calendar)`
     padding: 12px 8px;
   }
 
+
+  .dateTableContainer {
+    border: 2px solid aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
   .dayTableStyle {
-    margin-top : 70px; // 요일 테이블
+    /* margin-top : 70px; // 요일 테이블 */
     padding-top : 3px; // 요일 칸
     padding-bottom : 3px;
     display : grid;
@@ -317,12 +333,15 @@ export default styled(Calendar)`
   }
 
   .dateTableStyle {
+    border: 2px solid black;
     /* margin-top : 10px; // 날짜 테이블 */
     /* padding-top : 3px; //날짜 칸 */
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
     background-color: yellow;
+
+
   }
 
 // 이제 이거 대신에 컴포넌트 만들기 
