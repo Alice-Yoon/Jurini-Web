@@ -131,6 +131,23 @@ const API = {
         } catch (error) {
             console.error(error);
         }
+    },
+    calendar_list: async(year, month) => {
+        try {
+            const getMonthlyData = await Axios.get(
+                `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=dividends_date`
+            );
+            const monthlyData = getMonthlyData.data.data;
+            const keys = Object.keys(monthlyData);
+            
+            const res = {
+                data: monthlyData,
+                keys
+            }
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 }

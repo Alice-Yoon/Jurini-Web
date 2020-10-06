@@ -1,17 +1,25 @@
-import styled from 'styled-components';
 import React, { useState, useEffect } from 'react'; 
+import styled from 'styled-components';
+import moment from 'moment';
 import CalendarCard from './Section/Calendar_card';
+import { dateToMilli } from '../../utils/dateMilliConverter';
 
 function Test(props){
 
-    const {year, month, date, today, onClick, data, keys} = props;
+    const {year, month, date, onClick, data, symbols} = props;
 
-    const sortedKeys = [keys[0], keys[1]];
+    // const sortedKeys = [keys[0], keys[1]];
     // console.log("sorted:", sortedKeys)
 
-    // console.log("Test 컴포:", data, keys)
+    const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
+    const selectedDateMilli = dateToMilli(selectedDate);
 
-    // console.log("test-today:", year, month, date)
+
+    const selectedKeysArr = symbols.filter(key => {
+        const formatted = moment(data[key]?.dividends_date).format("MM/DD/YYYY");
+        const dividendsMilli = dateToMilli(formatted);
+        return dividendsMilli === selectedDateMilli
+    })
 
     // 각 newArr의 요소마다 Test컴포넌트가 실행됨
     // console.log(date);
@@ -21,7 +29,7 @@ function Test(props){
         <div className={props.className} onClick={() => onClick(year, month, date)}>
             <div>{date}</div>
             <div className="cards">
-                {
+                {/* {
                     sortedKeys.map((symbol, index) => (
                         <CalendarCard 
                             key={index}
@@ -29,17 +37,17 @@ function Test(props){
                             symbol={symbol}
                         />
                     ))
-                }
-                {/* {
-                    keys.map((symbol, index) => (
+                } */}
+                {
+                    selectedKeysArr.map((symbol, index) => (
                         <CalendarCard 
                             key={index}
                             data={data} 
                             symbol={symbol}
                         />
                     ))
-                } */}
-            <p>+ {keys.length - 2}</p>
+                }
+            {/* <p>+ {keys.length - 2}</p> */}
             </div>
         </div>
     )
