@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import { dateToMilli } from '../utils/dateMilliConverter';
 
+// http://kkyy3402.iptime.org:20000/rest/getMontlyDividendsData?from_year=2020&from_month=8&to_year=2020&to_month=8&sort_mode=payment_date
+
 const API = {
     cards: async (selectedDateMilli, year, month) => {
         try {
