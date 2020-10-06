@@ -4,7 +4,9 @@ import styled from 'styled-components';
 function CalendarCard(props) {
 
     const symbol = props.symbol;
-    const data = props.data[symbol];
+
+    // comment-out 된것들 : 회사이름 - 자리가 모자라서 일단 숨김.
+    // const data = props.data[symbol];
 
     return (
         <div className={props.className}>
@@ -16,7 +18,6 @@ function CalendarCard(props) {
 
 export default styled(CalendarCard)`
     border: 1px solid blue;
-    /* margin: 5px 0; */
     display: flex;
     align-items: center;
 
