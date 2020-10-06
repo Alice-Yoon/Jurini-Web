@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleDetails } from '../../../modules/details';

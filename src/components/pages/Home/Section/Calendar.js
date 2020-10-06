@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import Test from '../../../commons/Test';
+import API from '../../../../api/api';
  
 // days : 해당 월의 일수
 // date : 날짜
@@ -29,6 +30,15 @@ function Calendar(props) {
     const [days, setDays] = useState(0);
     const [startDay, setStartDay] = useState(1);
     const [flag, setFlag] = useState(1); // 맨 처음 뜨는 달이면 1, 아니면 0
+
+    ///////////////////// 지혜 작업 시작 (1) //////////////////
+
+    const [calendarListData, setCalendarListData] = useState([]);
+    const [calendarListSymbols, setCalendarListSymbols] = useState([]);
+
+
+    ///////////////////// 지혜 작업 //////////////////
+
  
     let tmp;
     let initStartDay;
@@ -139,10 +149,73 @@ function Calendar(props) {
 
       const initDate = calculateEndingDate(curYear, curMonth, initStartDay);
       setDays(initDate); //setDays(tmpDays)
+
+
+
+    /////////////////////////////// 지혜 작업 영역 시작 (2) /////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+      // 처음 Calendar data 가져오기
+      const getThisMonthDividendsData = async () => {
+        const thisMonthDividendsData = await API.calendar_list(curYear, curMonth);
+        setCalendarListData(thisMonthDividendsData?.data);
+        setCalendarListSymbols(thisMonthDividendsData?.keys);
+      }
+      getThisMonthDividendsData();
+
+
+    /////////////////////////////// 지혜 작업 영역 끝 /////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
     }, [])
 
 
+    /////////////////////////////// 지혜 작업 영역 시작 (3) /////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+    const addDate = date => { 
+      // console.log(date);
+      if(date === -1){ 
+        return <div className="dateStyle">{}</div> // 1일 전은 빈 값
+      }
+      else {
+        return <Test 
+                  onClick={dateClickEvent} 
+                  // data={props.data} 
+                  data={calendarListData} 
+                  // keys={props.symbols}
+                  symbols={calendarListSymbols} 
+                  year={curYear} 
+                  month={curMonth} 
+                  date={date} 
+                  today={today}
+                /> // -> ㄴ. 컴포넌트로 바꿀 경우
+      }
+    }
+
+    const { updateDateClicked } = props;
+
+    const dateClickEvent = (year, month, date) => {
+      updateDateClicked(year, month, date)
+    }
+
+    // 년도 or 달이 바뀔 때 Calendar data 가져오기
+    useEffect(() => {
+
+      const updateThisMonthDividendsData = async () => {
+        const updatedMonthlyDividendsData = await API.calendar_list(curYear, curMonth);
+        setCalendarListData(updatedMonthlyDividendsData?.data);
+        setCalendarListSymbols(updatedMonthlyDividendsData?.keys);
+      }
+      updateThisMonthDividendsData();
+
+    }, [curYear, curMonth])
+
+
+
+    /////////////////////////////// 지혜 작업 영역 끝 /////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -158,19 +231,7 @@ function Calendar(props) {
     // .map() 메소드 사용 시 요소를 ()소괄호로 묶기 
     // ex) .map(({id, text}) => (<TodoItem/>))
     // 
-    const addDate = date => { 
-      // console.log(date);
-      if(date === -1){ 
-        return <div className="dateStyle">{}</div> // 1일 전은 빈 값
-      }
-      else {
-        return <Test onClick={dateClickEvent} data={props.data} keys={props.symbols} year={curYear} month={curMonth} date={date} today={today}/> // -> ㄴ. 컴포넌트로 바꿀 경우
-      }
-    }
 
-    const dateClickEvent = (year, month, date) => {
-      console.log("클릭!!!", year, month, date)
-    }
 
     // map : october의 각 날짜를 변수 date로 순회하면서 함수를 실행해 새 배열을 리턴 -> x?
     // 문자열을 리턴하고 싶다면 console.log(date) 대신 '${date}'
@@ -222,8 +283,10 @@ function Calendar(props) {
           <button onClick={rightButtonClickEvent}>RIGHT</button>
         </div>
  
-        <div className="dayTableStyle">{DayOfTheWeek}</div>
-        <div className="dateTableStyle">{DaysOfTheMonth}</div>
+        <div className="dateTableContainer">
+          <div className="dayTableStyle">{DayOfTheWeek}</div>
+          <div className="dateTableStyle">{DaysOfTheMonth}</div>
+        </div>
       </div>
       
     )
@@ -231,6 +294,10 @@ function Calendar(props) {
 
 // grid css : https://heropy.blog/2019/08/17/css-grid/
 export default styled(Calendar)` 
+
+border: 2px solid hotpink;
+/* height: 100%; */
+
 &{
   .head{
     display: flex;
@@ -239,8 +306,18 @@ export default styled(Calendar)`
     padding: 12px 8px;
   }
 
+
+  .dateTableContainer {
+    border: 2px solid aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
   .dayTableStyle {
-    margin-top : 70px; // 요일 테이블
+    /* margin-top : 70px; // 요일 테이블 */
     padding-top : 3px; // 요일 칸
     padding-bottom : 3px;
     display : grid;
@@ -256,12 +333,15 @@ export default styled(Calendar)`
   }
 
   .dateTableStyle {
+    border: 2px solid black;
     /* margin-top : 10px; // 날짜 테이블 */
     /* padding-top : 3px; //날짜 칸 */
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
     background-color: yellow;
+
+
   }
 
 // 이제 이거 대신에 컴포넌트 만들기 

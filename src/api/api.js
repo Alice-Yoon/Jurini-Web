@@ -4,13 +4,16 @@ import moment from 'moment';
 
 import { dateToMilli } from '../utils/dateMilliConverter';
 
+// http://kkyy3402.iptime.org:20000/rest/getMontlyDividendsData?from_year=2020&from_month=8&to_year=2020&to_month=8&sort_mode=payment_date
+
 const API = {
-    cards: async (selectedDateMilli) => {
+    cards: async (selectedDateMilli, year, month) => {
         try {
 
             // 해당 month 전체 data 구하기
             const getMonthlyData = await Axios.get(
-                    `${API_BASE_URL}/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9&sort_mode=dividends_date`
+                    // `${API_BASE_URL}/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9&sort_mode=dividends_date`
+                    `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=dividends_date`
                 );
             const monthlyData = getMonthlyData.data.data;
 
@@ -26,6 +29,8 @@ const API = {
                 monthlyData,
                 keyArr
             }
+
+            // console.log("api-res:", res);
             
             return res;
         } catch (error) {
@@ -123,6 +128,23 @@ const API = {
                 average: average,
                 years: years,
                 dividendTicker: dividendTicker,
+            }
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    calendar_list: async(year, month) => {
+        try {
+            const getMonthlyData = await Axios.get(
+                `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=dividends_date`
+            );
+            const monthlyData = getMonthlyData.data.data;
+            const keys = Object.keys(monthlyData);
+            
+            const res = {
+                data: monthlyData,
+                keys
             }
             return res;
         } catch (error) {
