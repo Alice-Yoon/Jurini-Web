@@ -27,6 +27,8 @@ const API = {
                 monthlyData,
                 keyArr
             }
+
+            console.log("api-res:", res);
             
             return res;
         } catch (error) {

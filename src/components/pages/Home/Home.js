@@ -29,8 +29,8 @@ function Home(props) {
 
         const getDailyDividendsData = async() => { //API 파일에서 api들 불러오기 : 오늘날짜!
             const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
-            setData(getMonthlyDividendsData?.monthlyData);
             setKeys(getMonthlyDividendsData?.keyArr)
+            setData(getMonthlyDividendsData?.monthlyData);
         }
         getDailyDividendsData();
 
@@ -38,10 +38,14 @@ function Home(props) {
 
     const updateDateClicked = (year, month, date) => {
 
+        setData([]);
+        setKeys([]);
+
         // 선택된 날짜
         setSelected(`${month}/${date}/${year}`);
         
         const updateDailyDividendsData = async() => {
+            
             const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
             const selectedDateMilli = dateToMilli(selectedDate);
 
@@ -61,10 +65,18 @@ function Home(props) {
                <DropDown date={selected} />
                <div className="card-list">
                 {
-                    keys.map((symbol, index) => (
+                    keys.length === 0 ?
+
+                    <div className="no_data">
+                        <h1 >NO DATA</h1>
+                    </div>
+
+                    :
+
+                    keys && keys.map((symbol, index) => (
                         <CardList 
                             key={index} 
-                            data={data} 
+                            data={data[symbol]} 
                             symbol={symbol}
                             selectedDateMilli={selected}
                             todayMilli={todayMilli}
@@ -96,11 +108,19 @@ export default styled(Home)`
             flex: 1;
 
             .card-list {
-                border: 1px solid yellow;
+                /* border: 1px solid yellow; */
                 margin-top: 10px;
                 width: 100%;
                 height: 92%;
                 overflow: auto;
+            }
+            .no_data {
+                /* border: 1px solid green; */
+                width: 365px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }

@@ -16,7 +16,8 @@ function CardList(props) {
     const [color, setColor] = useState('');
 
     useEffect(() => {
-        setData(props.data[symbol]);
+        setData(props.data);
+        
         const paymentDateMilli = dateToMilli(data.payment_date); // 배당지급일
         const Dday = selectedDateMilli - todayMilli;
         const Dday_n = moment.duration(Dday).asDays();
@@ -45,7 +46,6 @@ function CardList(props) {
 
     const onClickCard = () => {
         openDetails(true);
-        // console.log("card symbol:", symbol);
         updateSymbol(symbol)
     }
 
@@ -58,17 +58,17 @@ function CardList(props) {
         >
                 <div className="container">
                     <div>
-                        <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data.dividends_rate}%</span>
+                        <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data?.dividends_rate}%</span>
                         <span className="smallBoxStyle">{tag}</span>
                     </div>
                     <div className="title">
-                        <span className="companyNameStyle">{data.name}</span>
+                        <span className="companyNameStyle">{data?.name}</span>
                         <span className="symbolStyle">{symbol}</span>
                     </div>
                     <div className="money">
-                        <span className="expected_dividend">$ {data.dividends?.toFixed(2)}</span>
+                        <span className="expected_dividend">$ {data?.dividends?.toFixed(2)}</span>
                         {/* <span className="exchanged_won">{Math.floor(data.dividends?.toFixed(2) * exchangeRate)}원</span> */}
-                        <span className="exchanged_won">{exchangeToKRW(data.dividends, exchangeRate)}원</span>
+                        <span className="exchanged_won">{exchangeToKRW(data?.dividends, exchangeRate)}원</span>
                     </div>
                 </div>  
         </div>
