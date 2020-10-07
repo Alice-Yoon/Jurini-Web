@@ -19,7 +19,7 @@ function Test(props){
     });
 
     const selectedKeysArr_payment = symbols.filter(key => {
-        const formatted_payment = moment(data[key].payment_date).format("MM/DD/YYYY");
+        const formatted_payment = moment(data[key]?.payment_date).format("MM/DD/YYYY");
         const paymentMilli = dateToMilli(formatted_payment);
         return paymentMilli === selectedDateMilli
     })
@@ -36,8 +36,11 @@ function Test(props){
                     sortedKeys.map((symbol, index) => (
                         <CalendarCard 
                             key={index}
+                            selectedDate={selectedDate}
                             data={data} 
                             symbol={symbol}
+                            selectedKeysArr_dividend={selectedKeysArr_dividend}
+                            selectedKeysArr_payment={selectedKeysArr_payment}
                         />
                     ))
                 }
