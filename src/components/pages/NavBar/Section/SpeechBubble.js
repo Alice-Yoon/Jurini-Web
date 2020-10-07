@@ -1,14 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
 function SpeechBubble(props) {
-    return (
-        <div className={props.className}>
-            <div className="top"></div>
-            <span><strong>주린이달력 앱</strong>을 다운받고,<br/> 
-                내 주식으로 달력을 커스텀하세요!</span>
-        </div>
-    )
+
+    const [isSpeechShow, setIsSpeechShow] = useState(true);
+
+    const closeSpeechBubble = () => {
+        setIsSpeechShow(false)
+    }
+
+    if(isSpeechShow) {
+        return (
+            <div className={props.className}>
+                <span onClick={closeSpeechBubble}>X </span>
+                <div className="top"></div>
+                <span><strong>주린이달력 앱</strong>을 다운받고,<br/> 
+                    내 주식으로 달력을 커스텀하세요!</span>
+            </div>
+        )
+    } else {
+        return null
+    }
 }
 
 export default styled(SpeechBubble)`
