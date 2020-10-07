@@ -141,7 +141,7 @@ const API = {
     calendar_list: async(year, month) => {
         try {
             const getMonthlyData = await Axios.get(
-                `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=dividends_date`
+                `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=all`
             );
             const monthlyData = getMonthlyData.data.data;
             const keys = Object.keys(monthlyData);

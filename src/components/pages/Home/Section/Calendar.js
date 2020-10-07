@@ -182,9 +182,7 @@ function Calendar(props) {
       else {
         return <Test 
                   onClick={dateClickEvent} 
-                  // data={props.data} 
                   data={calendarListData} 
-                  // keys={props.symbols}
                   symbols={calendarListSymbols} 
                   year={curYear} 
                   month={curMonth} 

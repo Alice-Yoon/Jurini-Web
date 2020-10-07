@@ -12,19 +12,27 @@ function Test(props){
     const selectedDateMilli = dateToMilli(selectedDate);
     
     
-    const selectedKeysArr = symbols.filter(key => {
-        const formatted = moment(data[key]?.dividends_date).format("MM/DD/YYYY");
-        const dividendsMilli = dateToMilli(formatted);
+    const selectedKeysArr_dividend = symbols.filter(key => {
+        const formatted_dividend = moment(data[key]?.dividends_date).format("MM/DD/YYYY");
+        const dividendsMilli = dateToMilli(formatted_dividend);
         return dividendsMilli === selectedDateMilli
     });
+
+    const selectedKeysArr_payment = symbols.filter(key => {
+        const formatted_payment = moment(data[key].payment_date).format("MM/DD/YYYY");
+        const paymentMilli = dateToMilli(formatted_payment);
+        return paymentMilli === selectedDateMilli
+    })
+
+    const allKeysArr = selectedKeysArr_dividend.concat(selectedKeysArr_payment)
     
-    const sortedKeys = selectedKeysArr.length >= 2 ? [selectedKeysArr[0], selectedKeysArr[1]] : [selectedKeysArr[0]];
+    const sortedKeys = allKeysArr.length >= 2 ? [allKeysArr[0], allKeysArr[1]] : [allKeysArr[0]];
     
     return(
         <div className={props.className} onClick={() => onClick(year, month, date)}>
             <div>{date}</div>
             <div className="cards">
-                {selectedKeysArr.length > 0 &&
+                {allKeysArr.length > 0 &&
                     sortedKeys.map((symbol, index) => (
                         <CalendarCard 
                             key={index}
@@ -33,7 +41,7 @@ function Test(props){
                         />
                     ))
                 }
-            <span className="rest_number" style={{display: selectedKeysArr.length > 2 ? 'block' : 'none'}}>+ {selectedKeysArr.length - 2}</span>
+            <span className="rest_number" style={{display: allKeysArr.length > 2 ? 'block' : 'none'}}>+ {allKeysArr.length - 2}</span>
             </div>
         </div>
     )
