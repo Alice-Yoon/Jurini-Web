@@ -127,7 +127,7 @@ export default styled(Home)`
 
             .today_btn {
                 /* border: 1px solid aqua; */
-                padding: 33px;
+                padding: 35px;
             }
 
             .card-list {

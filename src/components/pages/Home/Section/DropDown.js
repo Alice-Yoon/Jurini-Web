@@ -1,20 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 function DropDown(props) {
 
     const { date } = props;
 
-    const onChangeSelect = (e) => {
-        console.log("select changed!", e.target.value);
-    }
+    const formattedDate = moment(date).format('DD');
+    const formattedDay = moment(date).format('ddd');
+
+    // const onChangeSelect = (e) => {
+    //     console.log("select changed!", e.target.value);
+    // }
 
     return (
         <div className={props.className}>
            <div>
-               <span>{date}</span>
+               <span>{formattedDate} ({formattedDay})</span>
            </div>
-           <div>
+           {/* <div>
                <select onChange={onChangeSelect} className="selectStyle">
                    <option value="option1">All</option>
                    <option value="option2">배당귀족</option>
@@ -23,7 +27,7 @@ function DropDown(props) {
                    <option value="option1">발악주</option>
                    <option value="finance">금융주</option>
                </select>
-           </div>
+           </div> */}
         </div>
     )
 }
