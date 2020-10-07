@@ -14,33 +14,45 @@ function CardList(props) {
     const [data, setData] = useState([]);
     const [tag, setTag] = useState('');
     const [color, setColor] = useState('');
-    const [dDay, setDday] = useState(0)
+    const [dDay, setDday] = useState(0);
+    const [textColor, setTextColor] = useState('');
 
     useEffect(() => {
         setData(props.data);
 
-        // console.log("card-list:", props.data)
+        const paymentDateformatted = moment(props.data.payment_date).format("MM/DD/YYYY")
+        const paymentDateMilli = dateToMilli(paymentDateformatted); // 배당지급일
         
-        // const paymentDateMilli = dateToMilli(props.data.payment_date); // 배당지급일
-
         const Dday = selectedDateMilli - todayMilli;
         const Dday_n = moment.duration(Dday).asDays();
         setDday(Dday);
+        // console.log("card-list:", props.data)
 
-        // if(selectedDateMilli === paymentDateMilli) {
-        //     console.log("배당지급일, #FFF3E1 (green)")
-        // } else {
+        if(selectedDateMilli === paymentDateMilli) {
+            if(Dday === 0) {
+                setTag(`배당지급일`);
+                setColor('#FFF3E1');
+                setTextColor('#CC3E01');
+            } else {
+                setTag(`배당지급일 D-${Dday_n}`);
+                setColor('#FFF3E1');
+                setTextColor('#CC3E01');
+            }
+        } else {
             if(Dday === 0) {
                 setTag('배당락일');
                 setColor('#EAFFE3');
+                setTextColor('#218439')
             } else if (Dday < 0) {
                 setTag('배당락일 지남');
                 setColor('#EAFFE3');
+                setTextColor('#218439')
             } else {
                 setTag(`배당락일 D-${Dday_n}`);
                 setColor('#EAFFE3');
+                setTextColor('#218439')
             }
-        // }
+        }
 
     }, []);
 
@@ -58,13 +70,13 @@ function CardList(props) {
     return (
         <div onClick={onClickCard} 
             className={props.className} 
-            // style={{ borderLeft: `20px solid ${color}`}}
-            style={{ borderLeft: `20px solid #EAFFE3`}}
+            style={{ borderLeft: `20px solid ${color}`}}
+            // style={{ borderLeft: `20px solid #EAFFE3`}}
         >
                 <div className="container">
                     <div>
                         <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data?.dividends_rate}%</span>
-                        <span className="smallBoxStyle" style={{display: dDay < 0 ? 'none' : 'inline'}}>{tag}</span>
+                        <span className="smallBoxStyle" style={{display: dDay < 0 ? 'none' : 'inline', backgroundColor: color, color: textColor}}>{tag}</span>
                     </div>
                     <div className="title">
                         <span className="companyNameStyle">{data?.name}</span>
@@ -102,7 +114,7 @@ export default styled(CardList)`
                     background-color: #EAFFE3;
                     padding: 5px 10px;
                     font-size: 12px;
-                    color: #218439;
+                    /* color: #218439; */
                     margin-right: 3px;
                 }
                 .title {

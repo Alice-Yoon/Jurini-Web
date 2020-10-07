@@ -12,40 +12,55 @@ function Test(props){
     const selectedDateMilli = dateToMilli(selectedDate);
     
     
-    const selectedKeysArr = symbols.filter(key => {
-        const formatted = moment(data[key]?.dividends_date).format("MM/DD/YYYY");
-        const dividendsMilli = dateToMilli(formatted);
+    const selectedKeysArr_dividend = symbols.filter(key => {
+        const formatted_dividend = moment(data[key]?.dividends_date).format("MM/DD/YYYY");
+        const dividendsMilli = dateToMilli(formatted_dividend);
         return dividendsMilli === selectedDateMilli
     });
+
+    const selectedKeysArr_payment = symbols.filter(key => {
+        const formatted_payment = moment(data[key]?.payment_date).format("MM/DD/YYYY");
+        const paymentMilli = dateToMilli(formatted_payment);
+        return paymentMilli === selectedDateMilli
+    })
+
+    const allKeysArr = selectedKeysArr_dividend.concat(selectedKeysArr_payment)
     
-    const sortedKeys = selectedKeysArr.length >= 2 ? [selectedKeysArr[0], selectedKeysArr[1]] : [selectedKeysArr[0]];
+    const sortedKeys = allKeysArr.length >= 2 ? [allKeysArr[0], allKeysArr[1]] : [allKeysArr[0]];
     
     return(
         <div className={props.className} onClick={() => onClick(year, month, date)}>
             <div>{date}</div>
             <div className="cards">
-                {selectedKeysArr.length > 0 &&
+                {allKeysArr.length > 0 &&
                     sortedKeys.map((symbol, index) => (
                         <CalendarCard 
                             key={index}
+                            selectedDate={selectedDate}
                             data={data} 
                             symbol={symbol}
+                            selectedKeysArr_dividend={selectedKeysArr_dividend}
+                            selectedKeysArr_payment={selectedKeysArr_payment}
                         />
                     ))
                 }
-            <span className="rest_number" style={{display: selectedKeysArr.length > 2 ? 'block' : 'none'}}>+ {selectedKeysArr.length - 2}</span>
+            <span className="rest_number" style={{display: allKeysArr.length > 2 ? 'block' : 'none'}}>+ {allKeysArr.length - 2}</span>
             </div>
         </div>
     )
 }
 
 export default styled(Test)`
-    border: 1px solid red;
+    /* border: 0.1px solid lightgray; */
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
     padding: 10px;
+
     & {
         .cards {
             /* border: 1px solid green; */
             height: 75%;
+            margin-top: 3px;
             overflow: auto;
         }
         .rest_number {
