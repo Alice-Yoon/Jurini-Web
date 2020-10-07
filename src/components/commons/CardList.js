@@ -29,9 +29,15 @@ function CardList(props) {
         // console.log("card-list:", props.data)
 
         if(selectedDateMilli === paymentDateMilli) {
-            setTag('배당지급일');
-            setColor('#FFF3E1');
-            setTextColor('#CC3E01')
+            if(Dday === 0) {
+                setTag(`배당지급일`);
+                setColor('#FFF3E1');
+                setTextColor('#CC3E01');
+            } else {
+                setTag(`배당지급일 D-${Dday_n}`);
+                setColor('#FFF3E1');
+                setTextColor('#CC3E01');
+            }
         } else {
             if(Dday === 0) {
                 setTag('배당락일');

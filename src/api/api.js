@@ -34,7 +34,7 @@ const API = {
                 allKeysArr
             }
 
-            console.log("api-res:", res);
+            // console.log("api-res:", res);
             
             return res;
         } catch (error) {
