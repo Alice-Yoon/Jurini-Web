@@ -1,5 +1,7 @@
-import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import moment from 'moment';
+
 import Test from '../../../commons/Test';
 import API from '../../../../api/api';
  
@@ -35,6 +37,7 @@ function Calendar(props) {
 
     const [calendarListData, setCalendarListData] = useState([]);
     const [calendarListSymbols, setCalendarListSymbols] = useState([]);
+    const [clickedDate, setClickedDate] = useState('');
 
 
     ///////////////////// 지혜 작업 //////////////////////////
@@ -188,15 +191,19 @@ function Calendar(props) {
                   month={curMonth} 
                   date={date} 
                   today={today}
+                  clickedDate={clickedDate}
                 /> // -> ㄴ. 컴포넌트로 바꿀 경우
       }
     }
-
+    
     const { updateDateClicked } = props;
 
     const dateClickEvent = (year, month, date) => {
-      updateDateClicked(year, month, date)
+      updateDateClicked(year, month, date);
+      const formattedClickedDate = moment(`${year}/${month}/${date}`).format('MM-DD-YYYY')
+      setClickedDate(formattedClickedDate)
     }
+
 
     // 년도 or 달이 바뀔 때 Calendar data 가져오기
     useEffect(() => {
