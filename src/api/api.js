@@ -4,38 +4,37 @@ import moment from 'moment';
 
 import { dateToMilli } from '../utils/dateMilliConverter';
 
-// http://kkyy3402.iptime.org:20000/rest/getMontlyDividendsData?from_year=2020&from_month=8&to_year=2020&to_month=8&sort_mode=payment_date
-
 const API = {
     cards: async (selectedDateMilli, year, month) => {
         try {
 
             // 해당 month 전체 data 구하기
-            const getMonthlyData = await Axios.get(
-                    // `${API_BASE_URL}/getMontlyDividendsData?from_year=2020&from_month=9&to_year=2020&to_month=9&sort_mode=dividends_date`
-                    `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=dividends_date`
-                );
-            const monthlyData = getMonthlyData.data.data;
+            const getAllData = await Axios.get(
+                `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=all`
+            );
+            const allData = getAllData.data.data;
 
-            // 해당 month 전체 key 값만 모으기
-            const keys = Object.keys(monthlyData);
-            const keyArr = keys.filter(key => {
-                const formatted_dividendsDate = moment(monthlyData[key].dividends_date).format("MM/DD/YYYY");
-                const dividendsMilli = dateToMilli(formatted_dividendsDate)
-
-                // const formatted_paymentDate = moment(monthlyData[key].payment_date).format("MM/DD/YYYY");
-                // const paymentMilli = dateToMilli(formatted_paymentDate)
-                // console.log("api-배당락일&지급일:", (dividendsMilli === selectedDateMilli) || (paymentMilli === selectedDateMilli) )
-
+            const allKeys = Object.keys(allData);
+            const allKeys_dividends = allKeys.filter(key => {
+                const dividendsDate = moment(allData[key].dividends_date).format("MM/DD/YYYY");
+                const dividendsMilli = dateToMilli(dividendsDate);
                 return dividendsMilli === selectedDateMilli
-            });
+            })
+
+            const allKeys_payment = allKeys.filter(key => {
+                const formatted_paymentDate = moment(allData[key].payment_date).format("MM/DD/YYYY");
+                const paymentMilli = dateToMilli(formatted_paymentDate);
+                return paymentMilli === selectedDateMilli
+            })
+
+            const allKeysArr = allKeys_dividends.concat(allKeys_payment);
 
             const res = {
-                monthlyData,
-                keyArr
+                allData,
+                allKeysArr
             }
 
-            // console.log("api-res:", res);
+            console.log("api-res:", res);
             
             return res;
         } catch (error) {

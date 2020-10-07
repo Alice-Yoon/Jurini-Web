@@ -30,8 +30,9 @@ function Home(props) {
 
         const getDailyDividendsData = async() => { //API 파일에서 api들 불러오기 : 오늘날짜!
             const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
-            setKeys(getMonthlyDividendsData?.keyArr)
-            setData(getMonthlyDividendsData?.monthlyData);
+            setSelectedMilli(todayMilli)
+            setData(getMonthlyDividendsData?.allData);
+            setKeys(getMonthlyDividendsData?.allKeysArr);
         }
         getDailyDividendsData();
 
@@ -52,13 +53,11 @@ function Home(props) {
             setSelectedMilli(selectedDateMilli)
 
             const getMonthlyDividendsData = await API.cards(selectedDateMilli, year, month);
-            setData(getMonthlyDividendsData?.monthlyData);
-            setKeys(getMonthlyDividendsData?.keyArr);
+            setData(getMonthlyDividendsData?.allData);
+            setKeys(getMonthlyDividendsData?.allKeysArr);
         }
         updateDailyDividendsData();
     }
-
-    // console.log("home-data:", data)
 
     return (
         <div className={props.className}>
@@ -77,7 +76,7 @@ function Home(props) {
 
                     :
 
-                    keys && keys.map((symbol, index) => (
+                    (data.length !== 0 && keys) && keys.map((symbol, index) => (
                         <CardList 
                             key={index} 
                             data={data[symbol]} 
