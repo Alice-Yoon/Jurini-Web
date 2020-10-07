@@ -76,7 +76,7 @@ function Home(props) {
            </div>
            <div className="section_right">
                <div className="today_btn">
-                <button onClick={refreshPage}>오늘</button>
+                    <button onClick={refreshPage}>오늘</button>
                </div>
                <DropDown date={selected} />
                <div className="card-list">
@@ -128,6 +128,12 @@ export default styled(Home)`
             .today_btn {
                 /* border: 1px solid aqua; */
                 padding: 35px;
+                > button {
+                    border: 1px solid lightgray;
+                    background-color: #fff;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
             }
 
             .card-list {
@@ -147,11 +153,4 @@ export default styled(Home)`
             }
         }
     }
-
-    /* @media (max-width: 500px) {
-        flex-direction: column;
-        .section_right {
-            overflow: auto;
-        }
-    } */
 `;

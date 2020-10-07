@@ -180,6 +180,7 @@ function Calendar(props) {
       }
       else {
         return <Test 
+                  className="testStyle"
                   onClick={dateClickEvent} 
                   data={calendarListData} 
                   symbols={calendarListSymbols} 
@@ -345,8 +346,13 @@ export default styled(Calendar)`
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
     /* background-color: yellow; */
+  }
 
-
+  .testStyle {
+    cursor: pointer;
+    &:hover {
+      border: 1px solid black;
+    }
   }
 
 // 이제 이거 대신에 컴포넌트 만들기 
