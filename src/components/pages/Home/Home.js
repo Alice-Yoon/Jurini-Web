@@ -102,7 +102,7 @@ export default styled(Home)`
 
     & {
         .section_left {
-            border: 1px solid lightgray;
+            /* border: 1px solid lightgray; */
             margin-right: 20px;
             flex: 4;
         }

@@ -31,9 +31,10 @@ function CalendarCard(props) {
 }
 
 export default styled(CalendarCard)`
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     align-items: center;
+    margin-bottom: 2px;
 
     & {
         /* .co_name {

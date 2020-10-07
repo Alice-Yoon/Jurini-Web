@@ -70,8 +70,8 @@ export default styled(App)`
     .main-area {
       /* border: 2px solid black; */
 
-      height: 70vh;
-      margin-top: 200px;
+      height: 80vh;
+      margin-top: 190px;
       display: flex;
       justify-content: center;
       align-items: center;

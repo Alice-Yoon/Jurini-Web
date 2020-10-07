@@ -51,12 +51,16 @@ function Test(props){
 }
 
 export default styled(Test)`
-    border: 1px solid red;
+    /* border: 0.1px solid lightgray; */
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
     padding: 10px;
+
     & {
         .cards {
             /* border: 1px solid green; */
             height: 75%;
+            margin-top: 3px;
             overflow: auto;
         }
         .rest_number {

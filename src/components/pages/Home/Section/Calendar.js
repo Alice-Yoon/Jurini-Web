@@ -293,7 +293,7 @@ function Calendar(props) {
 // grid css : https://heropy.blog/2019/08/17/css-grid/
 export default styled(Calendar)` 
 
-border: 2px solid hotpink;
+/* border: 2px solid hotpink; */
 /* height: 100%; */
 
 &{
@@ -306,7 +306,7 @@ border: 2px solid hotpink;
 
 
   .dateTableContainer {
-    border: 2px solid aqua;
+    /* border: 2px solid aqua; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -315,40 +315,47 @@ border: 2px solid hotpink;
   }
 
   .dayTableStyle {
+    border: 1px solid lightgray;
     /* margin-top : 70px; // 요일 테이블 */
     padding-top : 3px; // 요일 칸
     padding-bottom : 3px;
     display : grid;
     grid-template-rows : repeat(1, 35px);
     grid-template-columns : repeat(7, 105px);  
-    background-color: lime;
+    /* background-color: lime; */
   }
   .dayStyle {
+    border-right: 1px solid lightgray;
     margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
     padding-left : 5px;
-    background-color : red;
+    text-align: center;
+    /* background-color : red; */
+    &:last-of-type {
+      border-right: none;
+    }
   }
 
   .dateTableStyle {
-    border: 2px solid black;
+    border-left: 1px solid lightgray;
     /* margin-top : 10px; // 날짜 테이블 */
     /* padding-top : 3px; //날짜 칸 */
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
-    background-color: yellow;
+    /* background-color: yellow; */
 
 
   }
 
 // 이제 이거 대신에 컴포넌트 만들기 
   .dateStyle { // 칸마다 
+    background-color:lightgray;
     margin-top : 3px; // margin 칸과 칸 사이 
     margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
     padding-left : 5px;
-    background-color : pink;
+    /* background-color : pink; */
   }
 }
 ` 
