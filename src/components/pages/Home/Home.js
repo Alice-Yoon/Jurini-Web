@@ -58,6 +58,8 @@ function Home(props) {
         updateDailyDividendsData();
     }
 
+    // console.log("home-data:", data)
+
     return (
         <div className={props.className}>
            <div className="section_left">
