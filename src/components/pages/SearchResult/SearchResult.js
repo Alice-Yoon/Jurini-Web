@@ -54,9 +54,15 @@ function SearchResult(props) {
                     <span id="close-btn">X</span>
                 </div>
                 <div className="card-list">
-                    {symbols && symbols.map((symbol, index) => (
-                            <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} />
-                    ))}
+                    {
+                        symbols?.length === 0 ? <div className="loading"><div className="loader"></div></div>
+
+                        : symbols === undefined ? <div className="loading"><h1>NO SEARCH RESULT</h1></div>
+
+                        : symbols && symbols.map((symbol, index) => (
+                                <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} />
+                        ))
+                    }
                 </div>
             </div>
         </div>
@@ -107,6 +113,25 @@ export default styled(SearchResult)`
             width: 85%;
             height: 85%;
             overflow: auto;
+            .loading {
+                /* border: 1px solid blue; */
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .loader {
+                border: 5px solid #f3f3f3; /* Light grey */
+                border-top: 5px solid black; /* Blue */
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 2s linear infinite;
+            }
         }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
     }
 `;

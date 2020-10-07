@@ -84,7 +84,7 @@ function Home(props) {
                     keys.length === 0 ?
 
                     <div className="no_data">
-                        <h1 >NO DATA</h1>
+                        <h1>NO DATA</h1>
                     </div>
 
                     :

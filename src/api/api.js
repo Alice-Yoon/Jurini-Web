@@ -136,6 +136,7 @@ const API = {
             return res;
         } catch (error) {
             console.error(error);
+            console.log("해당 데이터 없음 or 네트워크 오류")
         }
     },
     calendar_list: async(year, month) => {

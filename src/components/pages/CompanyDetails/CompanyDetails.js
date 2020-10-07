@@ -22,12 +22,9 @@ function CompanyDetails(props) {
 
     useEffect(() => {
         if(showCompanyDetails === true) {
-            // console.log("심볼?:", detailSymbol)
-            // const symbolTemp = 'ko'
 
             const getCompanyDetailInfo = async() => {
                 const companyDetailInfo = await API.details(detailSymbol);
-                // const companyDetailInfo = await API.details(symbolTemp);
                 setCompanyInfo(companyDetailInfo?.companyInfo);
                 setClosePrice(companyDetailInfo?.closePrice);
                 setAverage(companyDetailInfo?.average);
@@ -51,28 +48,33 @@ function CompanyDetails(props) {
             closeDetails(false);
         }
     }
-
+   
     return (
         <div className={props.className} id="container" style={{display: `${showCompanyDetails ? 'flex' : 'none' }`}} onClick={onClickToClose}>
             <div className="modalStyle">                    
-                <span id="closeBtn" onClick={onClickToClose} className="closeBtnStyle">X</span>
 
-                
-                <div className="content_top">
-                    <DetailsCard 
-                        companyInfo={companyInfo} 
-                        closePrice={closePrice} 
-                        average={average} 
-                        dividendTicker={dividendTicker} 
-                    />
-                </div>
-                <div className="contentStyle">
-                        <DetailsTable 
+                {
+                    Object.values({...companyInfo})?.length === 0 ? <div className="loading"><div className="loader"></div></div>
+                    :
+                    <>
+                    <span id="closeBtn" onClick={onClickToClose} className="closeBtnStyle">X</span>
+                    <div className="content_top">
+                        <DetailsCard 
                             companyInfo={companyInfo} 
+                            closePrice={closePrice} 
                             average={average} 
-                            years={years} 
+                            dividendTicker={dividendTicker} 
                         />
-                </div>
+                    </div>
+                    <div className="contentStyle">
+                            <DetailsTable 
+                                companyInfo={companyInfo} 
+                                average={average} 
+                                years={years} 
+                            />
+                    </div>
+                    </>
+                }
 
             </div>
         </div>
@@ -102,6 +104,22 @@ export default styled(CompanyDetails)`
             height: 65%;
             background-color: #fff;
             position: relative;
+
+            .loading {
+                /* border: 1px solid blue; */
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .loader {
+                border: 5px solid #f3f3f3; /* Light grey */
+                border-top: 5px solid black; /* Blue */
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 2s linear infinite;
+            }
         
             .closeBtnStyle {
                 /* border: 1px solid red; */
@@ -137,5 +155,9 @@ export default styled(CompanyDetails)`
                 transform: translateX(-50%);
             }
         }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
     }
 `;
