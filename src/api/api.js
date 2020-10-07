@@ -20,8 +20,13 @@ const API = {
             // 해당 month 전체 key 값만 모으기
             const keys = Object.keys(monthlyData);
             const keyArr = keys.filter(key => {
-                const formatted = moment(monthlyData[key].dividends_date).format("MM/DD/YYYY");
-                const dividendsMilli = dateToMilli(formatted)
+                const formatted_dividendsDate = moment(monthlyData[key].dividends_date).format("MM/DD/YYYY");
+                const dividendsMilli = dateToMilli(formatted_dividendsDate)
+
+                // const formatted_paymentDate = moment(monthlyData[key].payment_date).format("MM/DD/YYYY");
+                // const paymentMilli = dateToMilli(formatted_paymentDate)
+                // console.log("api-배당락일&지급일:", (dividendsMilli === selectedDateMilli) || (paymentMilli === selectedDateMilli) )
+
                 return dividendsMilli === selectedDateMilli
             });
 

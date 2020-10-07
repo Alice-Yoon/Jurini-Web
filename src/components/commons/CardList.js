@@ -18,16 +18,18 @@ function CardList(props) {
 
     useEffect(() => {
         setData(props.data);
+
+        // console.log("card-list:", props.data)
         
-        const paymentDateMilli = dateToMilli(props.data.payment_date); // 배당지급일
+        // const paymentDateMilli = dateToMilli(props.data.payment_date); // 배당지급일
 
         const Dday = selectedDateMilli - todayMilli;
         const Dday_n = moment.duration(Dday).asDays();
         setDday(Dday);
 
-        if(selectedDateMilli === paymentDateMilli) {
-            console.log("배당지급일, #FFF3E1 (green)")
-        } else {
+        // if(selectedDateMilli === paymentDateMilli) {
+        //     console.log("배당지급일, #FFF3E1 (green)")
+        // } else {
             if(Dday === 0) {
                 setTag('배당락일');
                 setColor('#EAFFE3');
@@ -38,7 +40,7 @@ function CardList(props) {
                 setTag(`배당락일 D-${Dday_n}`);
                 setColor('#EAFFE3');
             }
-        }
+        // }
 
     }, []);
 
