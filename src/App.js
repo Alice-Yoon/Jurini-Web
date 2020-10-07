@@ -71,7 +71,7 @@ export default styled(App)`
       /* border: 2px solid black; */
 
       height: 80vh;
-      margin-top: 190px;
+      margin-top: 140px;
       display: flex;
       justify-content: center;
       align-items: center;

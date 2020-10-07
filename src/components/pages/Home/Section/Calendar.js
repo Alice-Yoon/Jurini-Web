@@ -162,7 +162,6 @@ function Calendar(props) {
       }
       getThisMonthDividendsData();
 
-
     /////////////////////////////// 지혜 작업 영역 끝 /////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -276,8 +275,7 @@ function Calendar(props) {
 
         <div className="head">
           <button onClick={leftButtonClickEvent}>LEFT</button>
-          <p>{curYear}</p>
-          <p>{curMonth}</p>
+          <p>{curYear}.{curMonth < 10 ? `0${curMonth}` : curMonth}</p>
           <button onClick={rightButtonClickEvent}>RIGHT</button>
         </div>
  
@@ -301,7 +299,10 @@ export default styled(Calendar)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 8px;
+    padding: 0 100px;
+    > p {
+      font-size: 30px;
+    }
   }
 
 

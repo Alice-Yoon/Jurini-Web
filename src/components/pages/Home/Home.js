@@ -16,7 +16,8 @@ function Home(props) {
     const [data, setData] = useState([]);
     const [keys, setKeys] = useState([]);
     const [selected, setSelected] = useState('');
-    const [selectedMilli, setSelectedMilli] = useState(0)
+    const [selectedMilli, setSelectedMilli] = useState(0);
+
 
     // 오늘 날짜
     const today = moment().format("MM/DD/YYYY");
@@ -59,12 +60,24 @@ function Home(props) {
         updateDailyDividendsData();
     }
 
+    const refreshPage = () => {
+        window.location.reload(false)
+    }
+
+
     return (
         <div className={props.className}>
            <div className="section_left">
-                <Calendar data={data} symbols={keys} updateDateClicked={updateDateClicked} />
+                <Calendar 
+                    data={data} 
+                    symbols={keys} 
+                    updateDateClicked={updateDateClicked}
+                />
            </div>
            <div className="section_right">
+               <div className="today_btn">
+                <button onClick={refreshPage}>오늘</button>
+               </div>
                <DropDown date={selected} />
                <div className="card-list">
                 {
@@ -88,33 +101,40 @@ function Home(props) {
                     ))
                 }
                </div>
-           </div>
+            </div>
         </div>
     )
 }
 
 export default styled(Home)`
     /* border: 2px solid aqua; */
-    width: 85%;
-    height: 100%;
+    width: 90%;
+    height: 90vh;
 
     display: flex;
 
     & {
         .section_left {
-            /* border: 1px solid lightgray; */
+            /* border: 1px solid red; */
+            height: 88vh;
             margin-right: 20px;
             flex: 4;
         }
         .section_right {
             /* border: 1px solid blue; */
+            height: 88vh;
             flex: 1;
+
+            .today_btn {
+                /* border: 1px solid aqua; */
+                padding: 33px;
+            }
 
             .card-list {
                 /* border: 1px solid yellow; */
                 margin-top: 10px;
                 width: 100%;
-                height: 92%;
+                max-height: 75%;
                 overflow: auto;
             }
             .no_data {
