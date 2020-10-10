@@ -5,9 +5,14 @@ function DetailsCard(props) {
 
     const {companyInfo, closePrice, average, dividendTicker} = props;
 
+    console.log("companyInfo", companyInfo)
+
     return (
         <div className={props.className}>
-            <h1>{companyInfo?.Name}</h1>
+            <div className="company_name">
+                <h1>{companyInfo?.Name}</h1>
+                <span>| {companyInfo.Symbol}</span>
+            </div>
             <div className="top">
                 <span style={{display: dividendTicker === '배당킹' || dividendTicker === '배당귀족' ? 'inline' : 'none'}}>
                     {dividendTicker}
@@ -38,12 +43,23 @@ export default styled(DetailsCard)`
     font-family: Noto Sans KR;
 
     & {
-        h1 {
+        .company_name {
             /* border: 1px solid green; */
-            font-weight: 400;
-            font-size: 32px;
-            margin: 0;
-            padding: 0;
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+
+            > h1 {
+                font-weight: 400;
+                font-size: 32px;
+                margin: 0;
+                padding: 0;
+
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 85%;
+                text-overflow: ellipsis;
+            }
         }
         .top {
             /* border: 1px solid red; */

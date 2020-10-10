@@ -54,7 +54,8 @@ export default styled(NavBarHorizontal)`
     & {
         .container {
             /* border: 1px solid blue; */
-            width: 90%;
+            /* min-width: 80%; */
+            width: 85%;
             display: flex;
             justify-content: space-between;
             align-items: center;
