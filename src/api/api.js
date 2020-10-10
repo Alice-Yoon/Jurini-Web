@@ -91,6 +91,7 @@ const API = {
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
             const values = Object.values(getAverage?.data.data);
+            console.log("api - 배당률:", values);
             const reducer = (acc, curr) => acc + curr;
             const average = (values?.reduce(reducer)/values.length).toFixed(2);
             
