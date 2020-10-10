@@ -60,7 +60,7 @@ export default styled(Test)`
     /* border: 0.1px solid lightgray; */
     border-right: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-    padding: 10px;
+    /* padding: 10px; */
 
     & {
         .cards {
