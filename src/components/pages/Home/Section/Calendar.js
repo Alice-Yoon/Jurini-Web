@@ -473,6 +473,10 @@ export default styled(Calendar)`
     }
   }
 
+  .today_btn {
+    /* border: 1px solid red; */
+  }
+
 // 이제 이거 대신에 컴포넌트 만들기 
   .dateStyle { // 칸마다 
     /* background-color: #F6F6F6; */

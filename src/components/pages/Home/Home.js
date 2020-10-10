@@ -121,17 +121,6 @@ export default styled(Home)`
             height: 88vh;
             flex: 1;
 
-            .today_btn {
-                /* border: 1px solid aqua; */
-                padding: 35px;
-                > button {
-                    border: 1px solid lightgray;
-                    background-color: #fff;
-                    padding: 5px 10px;
-                    cursor: pointer;
-                }
-            }
-
             .card-list {
                 /* border: 1px solid yellow; */
                 /* margin-top: 85px; */

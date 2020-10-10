@@ -34,7 +34,7 @@ function SearchBar(props) {
                     value={value} 
                     onChange={onChange} 
                     onClick={onClickEmpty} 
-                    placeholder="검색어를 입력하세요." 
+                    placeholder="종목명을 입력하세요." 
                     className="search-bar" 
                 />
             </form>
@@ -46,7 +46,6 @@ export default styled(SearchBar)`
     /* border: 1px solid blue; */
 
     & {
-
         .search-bar {
             background-color: #F6F6F6;
             border: 1px solid #fff;
@@ -54,9 +53,6 @@ export default styled(SearchBar)`
             width: 100%;
             padding: 10px;
             color: #A7A7A7;
-
-            /* position: absolute; */
-            /* left: 50%; */
 
             &:focus {
                 border: 1px solid #FF7373;
