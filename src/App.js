@@ -51,6 +51,8 @@ function App(props) {
 }
 
 export default styled(App)`
+  font-family: Noto Sans KR;
+  
   & {
     .navbar_horizontal {
       /* border: 1px solid blue; */

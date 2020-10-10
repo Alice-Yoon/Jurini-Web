@@ -8,6 +8,8 @@ import { toggleSearchResult, closeSearchBar, updateInputValue} from '../../../mo
 
 // import {cardDummyData} from '../../../assets/dummy/cardDummyData';
 import CardListSearch from '../../commons/CardListSearch';
+import no_data from '../../../assets/img/design/no-data.png';
+import Loader from '../../commons/Loader';
 
 function SearchResult(props) {
 
@@ -54,9 +56,19 @@ function SearchResult(props) {
                     <span id="close-btn">X</span>
                 </div>
                 <div className="card-list">
-                    {symbols && symbols.map((symbol, index) => (
-                            <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} />
-                    ))}
+                    {
+                        symbols?.length === 0 ? <div className="loading"><div className="loader"></div></div>
+
+                        : symbols === undefined ?
+                            <div className="no_data">
+                                <img src={no_data} alt="no_data" className="no_data_icon" />
+                                <p>검색 결과가 없습니다.</p>
+                            </div>
+
+                        : symbols && symbols.map((symbol, index) => (
+                                <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} />
+                        ))
+                    }
                 </div>
             </div>
         </div>
@@ -107,6 +119,38 @@ export default styled(SearchResult)`
             width: 85%;
             height: 85%;
             overflow: auto;
+            .loading {
+                /* border: 1px solid blue; */
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .loader {
+                border: 5px solid #f3f3f3;
+                border-top: 5px solid gray;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 2s linear infinite;
+            }
         }
+        .no_data {
+                text-align: center;
+                margin-top: 100px;
+                color: #767676;
+                > h1 {
+                    font-size: 25px;
+                }
+                .no_data_icon {
+                    /* border: 1px solid red; */
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
     }
 `;

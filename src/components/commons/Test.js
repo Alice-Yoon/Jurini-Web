@@ -58,9 +58,10 @@ function Test(props){
 
 export default styled(Test)`
     /* border: 0.1px solid lightgray; */
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    padding: 10px;
+    border-right: 1px solid #F6F6F6;
+    border-bottom: 1px solid #F6F6F6;
+    padding-top: 10px;
+    text-align: center;
 
     & {
         .cards {
@@ -74,6 +75,7 @@ export default styled(Test)`
             margin-top: 5px;
             text-align: end;
             font-weight: bold;
+            margin-right: 10px;
         }
     }
 `;

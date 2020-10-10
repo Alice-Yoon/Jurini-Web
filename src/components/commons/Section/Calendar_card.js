@@ -9,14 +9,19 @@ function CalendarCard(props) {
 
     const [background, setBackground] = useState('');
     const [textColor, setTextColor] = useState('');
+    // const [text, setText] = useState('');
 
     useEffect(() => {
         if (selectedKeysArr_dividend.includes(symbol)) {
-            setBackground('green')
-            setTextColor('white')
+            // 배당락일
+            setBackground('#EAFFE3')
+            setTextColor('#218439')
+            // setText('배당락일')
         } else {
-            setBackground('orange')
-            setTextColor('red')
+            // 배당지급일
+            setBackground('#FFECDA')
+            setTextColor('#FF7373')
+            // setText('배당지급일')
         }
     }, [])
 
@@ -35,6 +40,8 @@ export default styled(CalendarCard)`
     display: flex;
     align-items: center;
     margin-bottom: 2px;
+    font-weight: 500;
+    font-size: 15px;
 
     & {
         /* .co_name {
