@@ -220,6 +220,9 @@ function Calendar(props) {
 
     }, [curYear, curMonth])
 
+    const refreshPage = () => {
+      window.location.reload(false)
+    }
 
 
     /////////////////////////////// 지혜 작업 영역 끝 /////////////////////////////////////////////////
@@ -285,9 +288,17 @@ function Calendar(props) {
         {/* <div>{testDate}</div> */}
 
         <div className="head">
-          <img src={left_button} alt="left_button" onClick={leftButtonClickEvent} className="buttonStyle" />
-          <p>{curYear}년 {curMonth < 10 ? `0${curMonth}` : curMonth}월</p>
-          <img src={right_button} alt="right_button" onClick={rightButtonClickEvent} className="buttonStyle" />
+          <div></div>
+
+          <div className="head_date">
+            <img src={left_button} alt="left_button" onClick={leftButtonClickEvent} className="buttonStyle" />
+            <p>{curYear}년 {curMonth < 10 ? `0${curMonth}` : curMonth}월</p>
+            <img src={right_button} alt="right_button" onClick={rightButtonClickEvent} className="buttonStyle" />
+          </div>
+
+          <div className="today_btn">
+            <button onClick={refreshPage}>오늘</button>
+          </div>
         </div>
  
         <div className="dateTableContainer">
@@ -311,7 +322,18 @@ export default styled(Calendar)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 300px;
+    padding: 0 100px;
+    margin-bottom: 10px;
+    .head_date {
+      /* border: 1px solid red; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .buttonStyle {
+        cursor: pointer;
+        margin: 0 35px;
+      }
+    }
     > p {
       font-size: 30px;
     }
@@ -370,15 +392,11 @@ export default styled(Calendar)`
     }
   }
 
-  .buttonStyle {
-    cursor: pointer;
-  }
-
 // 이제 이거 대신에 컴포넌트 만들기 
   .dateStyle { // 칸마다 
+    /* background-color: #F6F6F6; */
     border-right: 1px solid #F6F6F6;
     border-bottom: 1px solid #F6F6F6;
-    background-color: #F6F6F6;
     margin-top : 3px; // margin 칸과 칸 사이 
     margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이

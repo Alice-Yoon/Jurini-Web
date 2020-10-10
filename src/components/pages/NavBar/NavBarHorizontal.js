@@ -9,8 +9,8 @@ import SearchBar from './Section/SearchBar';
 // import search from '../../../assets/img/search.png';
 import question from '../../../assets/img/question.png';
 // import google from '../../../assets/img/google.png';
-import google from '../../../assets/img/design/google.png';
-import logo from '../../../assets/img/design/logo.png';
+import google_icon from '../../../assets/img/final/google_icon.png';
+import appicon from '../../../assets/img/final/appicon.png';
 
 function NavBarHorizontal(props) {
 
@@ -23,7 +23,7 @@ function NavBarHorizontal(props) {
         <div className={props.className}>
             <div className="container">
                 <p className="title">
-                    <img src={logo} alt="logo" className="logo" />
+                    <img src={appicon} alt="logo" className="logo" />
                     주린이 달력
                 </p>
                 <SearchBar className="searchBar" />
@@ -31,9 +31,8 @@ function NavBarHorizontal(props) {
                     <a href="https://www.notion.so/f5d8905218414bd69db83bd4795e07b9" target="_blank" rel="noopener noreferrer">
                         <img src={question} alt="question-icon" className="iconStyle" />
                     </a>   
-                    {/* <img src={google} alt="google-icon" className="googleStyle" /> */}
                     <div className="googleStyle">
-                        <img src={google} alt="google" />
+                        <img src={google_icon} alt="google" />
                         <a href="https://play.google.com/store/apps/" target="_blank" rel="noopener noreferrer">
                             Google Play
                         </a>
@@ -65,7 +64,7 @@ export default styled(NavBarHorizontal)`
             /* border: 1px solid red; */
             font-family: NanumSquareRound;
             font-style: normal;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bold;
             color: #FF7373;
             display: flex;
@@ -73,14 +72,14 @@ export default styled(NavBarHorizontal)`
             align-items: center;
             }
             .logo {
-                width: 45px;
-                height: 45px;
+                /* width: 35px; */
+                /* height: 35px; */
                 margin-right: 5px;
             }
             .searchBar {
                 /* border: 1px solid green; */
                 flex: 1;
-                padding: 0 50px;
+                padding: 0 30px;
             }
 
             .icons-area {
@@ -100,8 +99,8 @@ export default styled(NavBarHorizontal)`
                 }
                 .googleStyle {
                     border: 1px solid lightgray;
-                    border-radius: 15px;
-                    padding: 12px;
+                    border-radius: 10px;
+                    padding: 7px 15px;
                     margin-left: 50px;
                     display: flex;
                     justify-content: center;
@@ -112,7 +111,6 @@ export default styled(NavBarHorizontal)`
                     }
                     > a {
                         text-decoration: none;
-                        font-family: Noto Sans KR;
                         font-weight: bold;
                         font-size: 18px;
                         color: #000;

@@ -113,8 +113,8 @@ export default styled(CompanyDetails)`
                 justify-content: center;
             }
             .loader {
-                border: 5px solid #f3f3f3; /* Light grey */
-                border-top: 5px solid black; /* Blue */
+                border: 5px solid #f3f3f3;
+                border-top: 5px solid gray;
                 border-radius: 50%;
                 width: 30px;
                 height: 30px;
