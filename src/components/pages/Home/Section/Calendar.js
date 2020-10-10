@@ -4,6 +4,9 @@ import moment from 'moment';
 
 import Test from '../../../commons/Test';
 import API from '../../../../api/api';
+
+import left_button from '../../../../assets/img/final/arrow_left.png';
+import right_button from '../../../../assets/img/final/arrow_right.png';
  
 // days : 해당 월의 일수
 // date : 날짜
@@ -282,9 +285,9 @@ function Calendar(props) {
         {/* <div>{testDate}</div> */}
 
         <div className="head">
-          <button onClick={leftButtonClickEvent}>LEFT</button>
-          <p>{curYear}.{curMonth < 10 ? `0${curMonth}` : curMonth}</p>
-          <button onClick={rightButtonClickEvent}>RIGHT</button>
+          <img src={left_button} alt="left_button" onClick={leftButtonClickEvent} className="buttonStyle" />
+          <p>{curYear}년 {curMonth < 10 ? `0${curMonth}` : curMonth}월</p>
+          <img src={right_button} alt="right_button" onClick={rightButtonClickEvent} className="buttonStyle" />
         </div>
  
         <div className="dateTableContainer">
@@ -304,10 +307,11 @@ export default styled(Calendar)`
 
 &{
   .head{
+    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 100px;
+    padding: 0 300px;
     > p {
       font-size: 30px;
     }
@@ -324,7 +328,10 @@ export default styled(Calendar)`
   }
 
   .dayTableStyle {
-    border: 1px solid lightgray;
+    /* border: 1px solid blue; */
+    border-top: 1px solid #F6F6F6;
+    border-left: 1px solid #F6F6F6;
+    border-right: 1px solid #F6F6F6;
     /* margin-top : 70px; // 요일 테이블 */
     padding-top : 3px; // 요일 칸
     padding-bottom : 3px;
@@ -334,11 +341,12 @@ export default styled(Calendar)`
     /* background-color: lime; */
   }
   .dayStyle {
-    border-right: 1px solid lightgray;
+    border-right: 1px solid #F6F6F6;
     margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
     padding-left : 5px;
     text-align: center;
+    color: #A7A7A7;
     /* background-color : red; */
     &:last-of-type {
       border-right: none;
@@ -346,7 +354,7 @@ export default styled(Calendar)`
   }
 
   .dateTableStyle {
-    border-left: 1px solid lightgray;
+    border-left: 1px solid #F6F6F6;
     /* margin-top : 10px; // 날짜 테이블 */
     /* padding-top : 3px; //날짜 칸 */
     display : grid;
@@ -362,9 +370,15 @@ export default styled(Calendar)`
     }
   }
 
+  .buttonStyle {
+    cursor: pointer;
+  }
+
 // 이제 이거 대신에 컴포넌트 만들기 
   .dateStyle { // 칸마다 
-    background-color:lightgray;
+    border-right: 1px solid #F6F6F6;
+    border-bottom: 1px solid #F6F6F6;
+    background-color: #F6F6F6;
     margin-top : 3px; // margin 칸과 칸 사이 
     margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
