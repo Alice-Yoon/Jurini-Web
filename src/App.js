@@ -1,33 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 
 import NavBarHorizontal from './components/pages/NavBar/NavBarHorizontal';
-import NavBarVertical from './components/pages/NavBar/NavBarVertical';
 import Home from './components/pages/Home/Home';
 import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
-import Introduction from './components/pages/Introduction/Introduction';
 import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
 
+import API from './api/api';
+
 function App(props) {
+  const showSearchResult = useSelector(state => state.search.isResultShow);
+
+  const [exchangeRate, setExchangeRage] = useState(1);
+
+
+  useEffect(() => {
+    const exchangeRate = async() => {
+      // 달러 환율 가져오기
+      const exchangeRate = await API.exchange();
+      setExchangeRage(parseInt(exchangeRate?.data.data['5. Exchange Rate']).toFixed(2))
+    }
+    exchangeRate();
+  }, [])
+
   return (
     <div className={props.className}>
      <Router>
 
       {/* NavBar 영역 */}
       <NavBarHorizontal className="navbar_horizontal" />
-      <NavBarVertical className="navbar_vertical" />
       <SpeechBubble className="speech-bubble" />
 
       {/* Main Area 영역 */}
       <main className="main-area">
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/search" component={SearchResult} />
-          <Route exact path="/introduction" component={Introduction} />
+          <Route exact path="/">
+            <Home exchangeRate={exchangeRate} />
+          </Route>
         </Switch>
+        {showSearchResult && <SearchResult exchangeRate={exchangeRate}  />}
       </main>
 
      </Router>
@@ -37,9 +51,11 @@ function App(props) {
 }
 
 export default styled(App)`
+  font-family: Noto Sans KR;
+  
   & {
     .navbar_horizontal {
-      border: 1px solid blue;
+      /* border: 1px solid blue; */
 
       position: fixed;
       top:0;
@@ -47,27 +63,26 @@ export default styled(App)`
       width: 100%;
       z-index: 1;
     }
-    .navbar_vertical {
-      border: 1px solid green;
-
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100px;
-    }
     .speech-bubble {
       position: fixed;
       top: 100px;
       right: 30px;
-      z-index: 200;
+      z-index: 50;
     }
     .main-area {
-      border: 2px solid red;
+      /* border: 2px solid black; */
 
-      height: 100vh;
-      margin-top: 200px;
-      margin-left: 110px;
+      height: 80vh;
+      margin-top: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+    /* @media (max-width: 500px) {
+      .main-area {
+        height: 100vh;
+        margin-right: 0;
+      }
+    } */
   }
 `;

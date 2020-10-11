@@ -1,41 +1,136 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 import Calendar from './Section/Calendar';
 import CardList from '../../commons/CardList';
+import no_data from '../../../assets/img/design/no-data.png';
 
-import { cardDummyData } from '../../../assets/dummy/cardDummyData';
+import { dateToMilli } from '../../../utils/dateMilliConverter';
+import API from '../../../api/api';
 
 function Home(props) {
+
+    const { exchangeRate } = props;
+
+    const [data, setData] = useState([]);
+    const [keys, setKeys] = useState([]);
+    const [selected, setSelected] = useState('');
+    const [selectedMilli, setSelectedMilli] = useState(0);
+
+    const today = moment().format("MM/DD/YYYY");
+    const todayMilli = dateToMilli(today);
+    const today_year = moment().year();
+    const today_month = moment().month() + 1;
+
+    useEffect(() => {
+
+        setSelected(today)
+
+        const getDailyDividendsData = async() => { 
+            const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
+            setSelectedMilli(todayMilli)
+            setData(getMonthlyDividendsData?.allData);
+            setKeys(getMonthlyDividendsData?.allKeysArr);
+        }
+        getDailyDividendsData();
+
+    }, []);
+
+    const updateDateClicked = (year, month, date) => {
+
+        setData([]);
+        setKeys([]);
+
+        setSelected(`${month}/${date}/${year}`);
+        
+        const updateDailyDividendsData = async() => {
+            
+            const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
+            const selectedDateMilli = dateToMilli(selectedDate);
+            setSelectedMilli(selectedDateMilli)
+
+            const getMonthlyDividendsData = await API.cards(selectedDateMilli, year, month);
+            setData(getMonthlyDividendsData?.allData);
+            setKeys(getMonthlyDividendsData?.allKeysArr);
+        }
+        updateDailyDividendsData();
+    }
+
+
     return (
         <div className={props.className}>
            <div className="section_left">
-                <Calendar />
+                <Calendar 
+                    data={data} 
+                    symbols={keys} 
+                    updateDateClicked={updateDateClicked}
+                />
            </div>
            <div className="section_right">
-               {cardDummyData && cardDummyData.map(data => (
-                   <CardList data={data} />
-               ))}
-           </div>
+               <div className="card-list">
+                {
+                    keys.length === 0 ?
+
+                    <div className="no_data">
+                        <img src={no_data} alt="no_data" className="no_data_icon" />
+                        <p>날짜에 해당하는 종목이 없습니다.</p>
+                    </div>
+
+                    :
+
+                    (data.length !== 0 && keys) && keys.map((symbol, index) => (
+                        <CardList 
+                            key={index} 
+                            data={data[symbol]} 
+                            symbol={symbol}
+                            selectedDateMilli={selectedMilli}
+                            todayMilli={todayMilli}
+                            exchangeRate={exchangeRate}
+                        />
+                    ))
+                }
+               </div>
+            </div>
         </div>
     )
 }
 
 export default styled(Home)`
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90vh;
 
     display: flex;
 
     & {
         .section_left {
-            border: 1px solid blue;
-            flex: 1;
+            height: 88vh;
+            margin-right: 20px;
+            flex: 4;
         }
         .section_right {
-            border: 1px solid green;
+            height: 88vh;
             flex: 1;
-            overflow: auto;
+
+            .card-list {
+                width: 100%;
+                max-height: 95%;
+                overflow: auto;
+            }
+            .no_data {
+                width: 365px;
+                height: 100%;
+                text-align: center;
+                margin-top: 200px;
+                color: #767676;
+                > h1 {
+                    font-size: 25px;
+                }
+                .no_data_icon {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
         }
     }
 `;

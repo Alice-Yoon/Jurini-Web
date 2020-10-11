@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import SearchBar from './Section/SearchBar';
 
-import search from '../../../assets/img/search.png';
-import google from '../../../assets/img/google.png';
+import question from '../../../assets/img/question.png';
+import google_icon from '../../../assets/img/final/google_icon.png';
+import appicon from '../../../assets/img/final/appicon.png';
 
 function NavBarHorizontal(props) {
-
-    const [showSearchBar, setShowSearchBar] = useState(false);
-
-    const onClickSearchIcon = () => {
-        console.log("search icon clicked!");
-        setShowSearchBar(!showSearchBar);
-    }
-
     return (
         <div className={props.className}>
             <div className="container">
-                <p className="title">주린이 달력</p>
-                {showSearchBar? <SearchBar className="searchBar" /> : null}
-                <div className="icons-area">   
-                    <img src={search} alt="search-icon" className="iconStyle" onClick={onClickSearchIcon} />
-                    <img src={google} alt="google-icon" className="googleStyle" />
+                <p className="title">
+                    <img src={appicon} alt="logo" className="logo" />
+                    주린이 달력
+                </p>
+                <SearchBar className="searchBar" />
+                <div className="icons-area">
+                    <a href="https://www.notion.so/f5d8905218414bd69db83bd4795e07b9" target="_blank" rel="noopener noreferrer">
+                        <img src={question} alt="question-icon" className="iconStyle" />
+                    </a>   
+                    <div className="googleStyle">
+                        <img src={google_icon} alt="google" />
+                        <a href="https://play.google.com/store/apps/" target="_blank" rel="noopener noreferrer">
+                            Google Play
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,26 +33,36 @@ function NavBarHorizontal(props) {
 }
 
 export default styled(NavBarHorizontal)`
+    border-bottom: 1px solid #F6F6F6;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     & {
         .container {
-            /* border: 2px solid black; */
-            background-color: #C4C4C4;
-            padding: 10px;
+            width: 85%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 15px 0 50px;
 
             .title {
-            /* border: 1px solid red; */
-            font-size: 25px;
+            font-family: NanumSquareRound;
+            font-style: normal;
+            font-size: 20px;
             font-weight: bold;
+            color: #FF7373;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            .logo {
+                margin-right: 5px;
             }
             .searchBar {
-                /* border: 1px solid green; */
                 flex: 1;
-                padding: 0 100px;
+                padding: 0 30px;
             }
 
             .icons-area {
@@ -57,7 +70,6 @@ export default styled(NavBarHorizontal)`
                 align-items: center;
 
                 .iconStyle {
-                    /* border: 1px solid blue; */
                     height: 30px;
                     width: 30px;
                     font-size: 18px;
@@ -68,10 +80,23 @@ export default styled(NavBarHorizontal)`
                     }
                 }
                 .googleStyle {
-                    /* border: 1px solid yellow; */
-                    height: 50px;
-                    width: 100px;
+                    border: 1px solid lightgray;
+                    border-radius: 10px;
+                    padding: 7px 15px;
                     margin-left: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    > img {
+                        margin-right: 10px; 
+                    }
+                    > a {
+                        text-decoration: none;
+                        font-weight: bold;
+                        font-size: 18px;
+                        color: #000;
+                    }
                 }
             }
         }
