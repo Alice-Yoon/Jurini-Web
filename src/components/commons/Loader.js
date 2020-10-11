@@ -10,15 +10,14 @@ const Loader = () => {
 export default styled(Loader)`
  & {
     .loading {
-        /* border: 1px solid blue; */
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .loader {
-        border: 5px solid #f3f3f3; /* Light grey */
-        border-top: 5px solid gray; /* Blue */
+        border: 5px solid #f3f3f3; 
+        border-top: 5px solid gray; 
         border-radius: 50%;
         width: 30px;
         height: 30px;

@@ -183,12 +183,13 @@ function Calendar(props) {
 
 
 
-    const addDate = date => { 
+    const addDate = (date, index) => { 
       if(date === -1){ 
-        return <div className="dateStyle">{}</div> 
+        return <div key={index} className="dateStyle">{}</div> 
       }
       else {
         return <Test 
+                  key={index}
                   className="testStyle"
                   onClick={dateClickEvent} 
                   data={calendarListData} 
@@ -229,7 +230,7 @@ function Calendar(props) {
 
     const DaysOfTheMonth = newArr.map(addDate); 
 
-    const DayOfTheWeek = (['S','M','T','W','T','F','S'].map(day => <div className="dayStyle">{day}</div>));
+    const DayOfTheWeek = (['S','M','T','W','T','F','S'].map((day, index) => <div key={index} className="dayStyle">{day}</div>));
     
     const leftButtonClickEvent = () => {
       
@@ -363,4 +364,4 @@ export default styled(Calendar)`
     padding-left : 5px;
   }
 }
-` 
+` ;
