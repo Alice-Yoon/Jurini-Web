@@ -47,7 +47,6 @@ export default styled(SpeechBubble)`
             z-index: -100;
         }
         .closeBtn {
-            /* border: 1px solid green; */
             position: absolute;
             top: 7px;
             right: 10px;

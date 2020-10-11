@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
 import { toggleSearchResult, updateInputValue } from '../../../../modules/search';
-// import search from '../../../../assets/img/search.png';
 
 
 function SearchBar(props) {
@@ -43,7 +42,6 @@ function SearchBar(props) {
 }
 
 export default styled(SearchBar)`
-    /* border: 1px solid blue; */
 
     & {
         .search-bar {

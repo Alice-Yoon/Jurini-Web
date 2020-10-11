@@ -8,7 +8,6 @@ const API = {
     cards: async (selectedDateMilli, year, month) => {
         try {
 
-            // 해당 month 전체 data 구하기
             const getAllData = await Axios.get(
                 `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=all`
             );
@@ -33,8 +32,6 @@ const API = {
                 allData,
                 allKeysArr
             }
-
-            // console.log("api-res:", res);
             
             return res;
         } catch (error) {
@@ -76,26 +73,21 @@ const API = {
     },
     details: async (detailSymbol) => {
         try {
-            // 회사정보 - 회사이름, 심볼, 배당률, 시가총액, 배당락일
             const getCompanyInfo = await Axios.get(
                 `${API_BASE_URL}/getCompanySummaryInfo?symbol=${detailSymbol}`
             );
 
-            // 전일종가
             const getClosePrice = await Axios.get(
                 `${API_BASE_URL}/getLatestClosePrice?symbol=${detailSymbol}`
             );
 
-            // 평균 배당률
             const getAverage = await Axios.get(
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
             const values = Object.values(getAverage?.data.data);
-            console.log("api - 배당률:", values);
             const reducer = (acc, curr) => acc + curr;
             const average = (values?.reduce(reducer)/values.length).toFixed(2);
             
-            // 배당지속기간
             const keys = Object.keys(getAverage?.data.data);
             keys.sort((a,b) => a - b);
             const firstYear = parseInt(keys[0]);
@@ -103,7 +95,6 @@ const API = {
             const duration = moment.duration(lastYear-firstYear, 'milliseconds');
             const years = Math.floor(duration.asYears());
 
-            // 배당킹, 배당귀족 티커?
             const getDividendKing = await Axios.get(
                 `${API_BASE_URL}/getDividendKingTickerList`
             );
@@ -125,8 +116,6 @@ const API = {
                 dividendTicker = ''
             }
 
-            // 고배당주 티커 -> DetailsCard에서 average로 직접 적용!
-
             const res = {
                 companyInfo: getCompanyInfo?.data.data,
                 closePrice: getClosePrice?.data.data,
@@ -137,7 +126,6 @@ const API = {
             return res;
         } catch (error) {
             console.error(error);
-            console.log("해당 데이터 없음 or 네트워크 오류")
         }
     },
     calendar_list: async(year, month) => {

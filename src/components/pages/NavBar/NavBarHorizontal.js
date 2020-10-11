@@ -1,24 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { toggleSearchBar } from '../../../modules/search';
 
 import SearchBar from './Section/SearchBar';
 
-// import search from '../../../assets/img/search.png';
 import question from '../../../assets/img/question.png';
-// import google from '../../../assets/img/google.png';
 import google_icon from '../../../assets/img/final/google_icon.png';
 import appicon from '../../../assets/img/final/appicon.png';
 
 function NavBarHorizontal(props) {
-
-    // const isBarShow = useSelector(state => state.search.isBarShow);
-    // const dispatch = useDispatch();
-    // const onClickToggleBar = () => dispatch(toggleSearchBar());
-
-
     return (
         <div className={props.className}>
             <div className="container">
@@ -44,7 +33,6 @@ function NavBarHorizontal(props) {
 }
 
 export default styled(NavBarHorizontal)`
-    /* border: 1px solid red; */
     border-bottom: 1px solid #F6F6F6;
     background-color: #fff;
     display: flex;
@@ -53,8 +41,6 @@ export default styled(NavBarHorizontal)`
 
     & {
         .container {
-            /* border: 1px solid blue; */
-            /* min-width: 80%; */
             width: 85%;
             display: flex;
             justify-content: space-between;
@@ -62,7 +48,6 @@ export default styled(NavBarHorizontal)`
             padding: 0 15px 0 50px;
 
             .title {
-            /* border: 1px solid red; */
             font-family: NanumSquareRound;
             font-style: normal;
             font-size: 20px;
@@ -73,12 +58,9 @@ export default styled(NavBarHorizontal)`
             align-items: center;
             }
             .logo {
-                /* width: 35px; */
-                /* height: 35px; */
                 margin-right: 5px;
             }
             .searchBar {
-                /* border: 1px solid green; */
                 flex: 1;
                 padding: 0 30px;
             }
@@ -88,7 +70,6 @@ export default styled(NavBarHorizontal)`
                 align-items: center;
 
                 .iconStyle {
-                    /* border: 1px solid blue; */
                     height: 30px;
                     width: 30px;
                     font-size: 18px;

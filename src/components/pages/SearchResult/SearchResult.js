@@ -6,10 +6,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleSearchResult, closeSearchBar, updateInputValue} from '../../../modules/search';
 
-// import {cardDummyData} from '../../../assets/dummy/cardDummyData';
 import CardListSearch from '../../commons/CardListSearch';
 import no_data from '../../../assets/img/design/no-data.png';
-import Loader from '../../commons/Loader';
 
 function SearchResult(props) {
 
@@ -76,9 +74,7 @@ function SearchResult(props) {
 
 }
 
-export default styled(SearchResult)`
-    /* border: 1px solid blue; */
-  
+export default styled(SearchResult)`  
     z-index: 100;
     position: fixed;
     top: 0;
@@ -86,7 +82,6 @@ export default styled(SearchResult)`
     width: 100%;
     height: 100%;
     margin-top: 80px;
-    /* margin-left: 220px; */
     margin-right: 10px;
     background-color: rgba(0,0,0,0.3);
     display: flex;
@@ -94,7 +89,6 @@ export default styled(SearchResult)`
 
     & {
         .container_result {
-            /* border: 1px solid green; */
             border-radius: 15px;
             background-color: #fff;
             box-shadow: 0 0 3px rgba(0,0,0,0.7);
@@ -106,7 +100,6 @@ export default styled(SearchResult)`
             position: relative;
         }
         .close-btn {
-            /* border: 1px solid red; */
             position: absolute;
             top: 10px;
             right: 10px;
@@ -115,12 +108,10 @@ export default styled(SearchResult)`
             cursor: pointer;
         }
         .card-list {
-            /* border: 1px solid yellow; */
             width: 85%;
             height: 85%;
             overflow: auto;
             .loading {
-                /* border: 1px solid blue; */
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -143,7 +134,6 @@ export default styled(SearchResult)`
                     font-size: 25px;
                 }
                 .no_data_icon {
-                    /* border: 1px solid red; */
                     width: 100px;
                     height: 100px;
                 }

@@ -43,7 +43,6 @@ function DetailsTable(props) {
 }
 
 export default styled(DetailsTable)`
-    /* border: 1px solid green; */
     margin-left: 10px;
     flex: 1;
     

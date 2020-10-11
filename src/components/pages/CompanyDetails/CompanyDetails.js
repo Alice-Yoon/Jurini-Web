@@ -97,7 +97,6 @@ export default styled(CompanyDetails)`
 
     & {
         .modalStyle {
-            /* border: 1px solid red; */
             border-radius: 42px;
             width: 55%;
             max-width: 400px;
@@ -106,7 +105,6 @@ export default styled(CompanyDetails)`
             position: relative;
 
             .loading {
-                /* border: 1px solid blue; */
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -122,7 +120,6 @@ export default styled(CompanyDetails)`
             }
         
             .closeBtnStyle {
-                /* border: 1px solid red; */
                 cursor: pointer;
                 padding-right: 10px;
                 position: absolute;
@@ -134,15 +131,13 @@ export default styled(CompanyDetails)`
                 font-weight: 500;
             }
             .content_top {
-                    /* border:  1px solid red; */
-                    width: 80%;
-                    position: relative;
-                    top: -35px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
+                width: 80%;
+                position: relative;
+                top: -35px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
             .contentStyle {
-                /* border: 1px solid blue; */
                 padding-top: 20px;
 
                 width: 80%;
