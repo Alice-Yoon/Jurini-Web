@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Jurini-Web/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/Jurini-Web/static/js/main.9154e17f.chunk.js",
+    "main.js.map": "/Jurini-Web/static/js/main.9154e17f.chunk.js.map",
+    "runtime-main.js": "/Jurini-Web/static/js/runtime-main.4220d0de.js",
+    "runtime-main.js.map": "/Jurini-Web/static/js/runtime-main.4220d0de.js.map",
+    "static/js/2.622ca867.chunk.js": "/Jurini-Web/static/js/2.622ca867.chunk.js",
+    "static/js/2.622ca867.chunk.js.map": "/Jurini-Web/static/js/2.622ca867.chunk.js.map",
+    "index.html": "/Jurini-Web/index.html",
+    "precache-manifest.662b4f22096bd7a8d58835ff9691654a.js": "/Jurini-Web/precache-manifest.662b4f22096bd7a8d58835ff9691654a.js",
+    "service-worker.js": "/Jurini-Web/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/Jurini-Web/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.622ca867.chunk.js.LICENSE.txt": "/Jurini-Web/static/js/2.622ca867.chunk.js.LICENSE.txt",
+    "static/media/no-data.png": "/Jurini-Web/static/media/no-data.91fc682d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4220d0de.js",
+    "static/js/2.622ca867.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.9154e17f.chunk.js"
+  ]
+}
