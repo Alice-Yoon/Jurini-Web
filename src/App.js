@@ -10,6 +10,7 @@ import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 import SpeechBubble from './components/pages/NavBar/Section/SpeechBubble';
 
 import API from './api/api';
+import Axios from 'axios';
 
 function App(props) {
   const showSearchResult = useSelector(state => state.search.isResultShow);

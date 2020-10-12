@@ -474,7 +474,21 @@ export default styled(Calendar)`
   }
 
   .today_btn {
-    /* border: 1px solid red; */
+    /* border: 1px solid blue; */
+    > button {
+      cursor: pointer;
+      background-color: #fff;
+      border: 1px solid #fff;
+      border-radius: 13px;
+      box-shadow:0px 4px 16px rgba(0,0,0, 0.1);
+      padding: 10px 15px;
+      &:focus {
+        outline: none;
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
   }
 
 // 이제 이거 대신에 컴포넌트 만들기 
