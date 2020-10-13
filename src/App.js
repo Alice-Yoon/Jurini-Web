@@ -36,9 +36,9 @@ function App(props) {
     //   const reducer = (acc, curr) => acc + curr;
     //   // const average = (valuesFive?.reduce(reducer)/valuesFive.length).toFixed(2);
     //   const average = (valuesFive?.reduce(reducer));
-    //   console.log("배당금-average test:", average);
+    //   console.log("배당금-average test:", average / 5);
     //   // ko 전일종가 - $50.00
-    //   console.log("배당금 평균/전일종가:", average / 50)
+    //   console.log("배당금 평균/전일종가:", average/248)
     // }
     // test();
   }, [])
