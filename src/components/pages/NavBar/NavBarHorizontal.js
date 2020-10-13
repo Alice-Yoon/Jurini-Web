@@ -66,6 +66,7 @@ export default styled(NavBarHorizontal)`
 
             .title {
             /* border: 1px solid red; */
+            min-width: 150px;
             font-family: NanumSquareRound;
             font-style: normal;
             font-size: 20px;
@@ -110,6 +111,7 @@ export default styled(NavBarHorizontal)`
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+                    width: 120px;
                     > img {
                         margin-right: 10px; 
                     }
