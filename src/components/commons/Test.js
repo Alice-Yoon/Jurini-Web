@@ -8,7 +8,8 @@ import { useSelector } from 'react-redux';
 
 function Test(props){
 
-    const {year, month, date, onClick, data, symbols} = props;
+    const {year, month, date, onClick, data, symbols, today} = props;
+    // console.log("test-date:", `${month}/${date}/${year}`, date < 10)
 
     const highlightedDate = useSelector(state => state.calendar.highlightedDate);
     const formattedHightlightedDate = moment(highlightedDate).format("MM/DD/YYYY")
@@ -42,6 +43,7 @@ function Test(props){
                                         boxShadow: isHighlighted && '0px 0px 12px rgba(255, 158, 128, 0.45)',
                                         color: isHighlighted && "#fff",
                                         fontWeight: isHighlighted && '650',
+                                        padding: date < 10 ? '7px 11px 5px 11px' : date === 11 ? '7px 10px 5px 10px' : '7px 8px 5px 8px',
                                         }}
                 >
                     {date}
@@ -88,9 +90,11 @@ export default styled(Test)`
         .rest_number {
             /* border: 1px solid green; */
             margin-top: 5px;
+            margin-right: 5px;
             text-align: end;
             font-weight: bold;
-            margin-right: 10px;
+            font-size: 13px;
+            color: gray;
         }
     }
 `;
