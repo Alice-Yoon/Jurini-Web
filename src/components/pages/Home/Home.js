@@ -10,6 +10,9 @@ import no_data from '../../../assets/img/design/no-data.png';
 import { dateToMilli } from '../../../utils/dateMilliConverter';
 import API from '../../../api/api';
 
+import { useDispatch } from 'react-redux';
+import { updateHightlightedDate } from '../../../modules/calendar';
+
 function Home(props) {
 
     const { exchangeRate } = props;
@@ -18,6 +21,9 @@ function Home(props) {
     const [keys, setKeys] = useState([]);
     const [selected, setSelected] = useState('');
     const [selectedMilli, setSelectedMilli] = useState(0);
+
+    const dispatch = useDispatch();
+    const hightlightDate = (payload) => dispatch(updateHightlightedDate(payload));
 
 
     // 오늘 날짜
@@ -28,7 +34,8 @@ function Home(props) {
 
     useEffect(() => {
 
-        setSelected(today)
+        setSelected(today);
+        hightlightDate(today);
 
         const getDailyDividendsData = async() => { //API 파일에서 api들 불러오기 : 오늘날짜!
             const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
@@ -47,7 +54,8 @@ function Home(props) {
 
         // 선택된 날짜
         setSelected(`${month}/${date}/${year}`);
-        
+        hightlightDate(`${month}/${date}/${year}`);
+
         const updateDailyDividendsData = async() => {
             
             const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
