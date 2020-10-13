@@ -104,7 +104,9 @@ function Home(props) {
 
 export default styled(Home)`
     /* border: 2px solid aqua; */
-    width: 90%;
+    /* width: 90%; */
+    /* width: 80%; */
+    width: 1230px;
     height: 90vh;
 
     display: flex;

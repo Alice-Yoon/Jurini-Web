@@ -57,7 +57,7 @@ export default styled(DetailsCard)`
 
                 white-space: nowrap;
                 overflow: hidden;
-                max-width: 85%;
+                max-width: 80%;
                 text-overflow: ellipsis;
             }
         }

@@ -11,6 +11,7 @@ import question from '../../../assets/img/question.png';
 // import google from '../../../assets/img/google.png';
 import google_icon from '../../../assets/img/final/google_icon.png';
 import appicon from '../../../assets/img/final/appicon.png';
+import SpeechBubble from './Section/SpeechBubble';
 
 function NavBarHorizontal(props) {
 
@@ -38,14 +39,15 @@ function NavBarHorizontal(props) {
                         </a>
                     </div>
                 </div>
+                <SpeechBubble className="speech-bubble" />
             </div>
         </div>
     )
 }
 
 export default styled(NavBarHorizontal)`
-    /* border: 1px solid red; */
     border-bottom: 1px solid #F6F6F6;
+    /* border: 1px solid blue; */
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -53,13 +55,14 @@ export default styled(NavBarHorizontal)`
 
     & {
         .container {
-            /* border: 1px solid blue; */
-            /* min-width: 80%; */
-            width: 85%;
+            /* border: 1px solid green; */
+            /* width: 80%; */
+            width: 1150px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 15px 0 50px;
+            position: relative;
 
             .title {
             /* border: 1px solid red; */
@@ -117,6 +120,12 @@ export default styled(NavBarHorizontal)`
                         color: #000;
                     }
                 }
+            }
+            .speech-bubble {
+                    position: absolute;
+                    top: 80px;
+                    right: -25px;
+                    z-index: 50;
             }
         }
         

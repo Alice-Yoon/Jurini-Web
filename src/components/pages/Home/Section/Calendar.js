@@ -259,13 +259,14 @@ function Calendar(props) {
 
 
 
-    const addDate = date => { 
+    const addDate = (date, index) => { 
       // console.log(date);
       if(date === -1){ 
-        return <div className="dateStyle">{}</div> // 1일 전은 빈 값
+        return <div key={index} className="dateStyle">{}</div> // 1일 전은 빈 값
       }
       else {
         return <Test 
+                  key={index}
                   className="testStyle"
                   onClick={dateClickEvent} 
                   data={calendarListData} 
@@ -330,7 +331,7 @@ function Calendar(props) {
     const DaysOfTheMonth = newArr.map(addDate); 
 
     // 요일 
-    const DayOfTheWeek = (['S','M','T','W','T','F','S'].map(day => <div className="dayStyle">{day}</div>));
+    const DayOfTheWeek = (['S','M','T','W','T','F','S'].map((day, index) => <div key={index} className="dayStyle">{day}</div>));
     
     const leftButtonClickEvent = () => {
       console.log("leftButtonClick 이벤트"); 
@@ -395,7 +396,10 @@ function Calendar(props) {
 export default styled(Calendar)` 
 
 /* border: 2px solid hotpink; */
-/* height: 100%; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 
 &{
   .head{
@@ -404,7 +408,9 @@ export default styled(Calendar)`
     justify-content: space-between;
     align-items: center;
     padding: 0 100px;
+    padding-right: 15px;
     margin-bottom: 10px;
+    width: 600px;
     .head_date {
       /* border: 1px solid red; */
       display: flex;
@@ -431,10 +437,13 @@ export default styled(Calendar)`
   }
 
   .dayTableStyle {
-    /* border: 1px solid blue; */
     border-top: 1px solid #F6F6F6;
     border-left: 1px solid #F6F6F6;
     border-right: 1px solid #F6F6F6;
+
+    /* border: 1px solid blue; */
+    width: 100%;
+
     /* margin-top : 70px; // 요일 테이블 */
     padding-top : 3px; // 요일 칸
     padding-bottom : 3px;
@@ -445,6 +454,7 @@ export default styled(Calendar)`
   }
   .dayStyle {
     border-right: 1px solid #F6F6F6;
+    /* border: 1px solid green; */
     margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
     padding-left : 5px;
@@ -458,6 +468,9 @@ export default styled(Calendar)`
 
   .dateTableStyle {
     border-left: 1px solid #F6F6F6;
+
+    /* border: 1px solid black; */
+    width: 100%;
     /* margin-top : 10px; // 날짜 테이블 */
     /* padding-top : 3px; //날짜 칸 */
     display : grid;

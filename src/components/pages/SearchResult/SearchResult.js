@@ -86,7 +86,6 @@ export default styled(SearchResult)`
     width: 100%;
     height: 100%;
     margin-top: 80px;
-    /* margin-left: 220px; */
     margin-right: 10px;
     background-color: rgba(0,0,0,0.3);
     display: flex;
@@ -99,11 +98,13 @@ export default styled(SearchResult)`
             background-color: #fff;
             box-shadow: 0 0 3px rgba(0,0,0,0.7);
             width: 40%;
+            max-width: 600px;
             height: 60%;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            transform: translateX(-30px);
         }
         .close-btn {
             /* border: 1px solid red; */
