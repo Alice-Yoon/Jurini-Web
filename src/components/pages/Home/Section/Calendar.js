@@ -429,6 +429,8 @@ align-items: center;
 
   .dateTableContainer {
     /* border: 2px solid aqua; */
+    border: 1px solid #F6F6F6;
+    border-left: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -437,50 +439,45 @@ align-items: center;
   }
 
   .dayTableStyle {
-    border-top: 1px solid #F6F6F6;
-    border-left: 1px solid #F6F6F6;
-    border-right: 1px solid #F6F6F6;
-
     /* border: 1px solid blue; */
     width: 100%;
-
-    /* margin-top : 70px; // 요일 테이블 */
-    padding-top : 3px; // 요일 칸
-    padding-bottom : 3px;
     display : grid;
     grid-template-rows : repeat(1, 35px);
     grid-template-columns : repeat(7, 105px);  
     /* background-color: lime; */
   }
   .dayStyle {
-    border-right: 1px solid #F6F6F6;
+    border-left: 1px solid #F6F6F6;
     /* border: 1px solid green; */
-    margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
     padding-left : 5px;
     text-align: center;
     color: #A7A7A7;
     /* background-color : red; */
+    &:first-of-type {
+      border-left: 1px solid #F6F6F6;
+    }
     &:last-of-type {
       border-right: none;
     }
   }
 
   .dateTableStyle {
-    border-left: 1px solid #F6F6F6;
-
     /* border: 1px solid black; */
     width: 100%;
-    /* margin-top : 10px; // 날짜 테이블 */
-    /* padding-top : 3px; //날짜 칸 */
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
-    /* background-color: yellow; */
   }
 
   .testStyle {
+    /* border: 1px solid blue; */
+    border-left: 1px solid #F6F6F6;
+    border-bottom: 1px solid #F6F6F6;
     cursor: pointer;
+    &:last-of-type {
+      border-right: 1px solid #F6F6F6;
+    }
     &:hover {
       border: 1px dotted black;
     }
@@ -507,12 +504,9 @@ align-items: center;
 // 이제 이거 대신에 컴포넌트 만들기 
   .dateStyle { // 칸마다 
     /* background-color: #F6F6F6; */
-    border-right: 1px solid #F6F6F6;
-    border-bottom: 1px solid #F6F6F6;
+    border-left: 1px solid #F6F6F6;
     margin-top : 3px; // margin 칸과 칸 사이 
-    margin-left : 3px;
     padding-top : 5px; // 숫자와 칸 경계 사이
-    padding-left : 5px;
     /* background-color : pink; */
   }
 }

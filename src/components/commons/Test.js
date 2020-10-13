@@ -70,8 +70,8 @@ function Test(props){
 
 export default styled(Test)`
     /* border: 0.1px solid lightgray; */
-    border-right: 1px solid #F6F6F6;
-    border-bottom: 1px solid #F6F6F6;
+    /* border-left: 1px solid #F6F6F6;
+    border-bottom: 1px solid #F6F6F6; */
     text-align: center;
 
     & {
