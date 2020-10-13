@@ -125,7 +125,6 @@ export default styled(Home)`
 
             .card-list {
                 /* border: 1px solid yellow; */
-                /* margin-top: 85px; */
                 width: 100%;
                 max-height: 95%;
                 overflow: auto;

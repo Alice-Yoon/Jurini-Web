@@ -9,12 +9,12 @@ import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 
 import API from './api/api';
+import Axios from 'axios';
 
 function App(props) {
   const showSearchResult = useSelector(state => state.search.isResultShow);
 
   const [exchangeRate, setExchangeRage] = useState(1);
-
 
   useEffect(() => {
     const exchangeRate = async() => {
@@ -23,6 +23,24 @@ function App(props) {
       setExchangeRage(parseInt(exchangeRate?.data.data['5. Exchange Rate']).toFixed(2))
     }
     exchangeRate();
+
+    // 평균 배당률 구하기 test 중
+    // const test = async() => {
+    //   const getAverage = await Axios.get(
+    //     `http://kkyy3402.iptime.org:20000/rest/getDividendHistory?ticker=ko&start_year=1980&end_year=2020`
+    //   );
+    //   const values = Object.values(getAverage?.data.data);
+    //   console.log("api - 배당금 test:", values);
+    //   const valuesFive = values.slice(values.length - 5, values.length)
+    //   console.log("배당금 test-five:", valuesFive);
+    //   const reducer = (acc, curr) => acc + curr;
+    //   // const average = (valuesFive?.reduce(reducer)/valuesFive.length).toFixed(2);
+    //   const average = (valuesFive?.reduce(reducer));
+    //   console.log("배당금-average test:", average);
+    //   // ko 전일종가 - $50.00
+    //   console.log("배당금 평균/전일종가:", average / 50)
+    // }
+    // test();
   }, [])
 
   return (

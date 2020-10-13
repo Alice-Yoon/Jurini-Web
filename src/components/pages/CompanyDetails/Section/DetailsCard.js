@@ -5,8 +5,6 @@ function DetailsCard(props) {
 
     const {companyInfo, closePrice, average, dividendTicker} = props;
 
-    console.log("companyInfo", companyInfo)
-
     return (
         <div className={props.className}>
             <div className="company_name">
