@@ -138,7 +138,6 @@ export default styled(CompanyDetails)`
                     transform: translateX(-50%);
                 }
             .contentStyle {
-                padding-top: 20px;
                 width: 80%;
                 height: 62%;
                 overflow: auto;
