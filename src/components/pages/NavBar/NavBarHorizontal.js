@@ -6,6 +6,7 @@ import SearchBar from './Section/SearchBar';
 import question from '../../../assets/img/question.png';
 import google_icon from '../../../assets/img/final/google_icon.png';
 import appicon from '../../../assets/img/final/appicon.png';
+import SpeechBubble from './Section/SpeechBubble';
 
 function NavBarHorizontal(props) {
     return (
@@ -27,6 +28,7 @@ function NavBarHorizontal(props) {
                         </a>
                     </div>
                 </div>
+                <SpeechBubble className="speech-bubble" />
             </div>
         </div>
     )
@@ -41,13 +43,22 @@ export default styled(NavBarHorizontal)`
 
     & {
         .container {
+<<<<<<< HEAD
             width: 85%;
+=======
+            width: 1150px;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 15px 0 50px;
+            position: relative;
 
             .title {
+<<<<<<< HEAD
+=======
+            min-width: 150px;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             font-family: NanumSquareRound;
             font-style: normal;
             font-size: 20px;
@@ -64,7 +75,6 @@ export default styled(NavBarHorizontal)`
                 flex: 1;
                 padding: 0 30px;
             }
-
             .icons-area {
                 display: flex;
                 align-items: center;
@@ -88,6 +98,7 @@ export default styled(NavBarHorizontal)`
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+                    width: 120px;
                     > img {
                         margin-right: 10px; 
                     }
@@ -98,6 +109,12 @@ export default styled(NavBarHorizontal)`
                         color: #000;
                     }
                 }
+            }
+            .speech-bubble {
+                    position: absolute;
+                    top: 80px;
+                    right: -25px;
+                    z-index: 50;
             }
         }
         

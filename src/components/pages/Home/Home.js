@@ -9,6 +9,9 @@ import no_data from '../../../assets/img/design/no-data.png';
 import { dateToMilli } from '../../../utils/dateMilliConverter';
 import API from '../../../api/api';
 
+import { useDispatch } from 'react-redux';
+import { updateHightlightedDate } from '../../../modules/calendar';
+
 function Home(props) {
 
     const { exchangeRate } = props;
@@ -18,6 +21,12 @@ function Home(props) {
     const [selected, setSelected] = useState('');
     const [selectedMilli, setSelectedMilli] = useState(0);
 
+<<<<<<< HEAD
+=======
+    const dispatch = useDispatch();
+    const hightlightDate = (payload) => dispatch(updateHightlightedDate(payload));
+
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     const today = moment().format("MM/DD/YYYY");
     const todayMilli = dateToMilli(today);
     const today_year = moment().year();
@@ -25,7 +34,8 @@ function Home(props) {
 
     useEffect(() => {
 
-        setSelected(today)
+        setSelected(today);
+        hightlightDate(today);
 
         const getDailyDividendsData = async() => { 
             const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
@@ -43,7 +53,8 @@ function Home(props) {
         setKeys([]);
 
         setSelected(`${month}/${date}/${year}`);
-        
+        hightlightDate(`${month}/${date}/${year}`);
+
         const updateDailyDividendsData = async() => {
             
             const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
@@ -97,9 +108,12 @@ function Home(props) {
 }
 
 export default styled(Home)`
+<<<<<<< HEAD
     width: 90%;
+=======
+    width: 1230px;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     height: 90vh;
-
     display: flex;
 
     & {
@@ -111,7 +125,6 @@ export default styled(Home)`
         .section_right {
             height: 88vh;
             flex: 1;
-
             .card-list {
                 width: 100%;
                 max-height: 95%;

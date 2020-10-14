@@ -43,21 +43,26 @@ export default styled(DetailsCard)`
         .company_name {
             display: flex;
             align-items: center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             > h1 {
                 font-weight: 400;
                 font-size: 32px;
                 margin: 0;
                 padding: 0;
-
                 white-space: nowrap;
                 overflow: hidden;
-                max-width: 85%;
+                max-width: 80%;
                 text-overflow: ellipsis;
             }
         }
         .top {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             text-align: start;
             padding: 10px 0;
             padding-right: 15px;
@@ -73,7 +78,6 @@ export default styled(DetailsCard)`
         }
         .bottom {
             display: flex;
-
             > div {
                 flex: 1;
                 display: flex;

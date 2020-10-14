@@ -54,8 +54,6 @@ export default styled(SpeechBubble)`
             cursor: pointer;
         }
     }
-
-
     animation: bounce 0.8s infinite linear;
     @keyframes bounce {
         0%   { transform: translateY(0); }

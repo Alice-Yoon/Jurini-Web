@@ -90,7 +90,10 @@ function CardList(props) {
 }
 
 export default styled(CardList)`
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -102,7 +105,10 @@ export default styled(CardList)`
 
     & {
             .container {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
                 .smallBoxStyle {
                     border-radius: 8px;
                     background-color: #EAFFE3;
@@ -119,7 +125,6 @@ export default styled(CardList)`
                         overflow: hidden;
                         max-width: 65%;
                         text-overflow: ellipsis;
-
                         font-family: Nato Sans KR;
                         font-size: 23px;
                         font-weight: 500;

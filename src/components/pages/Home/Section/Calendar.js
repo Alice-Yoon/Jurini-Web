@@ -184,8 +184,14 @@ function Calendar(props) {
 
 
     const addDate = (date, index) => { 
+<<<<<<< HEAD
       if(date === -1){ 
         return <div key={index} className="dateStyle">{}</div> 
+=======
+      // console.log(date);
+      if(date === -1){ 
+        return <div key={index} className="dateStyle">{}</div> // 1일 전은 빈 값
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
       }
       else {
         return <Test 
@@ -230,6 +236,10 @@ function Calendar(props) {
 
     const DaysOfTheMonth = newArr.map(addDate); 
 
+<<<<<<< HEAD
+=======
+    // 요일 
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     const DayOfTheWeek = (['S','M','T','W','T','F','S'].map((day, index) => <div key={index} className="dayStyle">{day}</div>));
     
     const leftButtonClickEvent = () => {
@@ -289,13 +299,24 @@ function Calendar(props) {
 
 export default styled(Calendar)` 
 
+<<<<<<< HEAD
+=======
+/* border: 2px solid hotpink; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
 &{
   .head{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 100px;
+    padding-right: 15px;
     margin-bottom: 10px;
+    width: 600px;
     .head_date {
       display: flex;
       justify-content: center;
@@ -312,6 +333,12 @@ export default styled(Calendar)`
 
 
   .dateTableContainer {
+<<<<<<< HEAD
+=======
+    /* border: 2px solid aqua; */
+    border: 1px solid #F6F6F6;
+    border-left: none;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -320,41 +347,71 @@ export default styled(Calendar)`
   }
 
   .dayTableStyle {
+<<<<<<< HEAD
     border-top: 1px solid #F6F6F6;
     border-left: 1px solid #F6F6F6;
     border-right: 1px solid #F6F6F6;
     padding-top : 3px; 
     padding-bottom : 3px;
+=======
+    /* border: 1px solid blue; */
+    width: 100%;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     display : grid;
     grid-template-rows : repeat(1, 35px);
     grid-template-columns : repeat(7, 105px);  
   }
   .dayStyle {
+<<<<<<< HEAD
     border-right: 1px solid #F6F6F6;
     margin-left : 3px;
     padding-top : 5px; 
     padding-left : 5px;
     text-align: center;
     color: #A7A7A7;
+=======
+    border-left: 1px solid #F6F6F6;
+    /* border: 1px solid green; */
+    padding-top : 5px; // 숫자와 칸 경계 사이
+    padding-left : 5px;
+    text-align: center;
+    color: #A7A7A7;
+    /* background-color : red; */
+    &:first-of-type {
+      border-left: 1px solid #F6F6F6;
+    }
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     &:last-of-type {
       border-right: none;
     }
   }
 
   .dateTableStyle {
+<<<<<<< HEAD
     border-left: 1px solid #F6F6F6;
+=======
+    /* border: 1px solid black; */
+    width: 100%;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
   }
 
   .testStyle {
+    /* border: 1px solid blue; */
+    border-left: 1px solid #F6F6F6;
+    border-bottom: 1px solid #F6F6F6;
     cursor: pointer;
+    &:last-of-type {
+      border-right: 1px solid #F6F6F6;
+    }
     &:hover {
-      border: 1px solid black;
+      border: 1px dotted black;
     }
   }
 
+<<<<<<< HEAD
   .dateStyle { 
     border-right: 1px solid #F6F6F6;
     border-bottom: 1px solid #F6F6F6;
@@ -362,6 +419,33 @@ export default styled(Calendar)`
     margin-left : 3px;
     padding-top : 5px; 
     padding-left : 5px;
+=======
+  .today_btn {
+    /* border: 1px solid blue; */
+    > button {
+      cursor: pointer;
+      background-color: #fff;
+      border: 1px solid #fff;
+      border-radius: 13px;
+      box-shadow:0px 4px 16px rgba(0,0,0, 0.1);
+      padding: 10px 15px;
+      &:focus {
+        outline: none;
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+
+// 이제 이거 대신에 컴포넌트 만들기 
+  .dateStyle { // 칸마다 
+    /* background-color: #F6F6F6; */
+    border-left: 1px solid #F6F6F6;
+    margin-top : 3px; // margin 칸과 칸 사이 
+    padding-top : 5px; // 숫자와 칸 경계 사이
+    /* background-color : pink; */
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
   }
 }
 ` ;

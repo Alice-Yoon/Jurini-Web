@@ -131,19 +131,26 @@ export default styled(CompanyDetails)`
                 font-weight: 500;
             }
             .content_top {
+<<<<<<< HEAD
                 width: 80%;
                 position: relative;
                 top: -35px;
                 left: 50%;
                 transform: translateX(-50%);
             }
+=======
+                    width: 80%;
+                    position: relative;
+                    top: -35px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             .contentStyle {
                 padding-top: 20px;
-
                 width: 80%;
                 height: 62%;
                 overflow: auto;
-
                 position: absolute;
                 top: 158px;
                 left: 50%;

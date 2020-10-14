@@ -14,13 +14,11 @@ function SearchResult(props) {
     const {exchangeRate} = props;
     
     const searchTerm = useSelector(state => state.search.inputValue);
-
     const dispatch = useDispatch();
     const onCloseSearchResult = (payload) => dispatch(toggleSearchResult(payload));
     const onCloseSearchBar = (payload) => dispatch(closeSearchBar(payload));
     const emptyInputvalue = (value) => dispatch(updateInputValue(value));
 
-    
     const [data, setData] = useState([]);
     const [symbols, setSymbols] = useState([]);
 
@@ -34,9 +32,6 @@ function SearchResult(props) {
         fetchSearchData();
 
     }, [searchTerm]);
-
-    
-
 
     const onClickCloseBtn = (e) => {
         const target = e.target.id;
@@ -81,7 +76,11 @@ export default styled(SearchResult)`
     left: 0;
     width: 100%;
     height: 100%;
+<<<<<<< HEAD
     margin-top: 80px;
+=======
+    margin-top: 68px;
+>>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     margin-right: 10px;
     background-color: rgba(0,0,0,0.3);
     display: flex;
@@ -92,12 +91,13 @@ export default styled(SearchResult)`
             border-radius: 15px;
             background-color: #fff;
             box-shadow: 0 0 3px rgba(0,0,0,0.7);
-            width: 40%;
+            width: 500px;
             height: 60%;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            transform: translateX(-55px);
         }
         .close-btn {
             position: absolute;
