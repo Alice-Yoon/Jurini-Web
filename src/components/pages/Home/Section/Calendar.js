@@ -7,7 +7,6 @@ import API from '../../../../api/api';
 
 import left_button from '../../../../assets/img/final/arrow_left.png';
 import right_button from '../../../../assets/img/final/arrow_right.png';
- 
 
 function Calendar(props) {
 
@@ -24,25 +23,17 @@ function Calendar(props) {
     const [startDay, setStartDay] = useState(1); 
     const [startDayIfLeftButton, setStartDayIfLeftButton] = useState(1); 
 
-
     const [calendarListData, setCalendarListData] = useState([]);
     const [calendarListSymbols, setCalendarListSymbols] = useState([]);
     const [clickedDate, setClickedDate] = useState('');
 
- 
     let tmp;
     let tmpIfLeftButton;
 
     const [tmpEndDayIfLeftButton, setTmpEndDayIfLeftButton] = useState(1); 
     let initStartDay;
 
-
-
-
     const calculateEndingDate = (curYear, curMonth, tmp) => {
-
-      setTmpEndDayIfLeftButton(tmp);
-
       let isLeapYear = (curYear % 4 === 0 && curYear % 100 !== 0 || curYear % 400 === 0);
       let tmpDays;
 
@@ -70,13 +61,7 @@ function Calendar(props) {
 
       setDays(tmpDays);
       startSpecificMonthLeft(tmpEndDayIfLeftButton, tmpDays);
-
     }
-
-
-
-
-
 
     const calculateStartingDay = () => {
       let tmpStartDay;
@@ -98,28 +83,29 @@ function Calendar(props) {
       setStartDay(tmpStartDay); 
       setStartDayIfLeftButton(tmpStartDay); 
 
-      tmp = tmpStartDay; 
-      tmpIfLeftButton = tmpStartDay; 
+      tmp = tmpStartDay;
+      tmpIfLeftButton = tmpStartDay;
       setTmpEndDayIfLeftButton(tmpStartDay);
-
 
       return tmpStartDay; 
     }
  
-
-    const startSpecificMonth = (tmp, days) => {
-
+    const startSpecificMonth = (tmp, days) => { 
       var ele = []; 
       
       if(flag === 1){ 
         for(let i=0; i<tmp; i++){ 
           ele.push(-1);
         }
+
+        setTmpEndDayIfLeftButton(tmp); 
       }
       else{
           for(let i=0; i<startDay; i++){
               ele.push(-1);
           }
+
+        setTmpEndDayIfLeftButton(startDay);
       }
       for(let i=0; i<days; i++){
         ele.push(i+1);
@@ -127,16 +113,15 @@ function Calendar(props) {
       setNewArr(ele);
       
       tmp = ele.length%7; 
-      tmpIfLeftButton = ele.length%7; 
+      tmpIfLeftButton = ele.length%7;
 
       setStartDay(tmp);
       setStartDayIfLeftButton(tmpIfLeftButton);
     }
-
-
+    
     const startSpecificMonthLeft = (tmpEndDayIfLeftButton, days) => {
-
       tmpIfLeftButton = tmpEndDayIfLeftButton - (days % 7);
+      if(tmpIfLeftButton < 0) tmpIfLeftButton += 7;
 
       var ele = [];   
       if(flag === 1){
@@ -155,14 +140,11 @@ function Calendar(props) {
       setNewArr(ele);
 
       tmp = ele.length%7; 
-      tmpIfLeftButton = ele.length%7; 
+      setTmpEndDayIfLeftButton(tmpIfLeftButton);
 
       setStartDay(tmp);
       setStartDayIfLeftButton(tmpIfLeftButton); 
     }
-
-
-
 
     useEffect( () => {
       let initStartDay = calculateStartingDay();
@@ -176,22 +158,11 @@ function Calendar(props) {
         setCalendarListSymbols(thisMonthDividendsData?.keys);
       }
       getThisMonthDividendsData();
-
-
     }, [])
 
-
-
-
-    const addDate = (date, index) => { 
-<<<<<<< HEAD
+    const addDate = (date, index) => {  
       if(date === -1){ 
         return <div key={index} className="dateStyle">{}</div> 
-=======
-      // console.log(date);
-      if(date === -1){ 
-        return <div key={index} className="dateStyle">{}</div> // 1일 전은 빈 값
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
       }
       else {
         return <Test 
@@ -217,7 +188,6 @@ function Calendar(props) {
       setClickedDate(formattedClickedDate)
     }
 
-
     useEffect(() => {
 
       const updateThisMonthDividendsData = async () => {
@@ -233,17 +203,11 @@ function Calendar(props) {
       window.location.reload(false)
     }
 
-
     const DaysOfTheMonth = newArr.map(addDate); 
 
-<<<<<<< HEAD
-=======
-    // 요일 
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     const DayOfTheWeek = (['S','M','T','W','T','F','S'].map((day, index) => <div key={index} className="dayStyle">{day}</div>));
     
     const leftButtonClickEvent = () => {
-      
       if(curMonth === 1) {
         setCurMonth(12);
         setCurYear(curYear-1);
@@ -253,10 +217,9 @@ function Calendar(props) {
         setCurMonth(curMonth-1);
         calculateEndingDateLeft(curYear, curMonth-1, tmp, tmpEndDayIfLeftButton);
       }
-    }
-    
-    const rightButtonClickEvent = () => {
+    } 
 
+    const rightButtonClickEvent = () => {
       if(curMonth === 12) {
         setCurMonth(1);
         setCurYear(curYear+1);
@@ -267,9 +230,6 @@ function Calendar(props) {
         calculateEndingDate(curYear, curMonth+1, tmp);
       } 
     } 
-
-
-
 
     return (
       <div className={props.className}>
@@ -308,15 +268,11 @@ function Calendar(props) {
 
 export default styled(Calendar)` 
 
-<<<<<<< HEAD
-=======
-/* border: 2px solid hotpink; */
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
 &{
   .head{
     display: flex;
@@ -325,8 +281,7 @@ align-items: center;
     padding: 10px;
     padding-top: 20px;
     width: 715px;
-    .circle_tag {
-      /* border: 1px solid green; */
+    .circle_tag { 
       display: flex;
       .circle_container {
         display: flex;
@@ -338,8 +293,7 @@ align-items: center;
           }
         }
       }
-      .circle {
-        /* border: 1px solid red; */
+      .circle { 
         border-radius: 50%;
         width: 15px;
         height: 15px;
@@ -362,13 +316,9 @@ align-items: center;
   }
 
 
-  .dateTableContainer {
-<<<<<<< HEAD
-=======
-    /* border: 2px solid aqua; */
+  .dateTableContainer { 
     border: 1px solid #F6F6F6;
     border-left: none;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -376,60 +326,34 @@ align-items: center;
     height: 100%;
   }
 
-  .dayTableStyle {
-<<<<<<< HEAD
-    border-top: 1px solid #F6F6F6;
-    border-left: 1px solid #F6F6F6;
-    border-right: 1px solid #F6F6F6;
-    padding-top : 3px; 
-    padding-bottom : 3px;
-=======
-    /* border: 1px solid blue; */
+  .dayTableStyle { 
     width: 100%;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     display : grid;
     grid-template-rows : repeat(1, 35px);
     grid-template-columns : repeat(7, 105px);  
   }
   .dayStyle {
-<<<<<<< HEAD
-    border-right: 1px solid #F6F6F6;
-    margin-left : 3px;
-    padding-top : 5px; 
+    border-left: 1px solid #F6F6F6; 
+    padding-top : 5px;  
     padding-left : 5px;
     text-align: center;
-    color: #A7A7A7;
-=======
-    border-left: 1px solid #F6F6F6;
-    /* border: 1px solid green; */
-    padding-top : 5px; // 숫자와 칸 경계 사이
-    padding-left : 5px;
-    text-align: center;
-    color: #A7A7A7;
-    /* background-color : red; */
+    color: #A7A7A7; 
     &:first-of-type {
       border-left: 1px solid #F6F6F6;
     }
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     &:last-of-type {
       border-right: none;
     }
   }
 
   .dateTableStyle {
-<<<<<<< HEAD
-    border-left: 1px solid #F6F6F6;
-=======
-    /* border: 1px solid black; */
     width: 100%;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     display : grid;
     grid-template-rows : repeat(5, 105px);
     grid-template-columns : repeat(7, 105px);  
   }
 
   .testStyle {
-    /* border: 1px solid blue; */
     border-left: 1px solid #F6F6F6;
     border-bottom: 1px solid #F6F6F6;
     cursor: pointer;
@@ -441,17 +365,7 @@ align-items: center;
     }
   }
 
-<<<<<<< HEAD
-  .dateStyle { 
-    border-right: 1px solid #F6F6F6;
-    border-bottom: 1px solid #F6F6F6;
-    margin-top : 3px; 
-    margin-left : 3px;
-    padding-top : 5px; 
-    padding-left : 5px;
-=======
   .today_btn {
-    /* border: 1px solid blue; */
     > button {
       cursor: pointer;
       background-color: #fff;
@@ -468,14 +382,10 @@ align-items: center;
     }
   }
 
-// 이제 이거 대신에 컴포넌트 만들기 
-  .dateStyle { // 칸마다 
-    /* background-color: #F6F6F6; */
+  .dateStyle {
     border-left: 1px solid #F6F6F6;
-    margin-top : 3px; // margin 칸과 칸 사이 
-    padding-top : 5px; // 숫자와 칸 경계 사이
-    /* background-color : pink; */
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
+    margin-top : 3px; 
+    padding-top : 5px;
   }
 }
 ` ;

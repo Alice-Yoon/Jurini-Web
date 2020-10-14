@@ -46,29 +46,15 @@ function CardListSearch(props) {
 }
 
 export default styled(CardListSearch)`
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     padding: 10px;
     margin: 20px;
-<<<<<<< HEAD
-
-    width: 80%;
-    height: 111px;
-
-    & {
-            .container {
-
-=======
     width: 80%;
     height: 111px;
     & {
             .container {
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
                 .smallBoxStyle {
                     border-radius: 8px;
                     background-color: #EAFFE3;

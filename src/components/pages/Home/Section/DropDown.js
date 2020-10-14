@@ -6,10 +6,6 @@ function DropDown(props) {
     const { date } = props;
     const formattedDate = moment(date).format('DD');
     const formattedDay = moment(date).format('ddd');
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     return (
         <div className={props.className}>
            <div>

@@ -3,10 +3,6 @@ import styled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
 import { toggleSearchResult, updateInputValue } from '../../../../modules/search';
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
 
 function SearchBar(props) {
     const dispatch = useDispatch();
@@ -45,10 +41,6 @@ function SearchBar(props) {
 }
 
 export default styled(SearchBar)`
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     & {
         .search-bar {
             background-color: #F6F6F6;

@@ -7,10 +7,6 @@ import { dateToMilli } from '../utils/dateMilliConverter';
 const API = {
     cards: async (selectedDateMilli, year, month) => {
         try {
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             const getAllData = await Axios.get(
                 `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=all`
             );
