@@ -38,7 +38,9 @@ function Home(props) {
             const getMonthlyDividendsData = await API.cards(todayMilli, today_year, today_month);
             setSelectedMilli(todayMilli)
             setData(getMonthlyDividendsData?.allData);
-            setKeys(getMonthlyDividendsData?.allKeysArr);
+            setKeys(getMonthlyDividendsData?.allKeysArr);   
+            console.log("allData:", getMonthlyDividendsData?.allData); 
+            console.log("allKeysArr:", getMonthlyDividendsData?.allKeysArr); 
         }
         getDailyDividendsData();
 
@@ -61,6 +63,8 @@ function Home(props) {
             const getMonthlyDividendsData = await API.cards(selectedDateMilli, year, month);
             setData(getMonthlyDividendsData?.allData);
             setKeys(getMonthlyDividendsData?.allKeysArr);
+            console.log("allData:", getMonthlyDividendsData?.allData); 
+            console.log("allKeysArr:", getMonthlyDividendsData?.allKeysArr); 
         }
         updateDailyDividendsData();
     }
@@ -78,7 +82,14 @@ function Home(props) {
            <div className="section_right">
                <div className="card-list">
                 {
-                    keys.length === 0 ?
+                
+                    (keys.length === 0 && data.length === 0) ?
+
+                    <div className="loading"><div className="loader"></div></div>
+
+                    :
+                
+                    (keys.length === 0 && data.length !==0) ?
 
                     <div className="no_data">
                         <img src={no_data} alt="no_data" className="no_data_icon" />
@@ -123,11 +134,27 @@ export default styled(Home)`
                 max-height: 95%;
                 overflow: auto;
             }
+            .loading {
+                width: 365px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 300px;
+            }
+            .loader {
+                border: 5px solid #f3f3f3;
+                border-top: 5px solid gray;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 2s linear infinite;
+            }
             .no_data {
                 width: 365px;
                 height: 100%;
                 text-align: center;
-                margin-top: 200px;
+                margin-top: 250px;
                 color: #767676;
                 > h1 {
                     font-size: 25px;
