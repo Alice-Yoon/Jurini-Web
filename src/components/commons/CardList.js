@@ -29,6 +29,10 @@ function CardList(props) {
 
         if(selectedDateMilli === paymentDateMilli) {
             if(Dday === 0) {
+                setTag(`배당지급일 D-day`);
+                setColor('#FFF3E1');
+                setTextColor('#CC3E01');
+            } else if (Dday < 0) {
                 setTag(`배당지급일`);
                 setColor('#FFF3E1');
                 setTextColor('#CC3E01');
@@ -39,11 +43,11 @@ function CardList(props) {
             }
         } else {
             if(Dday === 0) {
-                setTag('배당락일');
+                setTag('배당락일 D-day');
                 setColor('#EAFFE3');
                 setTextColor('#218439')
             } else if (Dday < 0) {
-                setTag('배당락일 지남');
+                setTag('배당락일');
                 setColor('#EAFFE3');
                 setTextColor('#218439')
             } else {
@@ -74,7 +78,9 @@ function CardList(props) {
                 <div className="container">
                     <div>
                         <span className="smallBoxStyle" style={{ backgroundColor: '#EDF6FF', color: '#035BAC'}}>배당률 {data?.dividends_rate}%</span>
-                        <span className="smallBoxStyle" style={{display: dDay < 0 ? 'none' : 'inline', backgroundColor: color, color: textColor}}>{tag}</span>
+                        <span className="smallBoxStyle" style={{backgroundColor: color, color: textColor}}>
+                            {tag}
+                        </span>
                     </div>
                     <div className="title">
                         <span className="companyNameStyle">{data?.name}</span>
