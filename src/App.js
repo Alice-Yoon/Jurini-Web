@@ -54,7 +54,7 @@ export default styled(App)`
     }
     .main-area {
       height: 80vh;
-      margin-top: 140px;
+      margin-top: 100px;
       display: flex;
       justify-content: center;
       align-items: center;

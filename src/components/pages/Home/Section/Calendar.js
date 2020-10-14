@@ -275,7 +275,16 @@ function Calendar(props) {
       <div className={props.className}>
 
         <div className="head">
-          <div></div>
+          <div className="circle_tag">
+            <div className="circle_container">
+              <div className="circle" style={{backgroundColor: '#EAFFE3'}}></div>
+              <span style={{color: '#218439'}}>배당락일</span>
+            </div>
+            <div className="circle_container">
+              <div className="circle" style={{backgroundColor: '#FFF3E1'}}></div>
+              <span style={{color: '#CC3E01'}}>배당지급일</span>
+            </div>
+          </div>
 
           <div className="head_date">
             <img src={left_button} alt="left_button" onClick={leftButtonClickEvent} className="buttonStyle" />
@@ -313,10 +322,31 @@ align-items: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 100px;
-    padding-right: 15px;
-    margin-bottom: 10px;
-    width: 600px;
+    padding: 10px;
+    padding-top: 20px;
+    width: 715px;
+    .circle_tag {
+      /* border: 1px solid green; */
+      display: flex;
+      .circle_container {
+        display: flex;
+        align-items: center;
+        >span {
+          font-size: 12px;
+          &:first-of-type {
+            margin-right: 10px;
+          }
+        }
+      }
+      .circle {
+        /* border: 1px solid red; */
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        margin-left: 5px;
+      }
+    }
     .head_date {
       display: flex;
       justify-content: center;
