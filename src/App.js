@@ -9,6 +9,7 @@ import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 
 import API from './api/api';
+import Axios from 'axios';
 
 function App(props) {
   const showSearchResult = useSelector(state => state.search.isResultShow);
@@ -54,7 +55,7 @@ export default styled(App)`
     }
     .main-area {
       height: 80vh;
-      margin-top: 100px;
+      margin-top: 110px;
       display: flex;
       justify-content: center;
       align-items: center;

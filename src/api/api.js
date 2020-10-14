@@ -83,9 +83,22 @@ const API = {
             const getAverage = await Axios.get(
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
-            const values = Object.values(getAverage?.data.data);
+            const aveKeys = Object.keys(getAverage?.data.data);
+            const keysSortedAsc = aveKeys.sort((a,b) => a-b);
+            const fourKeys = keysSortedAsc?.slice(keysSortedAsc?.length - 4, keysSortedAsc?.length);
+            const fourValues = fourKeys.map(key => {
+              return getAverage?.data.data[key]
+            });
             const reducer = (acc, curr) => acc + curr;
-            const average = (values?.reduce(reducer)/values.length).toFixed(2);
+            const average = () => {
+              let ave;
+              if(aveKeys < 4) {
+                ave = '배당정보가 충분하지 않습니다'
+              } else {
+                ave = (fourValues?.reduce(reducer) / 4).toFixed(2);
+              }
+              return ave;
+            }
             
             const keys = Object.keys(getAverage?.data.data);
             keys.sort((a,b) => a - b);
@@ -118,7 +131,7 @@ const API = {
             const res = {
                 companyInfo: getCompanyInfo?.data.data,
                 closePrice: getClosePrice?.data.data,
-                average: average,
+                average: average(),
                 years: years,
                 dividendTicker: dividendTicker,
             }
