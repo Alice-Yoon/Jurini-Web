@@ -21,12 +21,11 @@ function CardList(props) {
         setData(props.data);
 
         const paymentDateformatted = moment(props.data.payment_date).format("MM/DD/YYYY")
-        const paymentDateMilli = dateToMilli(paymentDateformatted); // 배당지급일
+        const paymentDateMilli = dateToMilli(paymentDateformatted);
         
         const Dday = selectedDateMilli - todayMilli;
         const Dday_n = moment.duration(Dday).asDays();
         setDday(Dday);
-        // console.log("card-list:", props.data)
 
         if(selectedDateMilli === paymentDateMilli) {
             if(Dday === 0) {
@@ -71,7 +70,6 @@ function CardList(props) {
         <div onClick={onClickCard} 
             className={props.className} 
             style={{ borderLeft: `20px solid ${color}`}}
-            // style={{ borderLeft: `20px solid #EAFFE3`}}
         >
                 <div className="container">
                     <div>
@@ -84,7 +82,6 @@ function CardList(props) {
                     </div>
                     <div className="money">
                         <span className="expected_dividend">$ {data?.dividends?.toFixed(2)}</span>
-                        {/* <span className="exchanged_won">{Math.floor(data.dividends?.toFixed(2) * exchangeRate)}원</span> */}
                         <span className="exchanged_won">{exchangeToKRW(data?.dividends, exchangeRate)}원</span>
                     </div>
                 </div>  
@@ -93,8 +90,6 @@ function CardList(props) {
 }
 
 export default styled(CardList)`
-
-    /* border: 1px solid red; */
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -106,30 +101,22 @@ export default styled(CardList)`
 
     & {
             .container {
-                /* border: 1px solid green; */
-
                 .smallBoxStyle {
-                    /* border: 1px solid gray; */
                     border-radius: 8px;
                     background-color: #EAFFE3;
                     padding: 5px 10px;
                     font-size: 12px;
-                    /* color: #218439; */
                     margin-right: 3px;
                 }
                 .title {
-                    /* border: 1px solid blue; */
                     margin: 7px 0;
                     display: flex;
                     align-items: center;
                     .companyNameStyle {
-                        /* border: 1px solid red; */
-
                         white-space: nowrap;
                         overflow: hidden;
                         max-width: 65%;
                         text-overflow: ellipsis;
-
                         font-family: Nato Sans KR;
                         font-size: 23px;
                         font-weight: 500;
@@ -137,7 +124,6 @@ export default styled(CardList)`
                         padding: 0;
                     }
                     .symbolStyle {
-                        /* border: 1px solid green; */
                         border-left: 2px solid #D6D6D6;
                         padding-left: 5px;
                         margin-left: 5px;
@@ -146,21 +132,16 @@ export default styled(CardList)`
                     }
                 }
                 .money {
-                    /* border: 1px solid red; */
-
                     display: flex;
                     align-items: baseline;
 
                     .expected_dividend {
-                        /* border: 1px solid blue; */
                         font-size: 35px;
                         font-weight: 500;
                         margin: 0;
                         padding: 0;
                     }
                     .exchanged_won {
-                        /* border: 1px solid blue; */
-                        /* border-left: 1px solid #D6D6D6; */
                         font-size: 15px;
                         padding-left: 3px;
                         margin-left: 3px;

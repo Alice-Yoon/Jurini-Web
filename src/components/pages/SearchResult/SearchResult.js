@@ -6,10 +6,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleSearchResult, closeSearchBar, updateInputValue} from '../../../modules/search';
 
-// import {cardDummyData} from '../../../assets/dummy/cardDummyData';
 import CardListSearch from '../../commons/CardListSearch';
 import no_data from '../../../assets/img/design/no-data.png';
-import Loader from '../../commons/Loader';
 
 function SearchResult(props) {
 
@@ -76,9 +74,7 @@ function SearchResult(props) {
 
 }
 
-export default styled(SearchResult)`
-    /* border: 1px solid blue; */
-  
+export default styled(SearchResult)`  
     z-index: 100;
     position: fixed;
     top: 0;
@@ -93,12 +89,9 @@ export default styled(SearchResult)`
 
     & {
         .container_result {
-            /* border: 1px solid green; */
             border-radius: 15px;
             background-color: #fff;
             box-shadow: 0 0 3px rgba(0,0,0,0.7);
-            /* width: 40%; */
-            /* max-width: 600px; */
             width: 500px;
             height: 60%;
             display: flex;
@@ -108,7 +101,6 @@ export default styled(SearchResult)`
             transform: translateX(-55px);
         }
         .close-btn {
-            /* border: 1px solid red; */
             position: absolute;
             top: 10px;
             right: 10px;
@@ -117,12 +109,10 @@ export default styled(SearchResult)`
             cursor: pointer;
         }
         .card-list {
-            /* border: 1px solid yellow; */
             width: 85%;
             height: 85%;
             overflow: auto;
             .loading {
-                /* border: 1px solid blue; */
                 height: 100%;
                 display: flex;
                 align-items: center;

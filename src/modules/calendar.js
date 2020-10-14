@@ -5,7 +5,6 @@ export const updateHightlightedDate = (payload) => ({
     payload
 });
 
-
 const initialState = {
     highlightedDate: ''
 }

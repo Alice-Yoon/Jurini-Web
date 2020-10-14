@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 function CalendarCard(props) {
-    // comment-out 된것들 : 회사이름 - 자리가 모자라서 일단 숨김.
-    // const data = props.data[symbol];
 
     const {symbol, selectedKeysArr_dividend, selectedKeysArr_payment} = props;
 
@@ -32,17 +30,10 @@ function CalendarCard(props) {
 }
 
 export default styled(CalendarCard)`
-    /* border: 1px solid blue; */
     display: flex;
     align-items: center;
     margin-bottom: 2px;
     padding-left: 10px;
     font-weight: 500;
     font-size: 15px;
-
-    & {
-        .co_symbol {
-            /* border: 1px solid green; */
-        }
-    }
 `;

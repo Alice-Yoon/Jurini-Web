@@ -32,7 +32,6 @@ function DetailsCard(props) {
 }
 
 export default styled(DetailsCard)`
-    /* border: 2px solid black; */
     background: linear-gradient(137.04deg, #F7F4FF -1.55%, #FFFEF5 102.16%);
     box-shadow: 0px 4px 4px rgba(255, 230, 0, 0.14), 0px 2px 20px rgba(230, 210, 255, 0.65);
     border-radius: 30px;
@@ -42,17 +41,13 @@ export default styled(DetailsCard)`
 
     & {
         .company_name {
-            /* border: 1px solid green; */
             display: flex;
             align-items: center;
-            /* justify-content: center; */
-
             > h1 {
                 font-weight: 400;
                 font-size: 32px;
                 margin: 0;
                 padding: 0;
-
                 white-space: nowrap;
                 overflow: hidden;
                 max-width: 80%;
@@ -60,8 +55,6 @@ export default styled(DetailsCard)`
             }
         }
         .top {
-            /* border: 1px solid red; */
-
             text-align: start;
             padding: 10px 0;
             padding-right: 15px;
@@ -76,13 +69,8 @@ export default styled(DetailsCard)`
             }
         }
         .bottom {
-            /* border: 1px solid blue; */
-
             display: flex;
-
             > div {
-                /* border: 1px solid green; */
-
                 flex: 1;
                 display: flex;
                 flex-direction: column;
@@ -93,7 +81,6 @@ export default styled(DetailsCard)`
                     font-weight: bold;
                     &.pink {
                         color: #FF607C;
-                        /* color: linear-gradient(135deg, #FF9A7A 4.17%, #FF607C 125%); */
                     }
                 }
             }

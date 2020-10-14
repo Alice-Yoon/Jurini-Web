@@ -7,8 +7,6 @@ import { dateToMilli } from '../utils/dateMilliConverter';
 const API = {
     cards: async (selectedDateMilli, year, month) => {
         try {
-
-            // 해당 month 전체 data 구하기
             const getAllData = await Axios.get(
                 `${API_BASE_URL}/getMontlyDividendsData?from_year=${year}&from_month=${month}&to_year=${year}&to_month=${month}&sort_mode=all`
             );
@@ -122,8 +120,6 @@ const API = {
                 dividendTicker = ''
             }
 
-            // 고배당주 티커 -> DetailsCard에서 average로 직접 적용!
-
             const res = {
                 companyInfo: getCompanyInfo?.data.data,
                 closePrice: getClosePrice?.data.data,
@@ -134,7 +130,6 @@ const API = {
             return res;
         } catch (error) {
             console.error(error);
-            console.log("해당 데이터 없음 or 네트워크 오류")
         }
     },
     calendar_list: async(year, month) => {

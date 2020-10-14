@@ -1,25 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { toggleSearchBar } from '../../../modules/search';
 
 import SearchBar from './Section/SearchBar';
 
-// import search from '../../../assets/img/search.png';
 import question from '../../../assets/img/question.png';
-// import google from '../../../assets/img/google.png';
 import google_icon from '../../../assets/img/final/google_icon.png';
 import appicon from '../../../assets/img/final/appicon.png';
 import SpeechBubble from './Section/SpeechBubble';
 
 function NavBarHorizontal(props) {
-
-    // const isBarShow = useSelector(state => state.search.isBarShow);
-    // const dispatch = useDispatch();
-    // const onClickToggleBar = () => dispatch(toggleSearchBar());
-
-
     return (
         <div className={props.className}>
             <div className="container">
@@ -47,7 +36,6 @@ function NavBarHorizontal(props) {
 
 export default styled(NavBarHorizontal)`
     border-bottom: 1px solid #F6F6F6;
-    /* border: 1px solid blue; */
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -55,8 +43,6 @@ export default styled(NavBarHorizontal)`
 
     & {
         .container {
-            /* border: 1px solid green; */
-            /* width: 80%; */
             width: 1150px;
             display: flex;
             justify-content: space-between;
@@ -65,7 +51,6 @@ export default styled(NavBarHorizontal)`
             position: relative;
 
             .title {
-            /* border: 1px solid red; */
             min-width: 150px;
             font-family: NanumSquareRound;
             font-style: normal;
@@ -77,22 +62,17 @@ export default styled(NavBarHorizontal)`
             align-items: center;
             }
             .logo {
-                /* width: 35px; */
-                /* height: 35px; */
                 margin-right: 5px;
             }
             .searchBar {
-                /* border: 1px solid green; */
                 flex: 1;
                 padding: 0 30px;
             }
-
             .icons-area {
                 display: flex;
                 align-items: center;
 
                 .iconStyle {
-                    /* border: 1px solid blue; */
                     height: 30px;
                     width: 30px;
                     font-size: 18px;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'; 
+import React from 'react'; 
 import styled from 'styled-components';
 import moment from 'moment';
 import CalendarCard from './Section/Calendar_card';
@@ -8,8 +8,7 @@ import { useSelector } from 'react-redux';
 
 function Test(props){
 
-    const {year, month, date, onClick, data, symbols, today} = props;
-    // console.log("test-date:", `${month}/${date}/${year}`, date < 10)
+    const {year, month, date, onClick, data, symbols} = props;
 
     const highlightedDate = useSelector(state => state.calendar.highlightedDate);
     const formattedHightlightedDate = moment(highlightedDate).format("MM/DD/YYYY")
@@ -69,11 +68,7 @@ function Test(props){
 }
 
 export default styled(Test)`
-    /* border: 0.1px solid lightgray; */
-    /* border-left: 1px solid #F6F6F6;
-    border-bottom: 1px solid #F6F6F6; */
     text-align: center;
-
     & {
         .date {
             display: inline-block;
@@ -82,13 +77,11 @@ export default styled(Test)`
             margin-bottom: 3px;
         }
         .cards {
-            /* border: 1px solid green; */
             height: 75%;
             margin-top: 3px;
             overflow: auto;
         }
         .rest_number {
-            /* border: 1px solid green; */
             margin-top: 5px;
             margin-right: 5px;
             text-align: end;

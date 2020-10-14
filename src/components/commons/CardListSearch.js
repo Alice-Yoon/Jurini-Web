@@ -22,7 +22,6 @@ function CardListSearch(props) {
 
     const onClickCard = () => {
         openDetails(true);
-        // console.log("검색결과에서 symbol", symbol)
         updateSymbol(symbol);
     }
 
@@ -47,27 +46,16 @@ function CardListSearch(props) {
 }
 
 export default styled(CardListSearch)`
-
-    /* border: 1px solid red; */
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     padding: 10px;
     margin: 20px;
-
-    /* width: 100%; */
     width: 80%;
     height: 111px;
-    /* font-family: Nato Sans KR; */
-    /* font-style: normal; */
-
     & {
             .container {
-                /* border: 1px solid green; */
-                /* margin: 10px; */
-
                 .smallBoxStyle {
-                    /* border: 1px solid gray; */
                     border-radius: 8px;
                     background-color: #EAFFE3;
                     padding: 5px 10px;
@@ -76,18 +64,14 @@ export default styled(CardListSearch)`
                     margin-right: 3px;
                 }
                 .title {
-                    /* border: 1px solid blue; */
                     margin: 15px 0 0 0;
                     display: flex;
                     align-items: center;
                     .companyNameStyle {
-                        /* border: 1px solid red; */
-
                         white-space: nowrap;
                         overflow: hidden;
                         max-width: 65%;
                         text-overflow: ellipsis;
-
                         font-family: Nato Sans KR;
                         font-size: 18px;
                         font-weight: 500;
@@ -96,7 +80,6 @@ export default styled(CardListSearch)`
 
                     }
                     .symbolStyle {
-                            /* border: 1px solid green; */
                             border-left: 2px solid #D6D6D6;
                             padding-left: 5px;
                             margin-left: 5px;
@@ -109,15 +92,12 @@ export default styled(CardListSearch)`
                     align-items: baseline;
 
                     .expected_dividend {
-                        /* border: 1px solid blue; */
                         font-size: 35px;
                         font-weight: 500;
                         margin: 0;
                         padding: 0;
                     }
                     .exchanged_won {
-                        /* border: 1px solid blue; */
-                        /* border-left: 1px solid #D6D6D6; */
                         font-size: 13px;
                         padding-left: 3px;
                         margin-left: 3px;

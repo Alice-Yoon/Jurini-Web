@@ -47,7 +47,6 @@ export default styled(SpeechBubble)`
             z-index: -100;
         }
         .closeBtn {
-            /* border: 1px solid green; */
             position: absolute;
             top: 7px;
             right: 10px;
@@ -55,8 +54,6 @@ export default styled(SpeechBubble)`
             cursor: pointer;
         }
     }
-
-
     animation: bounce 0.8s infinite linear;
     @keyframes bounce {
         0%   { transform: translateY(0); }

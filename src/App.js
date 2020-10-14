@@ -18,39 +18,16 @@ function App(props) {
 
   useEffect(() => {
     const exchangeRate = async() => {
-      // 달러 환율 가져오기
       const exchangeRate = await API.exchange();
       setExchangeRage(parseInt(exchangeRate?.data.data['5. Exchange Rate']).toFixed(2))
     }
     exchangeRate();
-
-    // 평균 배당률 구하기 test 중
-    // const test = async() => {
-    //   const getAverage = await Axios.get(
-    //     `http://kkyy3402.iptime.org:20000/rest/getDividendHistory?ticker=ko&start_year=1980&end_year=2020`
-    //   );
-    //   const values = Object.values(getAverage?.data.data);
-    //   console.log("api - 배당금 test:", values);
-    //   const valuesFive = values.slice(values.length - 5, values.length)
-    //   console.log("배당금 test-five:", valuesFive);
-    //   const reducer = (acc, curr) => acc + curr;
-    //   // const average = (valuesFive?.reduce(reducer)/valuesFive.length).toFixed(2);
-    //   const average = (valuesFive?.reduce(reducer));
-    //   console.log("배당금-average test:", average / 5);
-    //   // ko 전일종가 - $50.00
-    //   console.log("배당금 평균/전일종가:", average/248)
-    // }
-    // test();
   }, [])
 
   return (
     <div className={props.className}>
      <Router>
-
-      {/* NavBar 영역 */}
       <NavBarHorizontal className="navbar_horizontal" />
-
-      {/* Main Area 영역 */}
       <main className="main-area">
         <Switch>
           <Route exact path="/">
@@ -68,13 +45,9 @@ function App(props) {
 
 export default styled(App)`
   font-family: Noto Sans KR;
-  position: relative;
-  /* border: 1px solid red; */
-  
+  position: relative;  
   & {
     .navbar_horizontal {
-      /* border: 1px solid blue; */
-
       position: fixed;
       top:0;
       left: 0;
@@ -82,19 +55,11 @@ export default styled(App)`
       z-index: 1;
     }
     .main-area {
-      /* border: 2px solid black; */
-
       height: 80vh;
       margin-top: 140px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    /* @media (max-width: 500px) {
-      .main-area {
-        height: 100vh;
-        margin-right: 0;
-      }
-    } */
   }
 `;
