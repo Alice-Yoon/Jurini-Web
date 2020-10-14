@@ -72,17 +72,14 @@ const API = {
     },
     details: async (detailSymbol) => {
         try {
-            // 회사정보 - 회사이름, 심볼, 배당률, 시가총액, 배당락일
             const getCompanyInfo = await Axios.get(
                 `${API_BASE_URL}/getCompanySummaryInfo?symbol=${detailSymbol}`
             );
 
-            // 전일종가
             const getClosePrice = await Axios.get(
                 `${API_BASE_URL}/getLatestClosePrice?symbol=${detailSymbol}`
             );
 
-            // 평균 배당률
             const getAverage = await Axios.get(
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
@@ -103,7 +100,6 @@ const API = {
               return ave;
             }
             
-            // 배당지속기간
             const keys = Object.keys(getAverage?.data.data);
             keys.sort((a,b) => a - b);
             const firstYear = parseInt(keys[0]);
@@ -111,7 +107,6 @@ const API = {
             const duration = moment.duration(lastYear-firstYear, 'milliseconds');
             const years = Math.floor(duration.asYears());
 
-            // 배당킹, 배당귀족 티커?
             const getDividendKing = await Axios.get(
                 `${API_BASE_URL}/getDividendKingTickerList`
             );
