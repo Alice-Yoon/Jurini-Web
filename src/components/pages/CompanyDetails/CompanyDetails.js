@@ -147,7 +147,6 @@ export default styled(CompanyDetails)`
                 }
 >>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             .contentStyle {
-                padding-top: 20px;
                 width: 80%;
                 height: 62%;
                 overflow: auto;
