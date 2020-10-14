@@ -6,12 +6,6 @@ import { dateToMilli } from '../../utils/dateMilliConverter';
 
 import { useSelector } from 'react-redux';
 
-<<<<<<< HEAD
-    const {year, month, date, onClick, data, symbols, today, clickedDate} = props;
-    
-    const selectedDate = moment(`${month}/${date}/${year}`).format("MM/DD/YYYY");
-    const selectedDateMilli = dateToMilli(selectedDate);
-=======
 function Test(props){
 
     const {year, month, date, onClick, data, symbols} = props;
@@ -23,7 +17,6 @@ function Test(props){
     const selectedDateMilli = dateToMilli(selectedDate);
 
     const isHighlighted = formattedHightlightedDate === selectedDate;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
         
     const selectedKeysArr_dividend = symbols.filter(key => {
         const formatted_dividend = moment(data[key]?.dividends_date).format("MM/DD/YYYY");
@@ -75,12 +68,6 @@ function Test(props){
 }
 
 export default styled(Test)`
-<<<<<<< HEAD
-    border-right: 1px solid #F6F6F6;
-    border-bottom: 1px solid #F6F6F6;
-    padding-top: 10px;
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     text-align: center;
     & {
         .date {

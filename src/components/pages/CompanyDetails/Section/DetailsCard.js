@@ -43,10 +43,6 @@ export default styled(DetailsCard)`
         .company_name {
             display: flex;
             align-items: center;
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             > h1 {
                 font-weight: 400;
                 font-size: 32px;
@@ -59,10 +55,6 @@ export default styled(DetailsCard)`
             }
         }
         .top {
-<<<<<<< HEAD
-
-=======
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             text-align: start;
             padding: 10px 0;
             padding-right: 15px;

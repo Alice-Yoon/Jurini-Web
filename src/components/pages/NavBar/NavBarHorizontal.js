@@ -43,11 +43,7 @@ export default styled(NavBarHorizontal)`
 
     & {
         .container {
-<<<<<<< HEAD
-            width: 85%;
-=======
             width: 1150px;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,10 +51,7 @@ export default styled(NavBarHorizontal)`
             position: relative;
 
             .title {
-<<<<<<< HEAD
-=======
             min-width: 150px;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
             font-family: NanumSquareRound;
             font-style: normal;
             font-size: 20px;

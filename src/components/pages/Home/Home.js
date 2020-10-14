@@ -21,12 +21,9 @@ function Home(props) {
     const [selected, setSelected] = useState('');
     const [selectedMilli, setSelectedMilli] = useState(0);
 
-<<<<<<< HEAD
-=======
     const dispatch = useDispatch();
     const hightlightDate = (payload) => dispatch(updateHightlightedDate(payload));
 
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     const today = moment().format("MM/DD/YYYY");
     const todayMilli = dateToMilli(today);
     const today_year = moment().year();
@@ -108,11 +105,7 @@ function Home(props) {
 }
 
 export default styled(Home)`
-<<<<<<< HEAD
-    width: 90%;
-=======
     width: 1230px;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     height: 90vh;
     display: flex;
 

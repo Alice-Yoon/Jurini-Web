@@ -76,11 +76,7 @@ export default styled(SearchResult)`
     left: 0;
     width: 100%;
     height: 100%;
-<<<<<<< HEAD
-    margin-top: 80px;
-=======
     margin-top: 68px;
->>>>>>> 92bd4fc0bb8004364abcd359e7da7e786577ba66
     margin-right: 10px;
     background-color: rgba(0,0,0,0.3);
     display: flex;
