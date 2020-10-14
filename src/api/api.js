@@ -86,32 +86,22 @@ const API = {
             const getAverage = await Axios.get(
                 `${API_BASE_URL}/getDividendHistory?ticker=${detailSymbol}&start_year=1980&end_year=2020`
             );
-            const values = Object.values(getAverage?.data.data);
+            const aveKeys = Object.keys(getAverage?.data.data);
+            const keysSortedAsc = aveKeys.sort((a,b) => a-b);
+            const fourKeys = keysSortedAsc?.slice(keysSortedAsc?.length - 4, keysSortedAsc?.length);
+            const fourValues = fourKeys.map(key => {
+              return getAverage?.data.data[key]
+            });
             const reducer = (acc, curr) => acc + curr;
-            const average = (values?.reduce(reducer)/values.length).toFixed(2);
-            // const aveKeys = Object.keys(getAverage?.data.data);
-            // // 최근 1년 평균배당금 = keys < 4 ? '배당정보가 충분하지 않습니다' : '$평균배당금'
-            // const keysSortedAsc = aveKeys.sort((a,b) => a-b);
-            // // console.log("배당금 - keysSortedAsc:", keysSortedAsc);
-            // const fourKeys = keysSortedAsc?.slice(keysSortedAsc?.length - 4, keysSortedAsc?.length);
-            // // console.log("배당금-key 4개:", fourKeys);
-      
-            // const fourValues = fourKeys.map(key => {
-            //   return getAverage?.data.data[key]
-            // });
-            // // console.log("배당금-fourValues", fourValues);
-      
-            // const reducer = (acc, curr) => acc + curr;
-            // const average = () => {
-            //   let ave;
-            //   if(aveKeys < 0) {
-            //     ave = '배당정보가 충분하지 않습니다'
-            //   } else {
-            //     ave = (fourValues?.reduce(reducer) / 4).toFixed(2);
-            //   }
-            //   return ave;
-            // }
-            // // console.log("평균 배당금:", average());
+            const average = () => {
+              let ave;
+              if(aveKeys < 4) {
+                ave = '배당정보가 충분하지 않습니다'
+              } else {
+                ave = (fourValues?.reduce(reducer) / 4).toFixed(2);
+              }
+              return ave;
+            }
             
             // 배당지속기간
             const keys = Object.keys(getAverage?.data.data);
@@ -146,7 +136,7 @@ const API = {
             const res = {
                 companyInfo: getCompanyInfo?.data.data,
                 closePrice: getClosePrice?.data.data,
-                average: average,
+                average: average(),
                 years: years,
                 dividendTicker: dividendTicker,
             }
