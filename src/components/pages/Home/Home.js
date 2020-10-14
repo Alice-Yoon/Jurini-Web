@@ -39,8 +39,6 @@ function Home(props) {
             setSelectedMilli(todayMilli)
             setData(getMonthlyDividendsData?.allData);
             setKeys(getMonthlyDividendsData?.allKeysArr);   
-            console.log("allData:", getMonthlyDividendsData?.allData); 
-            console.log("allKeysArr:", getMonthlyDividendsData?.allKeysArr); 
         }
         getDailyDividendsData();
 
@@ -63,8 +61,6 @@ function Home(props) {
             const getMonthlyDividendsData = await API.cards(selectedDateMilli, year, month);
             setData(getMonthlyDividendsData?.allData);
             setKeys(getMonthlyDividendsData?.allKeysArr);
-            console.log("allData:", getMonthlyDividendsData?.allData); 
-            console.log("allKeysArr:", getMonthlyDividendsData?.allKeysArr); 
         }
         updateDailyDividendsData();
     }

@@ -7,6 +7,7 @@ import { toggleDetails } from '../../../modules/details';
 import DetailsCard from './Section/DetailsCard';
 import DetailsTable from './Section/DetailsTable';
 import API from '../../../api/api';
+import no_data from '../../../assets/img/design/no-data.png';
 
 function CompanyDetails(props) {
     const showCompanyDetails = useSelector(state => state.details.isDetailShow);
@@ -54,7 +55,20 @@ function CompanyDetails(props) {
             <div className="modalStyle">                    
 
                 {
-                    Object.values({...companyInfo})?.length === 0 ? <div className="loading"><div className="loader"></div></div>
+
+                    companyInfo === undefined ? 
+                    
+                    <div className="no_data">
+                        <img src={no_data} alt="no_data" className="no_data_icon" />
+                        <p>해당기업의 상세정보가 없습니다.</p>
+                    </div>
+
+                    :
+
+                    Object.values({...companyInfo})?.length === 0 ? 
+                    
+                    <div className="loading"><div className="loader"></div></div>
+                    
                     :
                     <>
                     <span id="closeBtn" onClick={onClickToClose} className="closeBtnStyle">X</span>
@@ -145,6 +159,22 @@ export default styled(CompanyDetails)`
                 top: 158px;
                 left: 50%;
                 transform: translateX(-50%);
+            }
+            .no_data {
+                    height: 100%;
+                    text-align: center;
+                    color: #767676;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    > h1 {
+                        font-size: 25px;
+                    }
+                    .no_data_icon {
+                        width: 100px;
+                        height: 100px;
+                    }
             }
         }
         @keyframes spin {
