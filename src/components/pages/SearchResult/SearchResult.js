@@ -14,13 +14,11 @@ function SearchResult(props) {
     const {exchangeRate} = props;
     
     const searchTerm = useSelector(state => state.search.inputValue);
-
     const dispatch = useDispatch();
     const onCloseSearchResult = (payload) => dispatch(toggleSearchResult(payload));
     const onCloseSearchBar = (payload) => dispatch(closeSearchBar(payload));
     const emptyInputvalue = (value) => dispatch(updateInputValue(value));
 
-    
     const [data, setData] = useState([]);
     const [symbols, setSymbols] = useState([]);
 
@@ -34,9 +32,6 @@ function SearchResult(props) {
         fetchSearchData();
 
     }, [searchTerm]);
-
-    
-
 
     const onClickCloseBtn = (e) => {
         const target = e.target.id;
@@ -135,7 +130,6 @@ export default styled(SearchResult)`
                     font-size: 25px;
                 }
                 .no_data_icon {
-                    /* border: 1px solid red; */
                     width: 100px;
                     height: 100px;
                 }

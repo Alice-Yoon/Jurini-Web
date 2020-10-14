@@ -10,11 +10,9 @@ function CalendarCard(props) {
 
     useEffect(() => {
         if (selectedKeysArr_dividend?.includes(symbol)) {
-            // 배당락일
             setBackground('#EAFFE3')
             setTextColor('#218439')
         } else if(selectedKeysArr_payment?.includes(symbol)) {
-            // 배당지급일
             setBackground('#FFECDA')
             setTextColor('#FF7373')
         }

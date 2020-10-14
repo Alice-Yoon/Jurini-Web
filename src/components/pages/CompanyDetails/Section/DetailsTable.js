@@ -26,8 +26,8 @@ function DetailsTable(props) {
                     </tr>
                     <tr>
                         <td>
-                            <p>평균 배당률</p>
-                            <p className="color">{average} %</p>
+                            <p>평균 배당금</p>
+                            <p className="color">$ {average}</p>
                         </td>
                     </tr>
                     <tr>

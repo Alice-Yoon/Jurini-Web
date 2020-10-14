@@ -9,7 +9,6 @@ import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 
 import API from './api/api';
-import Axios from 'axios';
 
 function App(props) {
   const showSearchResult = useSelector(state => state.search.isResultShow);
@@ -36,7 +35,6 @@ function App(props) {
         </Switch>
         {showSearchResult && <SearchResult exchangeRate={exchangeRate}  />}
       </main>
-
      </Router>
      <CompanyDetails />
     </div>
