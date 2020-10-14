@@ -9,6 +9,7 @@ import SearchResult from './components/pages/SearchResult/SearchResult';
 import CompanyDetails from './components/pages/CompanyDetails/CompanyDetails';
 
 import API from './api/api';
+import Axios from 'axios';
 
 function App(props) {
   const showSearchResult = useSelector(state => state.search.isResultShow);
@@ -21,6 +22,37 @@ function App(props) {
       setExchangeRage(parseInt(exchangeRate?.data.data['5. Exchange Rate']).toFixed(2))
     }
     exchangeRate();
+
+    // //  평균 배당률 구하기 test 중
+    // const test = async() => {
+    //   const getAverage = await Axios.get(
+    //     `http://kkyy3402.iptime.org:20000/rest/getDividendHistory?ticker=ko&start_year=1980&end_year=2020`
+    //   );
+    //   const keys = Object.keys(getAverage?.data.data);
+    //   // 최근 1년 평균배당금 = keys < 4 ? '배당정보가 충분하지 않습니다' : '$평균배당금'
+    //   const keysSortedAsc = keys.sort((a,b) => a-b);
+    //   // console.log("배당금 - keysSortedAsc:", keysSortedAsc);
+    //   const fourKeys = keysSortedAsc?.slice(keysSortedAsc?.length - 4, keysSortedAsc?.length);
+    //   // console.log("배당금-key 4개:", fourKeys);
+
+    //   const fourValues = fourKeys.map(key => {
+    //     return getAverage?.data.data[key]
+    //   });
+    //   // console.log("배당금-fourValues", fourValues);
+
+    //   const reducer = (acc, curr) => acc + curr;
+    //   const average = () => {
+    //     let ave;
+    //     if(keys < 0) {
+    //       ave = '배당정보가 충분하지 않습니다'
+    //     } else {
+    //       ave = (fourValues?.reduce(reducer) / 4).toFixed(2);
+    //     }
+    //     return ave;
+    //   }
+    //   // console.log("평균 배당금:", average());
+    // }
+    // test();
   }, [])
 
   return (
