@@ -4,10 +4,8 @@ import styled from 'styled-components';
 import SearchBar from './Section/SearchBar';
 
 import question from '../../../assets/img/question.png';
-import google_icon from '../../../assets/img/final/google_icon.png';
 import appicon from '../../../assets/img/final/appicon.png';
 import SpeechBubble from './Section/SpeechBubble';
-import google_badge from '../../../assets/img/google-play-badge.png';
 
 function NavBarHorizontal(props) {
     return (
@@ -23,11 +21,6 @@ function NavBarHorizontal(props) {
                         <img src={question} alt="question-icon" className="iconStyle" />
                     </a>   
                     <div className="googleStyle">
-                        {/* <img src={google_icon} alt="google" />
-                        <a href="https://play.google.com/store/apps/" target="_blank" rel="noopener noreferrer">
-                            Google Play
-                        </a> */}
-                        {/* <img src={google_badge} alt="google_badge" className="google_badge" /> */}
                         <a href='https://play.google.com/store/apps/details?id=com.calandar.joorini_for_android&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
                             <img className="google_badge" target="_blank" alt='다운로드하기 Google Play' src='https://play.google.com/intl/ko/badges/static/images/badges/ko_badge_web_generic.png'/>
                         </a>
