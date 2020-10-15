@@ -80,9 +80,6 @@ export default styled(NavBarHorizontal)`
                     }
                 }
                 .googleStyle {
-                    /* border: 1px solid lightgray; */
-                    /* border-radius: 10px; */
-                    /* padding: 7px 15px; */
                     margin-left: 50px;
                     display: flex;
                     justify-content: center;
