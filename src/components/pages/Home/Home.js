@@ -102,6 +102,7 @@ function Home(props) {
                             selectedDateMilli={selectedMilli}
                             todayMilli={todayMilli}
                             exchangeRate={exchangeRate}
+                            className="eachCardList"
                         />
                     ))
                 }
@@ -129,6 +130,9 @@ export default styled(Home)`
                 width: 100%;
                 max-height: 95%;
                 overflow: auto;
+                .eachCardList {
+                    cursor: pointer;
+                }
             }
             .loading {
                 width: 365px;

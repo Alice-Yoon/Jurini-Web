@@ -59,7 +59,7 @@ function SearchResult(props) {
                             </div>
 
                         : symbols && symbols.map((symbol, index) => (
-                                <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} />
+                                <CardListSearch key={index} symbol={symbol} data={data} exchangeRate={exchangeRate} className="cardListSearch" />
                         ))
                     }
                 </div>
@@ -107,6 +107,9 @@ export default styled(SearchResult)`
             width: 85%;
             height: 85%;
             overflow: auto;
+            .cardListSearch {
+                cursor: pointer;
+            }
             .loading {
                 height: 100%;
                 display: flex;
