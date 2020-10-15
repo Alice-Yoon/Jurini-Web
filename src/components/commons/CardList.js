@@ -123,7 +123,6 @@ export default styled(CardList)`
                         overflow: hidden;
                         max-width: 65%;
                         text-overflow: ellipsis;
-                        font-family: Nato Sans KR;
                         font-size: 23px;
                         font-weight: 500;
                         margin: 0;

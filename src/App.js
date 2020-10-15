@@ -43,7 +43,7 @@ function App(props) {
 }
 
 export default styled(App)`
-  font-family: Noto Sans KR;
+  font-family: 'Noto Sans KR', sans-serif;
   position: relative;  
   & {
     .navbar_horizontal {

@@ -37,7 +37,6 @@ export default styled(DetailsCard)`
     border-radius: 30px;
     padding: 15px 20px;
     flex: 1;
-    font-family: Noto Sans KR;
 
     & {
         .company_name {

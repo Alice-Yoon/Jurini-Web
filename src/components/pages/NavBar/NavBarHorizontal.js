@@ -52,7 +52,6 @@ export default styled(NavBarHorizontal)`
 
             .title {
             min-width: 150px;
-            font-family: NanumSquareRound;
             font-style: normal;
             font-size: 20px;
             font-weight: bold;
