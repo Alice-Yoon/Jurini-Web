@@ -44,6 +44,7 @@ function DetailsTable(props) {
 
 export default styled(DetailsTable)`
     margin-left: 10px;
+    margin-top: 10px;
     flex: 1;
     
     & {
@@ -59,11 +60,10 @@ export default styled(DetailsTable)`
                 margin: 7px 0;
                 
                 &:first-of-type {
-                    font-weight: bold;
+                    font-weight: 500;
                 }
                 &.color {
                     color: #035BAC;
-                    font-weight: 500;
                 }
             }
         }

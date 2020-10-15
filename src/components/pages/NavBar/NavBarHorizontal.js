@@ -21,8 +21,8 @@ function NavBarHorizontal(props) {
                         <img src={question} alt="question-icon" className="iconStyle" />
                     </a>   
                     <div className="googleStyle">
-                        <a href='https://play.google.com/store/apps/details?id=com.calandar.joorini_for_android&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
-                            <img className="google_badge" target="_blank" alt='다운로드하기 Google Play' src='https://play.google.com/intl/ko/badges/static/images/badges/ko_badge_web_generic.png'/>
+                        <a href='https://play.google.com/store/apps/details?id=com.calandar.joorini_for_android&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target='_blank'>
+                            <img className="google_badge" alt='다운로드하기 Google Play' src='https://play.google.com/intl/ko/badges/static/images/badges/ko_badge_web_generic.png'/>
                         </a>
                     </div>
                 </div>
@@ -96,9 +96,7 @@ export default styled(NavBarHorizontal)`
                         color: #000;
                     }
                     .google_badge {
-                        /* border: 1px solid red; */
                         width: 150px;
-
                     }
                 }
             }

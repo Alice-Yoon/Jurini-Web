@@ -42,7 +42,7 @@ function Test(props){
                                         boxShadow: isHighlighted && '0px 0px 12px rgba(255, 158, 128, 0.45)',
                                         color: isHighlighted && "#fff",
                                         fontWeight: isHighlighted && '650',
-                                        padding: date < 10 ? '7px 11px 5px 11px' : date === 11 ? '7px 10px 5px 10px' : '7px 8px 5px 8px',
+                                        padding: date < 10 ? '3px 11px' : date === 11 ? '3px 10px' : '3px 8px',
                                         }}
                 >
                     {date}
@@ -73,8 +73,7 @@ export default styled(Test)`
         .date {
             display: inline-block;
             border-radius: 13px;
-            padding: 7px 8px 5px 8px;
-            margin-bottom: 3px;
+            padding: 5px 8px;
         }
         .cards {
             height: 75%;

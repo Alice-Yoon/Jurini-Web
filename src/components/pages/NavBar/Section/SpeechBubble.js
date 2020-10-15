@@ -30,6 +30,7 @@ export default styled(SpeechBubble)`
     padding: 8px;
     border-radius: 10px;
     position: relative;
+    font-size: 13px;
 
     & {
         .top {

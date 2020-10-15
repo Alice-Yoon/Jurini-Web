@@ -123,7 +123,7 @@ export default styled(CardList)`
                         overflow: hidden;
                         max-width: 65%;
                         text-overflow: ellipsis;
-                        font-size: 23px;
+                        font-size: 20px;
                         font-weight: 500;
                         margin: 0;
                         padding: 0;
@@ -134,6 +134,7 @@ export default styled(CardList)`
                         margin-left: 5px;
                         color: #767676;
                         font-weight: 500;
+                        font-size: 13px;
                     }
                 }
                 .money {
@@ -141,7 +142,7 @@ export default styled(CardList)`
                     align-items: baseline;
 
                     .expected_dividend {
-                        font-size: 35px;
+                        font-size: 30px;
                         font-weight: 500;
                         margin: 0;
                         padding: 0;

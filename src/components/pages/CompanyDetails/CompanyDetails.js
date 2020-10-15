@@ -114,7 +114,7 @@ export default styled(CompanyDetails)`
             border-radius: 42px;
             width: 55%;
             max-width: 400px;
-            height: 65%;
+            height: 550px;
             background-color: #fff;
             position: relative;
 
