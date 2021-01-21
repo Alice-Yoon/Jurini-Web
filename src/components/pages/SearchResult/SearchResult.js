@@ -16,7 +16,6 @@ function SearchResult(props) {
     const searchTerm = useSelector(state => state.search.inputValue);
     const dispatch = useDispatch();
     const onCloseSearchResult = (payload) => dispatch(toggleSearchResult(payload));
-    const onCloseSearchBar = (payload) => dispatch(closeSearchBar(payload));
     const emptyInputvalue = (value) => dispatch(updateInputValue(value));
 
     const [data, setData] = useState([]);
@@ -37,7 +36,6 @@ function SearchResult(props) {
         const target = e.target.id;
         if(target === 'container' || target === 'close-btn') {
             onCloseSearchResult(false);
-            onCloseSearchBar(false);
             emptyInputvalue('');
         }
     }
