@@ -18,7 +18,6 @@ function Home(props) {
 
     const [data, setData] = useState([]);
     const [keys, setKeys] = useState([]);
-    const [selected, setSelected] = useState('');
     const [selectedMilli, setSelectedMilli] = useState(0);
 
     const dispatch = useDispatch();
@@ -31,7 +30,6 @@ function Home(props) {
 
     useEffect(() => {
 
-        setSelected(today);
         hightlightDate(today);
 
         const getDailyDividendsData = async() => { 
@@ -49,7 +47,6 @@ function Home(props) {
         setData([]);
         setKeys([]);
 
-        setSelected(`${month}/${date}/${year}`);
         hightlightDate(`${month}/${date}/${year}`);
 
         const updateDailyDividendsData = async() => {

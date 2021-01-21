@@ -106,55 +106,55 @@ export default styled(CardList)`
     height: 111px;
 
     & {
-            .container {
-                .smallBoxStyle {
-                    border-radius: 8px;
-                    background-color: #EAFFE3;
-                    padding: 5px 10px;
-                    font-size: 12px;
-                    margin-right: 3px;
+        .container {
+            .smallBoxStyle {
+                border-radius: 8px;
+                background-color: #EAFFE3;
+                padding: 5px 10px;
+                font-size: 12px;
+                margin-right: 3px;
+            }
+            .title {
+                margin: 7px 0;
+                display: flex;
+                align-items: center;
+                .companyNameStyle {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    max-width: 65%;
+                    text-overflow: ellipsis;
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin: 0;
+                    padding: 0;
                 }
-                .title {
-                    margin: 7px 0;
-                    display: flex;
-                    align-items: center;
-                    .companyNameStyle {
-                        white-space: nowrap;
-                        overflow: hidden;
-                        max-width: 65%;
-                        text-overflow: ellipsis;
-                        font-size: 20px;
-                        font-weight: 500;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .symbolStyle {
-                        border-left: 2px solid #D6D6D6;
-                        padding-left: 5px;
-                        margin-left: 5px;
-                        color: #767676;
-                        font-weight: 500;
-                        font-size: 13px;
-                    }
-                }
-                .money {
-                    display: flex;
-                    align-items: baseline;
-
-                    .expected_dividend {
-                        font-size: 30px;
-                        font-weight: 500;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .exchanged_won {
-                        font-size: 15px;
-                        padding-left: 3px;
-                        margin-left: 3px;
-                        color: #767676;
-                    }
+                .symbolStyle {
+                    border-left: 2px solid #D6D6D6;
+                    padding-left: 5px;
+                    margin-left: 5px;
+                    color: #767676;
+                    font-weight: 500;
+                    font-size: 13px;
                 }
             }
+            .money {
+                display: flex;
+                align-items: baseline;
+
+                .expected_dividend {
+                    font-size: 30px;
+                    font-weight: 500;
+                    margin: 0;
+                    padding: 0;
+                }
+                .exchanged_won {
+                    font-size: 15px;
+                    padding-left: 3px;
+                    margin-left: 3px;
+                    color: #767676;
+                }
+            }
+        }
 
     }
 
