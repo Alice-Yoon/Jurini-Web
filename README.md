@@ -22,11 +22,25 @@ React.js + Redux
 
 #### 1. 전체화면
 
-<img width="836" alt="스크린샷 2020-10-28 오전 11 59 08" src="https://user-images.githubusercontent.com/53468065/106936373-d2bba900-675f-11eb-978a-b8e3f7bd3464.png">
+<img width="709" alt="스크린샷 2021-02-05 오전 3 17 39" src="https://user-images.githubusercontent.com/53468065/106937105-b66c3c00-6760-11eb-9653-f2b5b3d871b7.png">
 
 - 대시 보드의 느낌으로 단일 페이지로 구성되어 있다.
 
 #### 2. NavBar
 
-<img width="1440" alt="스크린샷 2020-10-28 오전 11 58 37" src="https://user-images.githubusercontent.com/53468065/106936785-57a6c280-6760-11eb-8a28-3851e4aa5578.png">
+<img width="740" alt="스크린샷 2021-02-05 오전 3 18 09" src="https://user-images.githubusercontent.com/53468065/106937149-c7b54880-6760-11eb-9879-ff6ac77bc187.png">
+
+- 서비스 로고
+- 검색창
+- 노션 이동
+- 구글배지 (앱 다운로드 유도)
+
+#### 3. 달력
+
+<img width="698" alt="스크린샷 2021-02-05 오전 3 18 23" src="https://user-images.githubusercontent.com/53468065/106937190-cf74ed00-6760-11eb-9557-1f687822fe09.png">
+
+#### 4. 배당락일 / 배당지급일 기업 정보 요약
+
+<img width="503" alt="스크린샷 2021-02-05 오전 3 17 04" src="https://user-images.githubusercontent.com/53468065/106937035-a18fa880-6760-11eb-9296-5cf5abee4121.png">
+
 
