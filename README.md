@@ -15,6 +15,9 @@
 ### 기술 스택
 React.js + Redux
 
+### 서비스 링크
+http://judal.herokuapp.com/
+
 -----
 
 
